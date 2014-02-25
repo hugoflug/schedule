@@ -9,15 +9,30 @@ public class Evaluator {
     //needs to also take constraints in the future
     public int evaluateSchedule(ArrayList<Schedule> schedules) {
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
-           for (Schedule schedule : schedules) {
-               Day d = schedule.days.get(i);
 
+           //pick out all Days on a certain date
+           List<Day> days = new ArrayList<Day>();
+           for (Schedule schedule : schedules) {
+               days.add(schedule.days.get(i));
            }
+
+           for (int j = 0; j < 4; j++) {
+
+               //pick out all SchoolClasses on a certain date and a certain time
+               List<SchoolClass> sClasses = new ArrayList<SchoolClass>();
+               for (Day day : days) {
+                   sClasses.add(day.classes.get(j));
+               }
+
+               collides(sClasses);
+           }
+
+
         }
         return 0;
     }
 
-    //checks for collisions between a list of classes held at the same time
+    //checks for collisions between a list of SchoolClasses held at the same time
     private boolean collides(List<SchoolClass> classes) {
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
