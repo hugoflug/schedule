@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Evaluator {
-    //needs to also take constraints in the future
-    public int evaluateSchedule(ArrayList<Schedule> schedules) {
+    public int evaluateSchedule(ArrayList<Schedule> schedules, Constraints constraints) {
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
 
            //pick out all Days on a certain date
