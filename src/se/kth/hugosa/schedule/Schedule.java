@@ -1,5 +1,7 @@
 package se.kth.hugosa.schedule;
 
-public class Schedule {
+import java.util.List;
 
+public class Schedule {
+    private List<Day> days;
 }
