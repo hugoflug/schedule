@@ -27,7 +27,6 @@ public class Evaluator {
                collides(sClasses);
            }
 
-
         }
         return 0;
     }

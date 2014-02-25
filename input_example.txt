@@ -1,0 +1,22 @@
+{
+	'program' : 'CDATE1'
+	'courses' : [
+		{
+			'name' : 'progp'
+			'lessons': [
+				{
+					'teachers' : ['Gunilla Gunsson', 'Anders Andersson'],
+					'capacity' : 200
+					'week' : 47
+					'groups' : 2
+				},
+				{
+					'teachers' : ['Gunilla Gunsson'],
+					'capacity' : 200
+					'week' : 48
+					'groups' : 1
+				}				
+			]
+		}
+	]
+}
