@@ -3,5 +3,6 @@ package se.kth.hugosa.schedule;
 import java.util.List;
 
 public class Schedule {
-    private List<Day> days;
+    //should perhaps be HashMap<Date, Day>
+    public List<Day> days;
 }
