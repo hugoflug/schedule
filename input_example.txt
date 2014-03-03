@@ -1,4 +1,5 @@
-[{
+[
+  {
 	'program' : 'CDATE1'
 	'courses' : [
 		{
