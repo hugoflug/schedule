@@ -12,5 +12,9 @@ public class ScheduleElement {
 		this.program = program;
 		this.numStudents = numStudents;
 	}
-	
+
+    @Override
+    public String toString() {
+        return program + " " + course + " " + teacher + " " + numStudents;
+    }
 }

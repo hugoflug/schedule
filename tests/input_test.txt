@@ -1,0 +1,18 @@
+[{
+	"program" : "CDATE1"
+	"courses" : [
+		{
+			"name" : "progp",
+			"lessons": [
+				{
+					"teacher" : "Gunilla Gunsson",
+					"capacity" : 200
+				},
+				{
+					"teacher" : "Anders Andersson",
+					"capacity" : 150
+				}
+			]
+		}
+	]
+}]
