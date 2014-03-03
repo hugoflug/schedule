@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import org.jgap.Gene;
 import org.jgap.impl.IntegerGene;
 import org.jgap.Genotype;
+import org.jgap.InvalidConfigurationException;
 
 public class GeneticSchedule {
 	Configuration conf = new DefaultConfiguration();
 	FitnessFunction func;
 	Genotype population;
 	
-	public GeneticSchedule (Constraints constraints, int popSize){
+	public GeneticSchedule (Constraints constraints, int popSize) throws InvalidConfigurationException {
 		func = new ScheduleFitnessFunction(constraints);
 		
 		int numSlots = constraints.getNumSlots();
