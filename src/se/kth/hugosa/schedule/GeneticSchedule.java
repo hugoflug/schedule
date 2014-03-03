@@ -15,8 +15,8 @@ public class GeneticSchedule {
 	FitnessFunction func;
 	Genotype population;
 	
-	public GeneticSchedule (Constraints constraints, ArrayList<ScheduleElement> list, int popSize){
-		func = new ScheduleFitnessFunction( constraints, list);
+	public GeneticSchedule (Constraints constraints, int popSize){
+		func = new ScheduleFitnessFunction(constraints);
 		
 		int numSlots = constraints.getNumSlots();
 		int numElements = constraints.getNumElements();
@@ -35,7 +35,7 @@ public class GeneticSchedule {
 		population = Genotype.randomInitialGenotype(conf);
 	}
 	
-	public Schedule evolve(int maxEvolutions){
+	public ArrayList<Schedule> evolve(int maxEvolutions){
 		IChromosome bestSolution;
 		for(int i = 0; i < maxEvolutions; i++){
 			population.evolve();
@@ -44,7 +44,7 @@ public class GeneticSchedule {
 		return generateSchedule(bestSolution);
 	}
 	
-	private Schedule generateSchedule(IChromosome c){
+	public static ArrayList<Schedule> generateSchedule(IChromosome c){
 		//TODO: Create a Schedule-object from IChromosome c and return it
 		return null;
 	}
