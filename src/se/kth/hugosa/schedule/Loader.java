@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Loader {
-    public Constraints loadConstraints(String jsonFile) throws FileNotFoundException, IOException, ParseException {
+    public Constraints loadConstraints(String jsonFile) throws IOException, ParseException {
         List<ScheduleElement> scheduleElements = new ArrayList<ScheduleElement>();
 
         JSONParser parser = new JSONParser();
@@ -33,7 +33,7 @@ public class Loader {
                 for (Object l : lessons) {
                     JSONObject lesson = (JSONObject)l;
                     String teacherName = (String)lesson.get("teacher");
-                    int capacity = (Integer)lesson.get("capacity");
+                    int capacity = ((Long)lesson.get("capacity")).intValue();
 
                     scheduleElements.add(new ScheduleElement(teacherName, courseName, programName, capacity));
                 }
