@@ -39,7 +39,8 @@ public class Evaluator {
         }
         return cap;
     }
-
+    */
+    /*
     //checks for collisions between a list of SchoolClasses held at the same time
     private boolean collides(List<SchoolClass> classes) {
         Set<String> busyTeachers = new HashSet<String>();
