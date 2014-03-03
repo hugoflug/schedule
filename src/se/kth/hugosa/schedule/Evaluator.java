@@ -23,7 +23,7 @@ public class Evaluator {
                    sClasses.add(day.classes.get(j));
                }
 
-               collides(sClasses);
+               //collides(sClasses);
            }
 
         }
@@ -31,6 +31,7 @@ public class Evaluator {
     }
 
     //returns the total amount of space in a certain class
+    /*
     private int getCapacity(SchoolClass sClass) {
         int cap = 0;
         for (CourseMoment mom : sClass.moments) {
@@ -61,4 +62,5 @@ public class Evaluator {
         }
         return false;
     }
+    */
 }
