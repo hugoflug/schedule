@@ -5,5 +5,5 @@ import java.util.ArrayList;
 public class Day {
 
     //should only hold four schoolclasses
-    public ArrayList<SchoolClass> classes;
+    public ArrayList<TimeSlot> timeSlots;
 }

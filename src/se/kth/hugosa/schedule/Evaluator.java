@@ -17,13 +17,13 @@ public class Evaluator {
 
            for (int j = 0; j < 4; j++) {
 
-               //pick out all SchoolClasses on a certain date and a certain time
-               List<SchoolClass> sClasses = new ArrayList<SchoolClass>();
+               //pick out all TimeSlots on a certain date and a certain time
+               List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
                for (Day day : days) {
-                   sClasses.add(day.classes.get(j));
+                   timeSlots.add(day.timeSlots.get(j));
                }
 
-               //collides(sClasses);
+               collides(timeSlots);
            }
 
         }
@@ -32,7 +32,7 @@ public class Evaluator {
 
     //returns the total amount of space in a certain class
     /*
-    private int getCapacity(SchoolClass sClass) {
+    private int getCapacity(TimeSlot sClass) {
         int cap = 0;
         for (CourseMoment mom : sClass.moments) {
             cap += mom.classroom.capacity;
@@ -40,28 +40,26 @@ public class Evaluator {
         return cap;
     }
     */
-    /*
+
     //checks for collisions between a list of SchoolClasses held at the same time
-    private boolean collides(List<SchoolClass> classes) {
+    private boolean collides(List<TimeSlot> timeSlots) {
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
-        for (SchoolClass sClass : classes) {
-            for (CourseMoment mom : sClass.moments) {
-                for (String teacher : mom.teachers) {
-                    if (busyTeachers.contains(teacher)) {
-                        return true;
-                    } else {
-                        busyTeachers.add(teacher);
-                    }
-                    if (busyClassrooms.contains(mom.classroom)) {
-                        return true;
-                    } else {
-                        busyClassrooms.add(mom.classroom);
-                    }
-                }
+        for (TimeSlot timeSlot : timeSlots) {
+            if (busyTeachers.contains(timeSlot.scheduleElement.teacher)) {
+                return true;
+            } else {
+                busyTeachers.add(timeSlot.scheduleElement.teacher);
             }
+
+            if (busyClassrooms.contains(timeSlot.classroom)) {
+                return true;
+            } else {
+                busyClassrooms.add(timeSlot.classroom);
+            }
+
         }
         return false;
     }
-    */
+
 }
