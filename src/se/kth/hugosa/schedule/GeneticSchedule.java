@@ -4,6 +4,7 @@ import org.jgap.Chromosome;
 import org.jgap.IChromosome;
 import org.jgap.Configuration;
 import org.jgap.impl.DefaultConfiguration;
+import org.jgap.impl.SwappingMutationOperator;
 import org.jgap.FitnessFunction;
 import java.util.ArrayList;
 import org.jgap.Gene;
@@ -12,11 +13,16 @@ import org.jgap.Genotype;
 import org.jgap.InvalidConfigurationException;
 
 public class GeneticSchedule {
-	Configuration conf = new DefaultConfiguration();
+	Configuration conf;
 	FitnessFunction func;
 	Genotype population;
 	
 	public GeneticSchedule (Constraints constraints, int popSize) throws InvalidConfigurationException {
+		conf = new DefaultConfiguration();
+		conf.getGeneticOperators().clear();
+		SwappingMutationOperator swapper = new SwappingMutationOperator(conf);
+		conf.addGeneticOperator(swapper);
+		
 		func = new ScheduleFitnessFunction(constraints);
 		
 		int numSlots = constraints.getNumSlots();
