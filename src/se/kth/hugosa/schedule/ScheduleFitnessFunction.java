@@ -14,7 +14,7 @@ public class ScheduleFitnessFunction extends FitnessFunction {
 	
 	@Override
     public double evaluate( IChromosome c ){
-        ArrayList<Schedule> s = GeneticSchedule.generateSchedule(c);
+        ArrayList<Schedule> s = GeneticSchedule.generateSchedule(c, constraints);
         return (double) e.evaluateSchedule(s, constraints);
     }
 }

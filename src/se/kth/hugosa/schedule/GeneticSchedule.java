@@ -16,12 +16,15 @@ public class GeneticSchedule {
 	Configuration conf;
 	FitnessFunction func;
 	Genotype population;
+	Constraints constraints;
 	
 	public GeneticSchedule (Constraints constraints, int popSize) throws InvalidConfigurationException {
 		conf = new DefaultConfiguration();
 		conf.getGeneticOperators().clear();
 		SwappingMutationOperator swapper = new SwappingMutationOperator(conf);
 		conf.addGeneticOperator(swapper);
+		
+		this.constraints = constraints;
 		
 		func = new ScheduleFitnessFunction(constraints);
 		
@@ -48,11 +51,36 @@ public class GeneticSchedule {
 			population.evolve();
 		}
 		bestSolution = population.getFittestChromosome();
-		return generateSchedule(bestSolution);
+		return generateSchedule(bestSolution, constraints);
 	}
 	
-	public static ArrayList<Schedule> generateSchedule(IChromosome c){
-		//TODO: Create a Schedule-object from IChromosome c and return it
+	public static ArrayList<Schedule> generateSchedule(IChromosome c, Constraints constraints){
+		//TODO: Create a list of Schedules from IChromosome c and return it
+		
+		ArrayList<Schedule> result = new ArrayList<Schedule>();
+		for(int i = 0; i < constraints.getNumPrograms(); i++){
+			result.add(new Schedule(constraints.getPrograms().get(i), constraints.getScheduleWeeks()));
+		}
+		
+		for(int days = 0; days < constraints.getScheduleWeeks()*5; days++){
+			for(int slots = 0; slots < 4; slots++){
+				for(int rooms = 0; rooms < constraints.getNumClassrooms(); rooms++){
+					int index = (Integer) c.getGene(days + slots + rooms).getAllele();
+					ScheduleElement element = constraints.getScheduleElements().get(index);
+					
+					Schedule schedule = result.get(constraints.getPrograms().indexOf(element.program));
+					
+					Day day = schedule.days.get(days);
+					if(day == null){
+						day = new Day();
+					}
+					
+					day.timeSlots.set(slots, new TimeSlot(element, constraints.getClassrooms().get(rooms)));
+					schedule.days.set(days, day);
+				}
+			}
+		}
+		
 		return null;
 	}
 	
