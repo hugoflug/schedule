@@ -6,6 +6,7 @@ import java.util.List;
 public class Constraints {
     private List<ScheduleElement> elements;
     private int scheduleWeeks;
+    private int classrooms;
 
     public Constraints(List<ScheduleElement> scheduleElements) {
         this.elements = scheduleElements;
@@ -17,5 +18,13 @@ public class Constraints {
 
     public int getScheduleWeeks() {
         return scheduleWeeks;
+    }
+    
+    public int getNumSlots(){
+    	return classrooms * 4 * scheduleWeeks * 5; //5 days per week, 4 slots per classroom and day
+    }
+    
+    public int getNumElements(){
+    	return elements.size();
     }
 }
