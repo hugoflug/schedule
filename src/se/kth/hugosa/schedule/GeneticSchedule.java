@@ -55,8 +55,6 @@ public class GeneticSchedule {
 	}
 	
 	public static ArrayList<Schedule> generateSchedule(IChromosome c, Constraints constraints){
-		//TODO: Create a list of Schedules from IChromosome c and return it
-		
 		ArrayList<Schedule> result = new ArrayList<Schedule>();
 		for(int i = 0; i < constraints.getNumPrograms(); i++){
 			result.add(new Schedule(constraints.getPrograms().get(i), constraints.getScheduleWeeks()));
