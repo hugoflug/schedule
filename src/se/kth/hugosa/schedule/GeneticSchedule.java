@@ -75,7 +75,7 @@ public class GeneticSchedule {
 						day = new Day();
 					}
 					
-					day.timeSlots.set(slots, new TimeSlot(element, constraints.getClassrooms().get(rooms)));
+					day.timeSlots.set(slots, new TimeSlot(constraints.getClassrooms().get(rooms), element));
 					schedule.days.set(days, day);
 				}
 			}
