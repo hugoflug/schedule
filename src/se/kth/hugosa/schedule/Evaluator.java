@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Evaluator {
-    public int evaluateSchedule(ArrayList<Schedule> schedules, Constraints constraints) {
+    public int evaluateSchedule(List<Schedule> schedules, Constraints constraints) {
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
 
            //pick out all Days on a certain date
@@ -20,14 +20,24 @@ public class Evaluator {
                //pick out all TimeSlots on a certain date and a certain time
                List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
                for (Day day : days) {
-                   timeSlots.add(day.timeSlots.get(j));
+                   if (day.timeSlots.size() > j) {
+                       timeSlots.add(day.timeSlots.get(j));
+                   }
                }
 
-               collides(timeSlots);
+               if (collides(timeSlots)) {
+                   return 0;
+               }
+
+               for (TimeSlot timeSlot : timeSlots) {
+                   if (timeSlot.scheduleElement.numStudents > timeSlot.classroom.capacity) {
+                       return 0;
+                   }
+               }
            }
 
         }
-        return 0;
+        return 100;
     }
 
     //returns the total amount of space in a certain class
