@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="OpenTS">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/OpenTS.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
