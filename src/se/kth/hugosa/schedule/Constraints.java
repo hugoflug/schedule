@@ -11,7 +11,7 @@ public class Constraints {
     private int scheduleWeeks;
     private int classrooms;
 
-    public Constraints(List<ScheduleElement> scheduleElements, List<Classroom> classroomList) {
+    public Constraints(List<ScheduleElement> scheduleElements, ArrayList<Classroom> classroomList) {
         this.elements = scheduleElements;
         this.classroomList = classroomList;
     }
