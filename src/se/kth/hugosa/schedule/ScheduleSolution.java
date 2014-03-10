@@ -4,12 +4,26 @@ import org.coinor.opents.Solution;
 import org.coinor.opents.SolutionAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ScheduleSolution extends SolutionAdapter {
-    private ArrayList<Schedule> schedule;
+    private ArrayList<Schedule> schedules;
 
-    public ScheduleSolution(ArrayList<Schedule> schedule) {
-        this.schedule = schedule;
+    public ScheduleSolution(ArrayList<Schedule> schedules, Constraints constraints) {
+        Map<String, Schedule> programs = new HashMap<String, Schedule>();
+
+        for (ScheduleElement element : constraints.getScheduleElements()) {
+            Schedule schedule = programs.get(element.program);
+            if (schedule == null) {
+                programs.put(element.program, new Schedule(element.program, 15));
+                schedule = programs.get(element.program);
+            }
+    //      schedule.addInNextPlace(element)
+        }
+        //this.schedules = programs.values
+
+        this.schedules = schedules;
     }
 
     public Object clone() {
@@ -17,6 +31,6 @@ public class ScheduleSolution extends SolutionAdapter {
     }
 
     public ArrayList<Schedule> getSchedules() {
-        return schedule;
+        return schedules;
     }
 }
