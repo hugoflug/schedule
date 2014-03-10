@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class ScheduleSolution extends SolutionAdapter {
     private ArrayList<Schedule> schedule;
 
-    public ScheduleSolution(ArrayList<Schedule> schedule) {
+    public ScheduleSolution(ArrayList<Schedule> schedule, Constraints constraints) {
+
         this.schedule = schedule;
     }
 

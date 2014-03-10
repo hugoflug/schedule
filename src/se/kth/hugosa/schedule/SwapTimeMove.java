@@ -13,9 +13,12 @@ public class SwapTimeMove implements Move {
 
     @Override
     public void operateOn(Solution solution) {
-        ScheduleElement temp = first.scheduleElement;
+        ScheduleElement tempSe = first.scheduleElement;
+        Classroom tempCl = first.classroom;
         first.scheduleElement = second.scheduleElement;
-        second.scheduleElement = temp;
+        first.classroom = second.classroom;
+        second.scheduleElement = tempSe;
+        second.classroom = tempCl;
     }
 
     public int hashCode() {

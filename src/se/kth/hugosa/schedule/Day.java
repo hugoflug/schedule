@@ -6,7 +6,7 @@ public class Day {
     //should only hold four schoolclasses
     public ArrayList<TimeSlot> timeSlots;
     
-    public Day(){
+    public Day() {
     	timeSlots = new ArrayList<TimeSlot>();
     	for(int i = 0; i<3; i++){
     		timeSlots.add(null);
