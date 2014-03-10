@@ -23,14 +23,17 @@ public class Schedule {
     public static void printSchedule(ArrayList<Schedule> schedules){
     	for(Schedule schedule : schedules){
     		System.out.println("Program: " + schedule.getProgram());
-    		System.out.println();
+    		System.out.println("-----------------------");
     		for(int days = 0; days < schedule.days.size(); days++){
     			System.out.println("Day " + days);
     			Day day = schedule.days.get(days);
     			System.out.println("-----------------------");
     			for(int slots = 0; slots < 4; slots++){
-    				System.out.println("Slot " + slots + ": " + day.timeSlots.get(slots));
+    				String classroom = day.timeSlots.get(slots).classroom.name;
+    				ScheduleElement element = day.timeSlots.get(slots).scheduleElement;
+    				System.out.println("Slot " + slots + ": " + element.course + " with " + element.teacher + " in " + classroom + ".");
     			}
+    			System.out.println();
     		}
     	}
     }

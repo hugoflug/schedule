@@ -1,18 +1,83 @@
-[{
-	"program" : "CDATE1"
-	"courses" : [
-		{
-			"name" : "progp",
-			"lessons": [
+{
+	"programs" : [
+	  	{
+			"program" : "CDATE1",
+			"courses" : [
 				{
-					"teacher" : "Gunilla Gunsson",
-					"capacity" : 200
+					"name" : "inda",
+					"lessons" : [
+						{
+							"teacher" : "Gustav Gustavsson",
+							"capacity" : 200,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Gustav Gustavsson",
+							"capacity" : 200,
+							"week" : 48,
+							"groups" : 1
+						}				
+					]
 				},
 				{
-					"teacher" : "Anders Andersson",
-					"capacity" : 150
+					"name" : "envarre",
+					"lessons": [
+						{
+							"teacher" : "Olle Bengtsson",
+							"capacity" : 200,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Olle Bengtsson",
+							"capacity" : 200,
+							"week" : 48,
+							"groups" : 1
+						}				
+					]
+				}
+			]
+		},
+		{
+			"program" : "CDATE2",
+			"courses" : [
+				{
+					"name" : "progp",
+					"lessons" : [
+						{
+							"teacher" : "Gunilla Gunsson",
+							"capacity" : 200,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Gunilla Gunsson",
+							"capacity" : 200,
+							"week" : 48,
+							"groups" : 1
+						}				
+					]
 				}
 			]
 		}
+	],
+	"classrooms" : [
+		{
+			"name" : "D1",
+			"capacity" : 200
+		},
+		{
+			"name" : "E1",
+			"capacity" : 200
+		},
+		{
+			"name" : "D2",
+			"capacity" : 50
+		},
+		{
+			"name" : "D3",
+			"capacity" : 50
+		}
 	]
-}]
+}

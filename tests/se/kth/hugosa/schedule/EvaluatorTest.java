@@ -15,7 +15,7 @@ public class EvaluatorTest {
     }
 
     private void testClassroomCapacity() throws Exception {
-        Schedule schedule1 = new Schedule();
+        Schedule schedule1 = new Schedule("CDATE2", 2);
         Day day1 = new Day();
 
         day1.timeSlots = new ArrayList<TimeSlot>();
@@ -33,7 +33,7 @@ public class EvaluatorTest {
 
 
     private void testClassroomCollision() throws Exception {
-        Schedule schedule1 = new Schedule();
+        Schedule schedule1 = new Schedule("CDATE2", 2);
         Day day1 = new Day();
 
         day1.timeSlots = new ArrayList<TimeSlot>();
@@ -47,7 +47,7 @@ public class EvaluatorTest {
                 new ScheduleElement("Hugo", "logik", "CDATE2", 100)));
         schedule1.days = Arrays.asList(day1);
 
-        Schedule schedule2 = new Schedule();
+        Schedule schedule2 = new Schedule("CDATE1",2);
         Day day2_1 = new Day();
         day2_1.timeSlots = new ArrayList<TimeSlot>();
         day2_1.timeSlots.add(new TimeSlot(new Classroom("E31", 50),
@@ -69,7 +69,7 @@ public class EvaluatorTest {
     }
 
     public void testNoCollision() throws Exception {
-        Schedule schedule1 = new Schedule();
+        Schedule schedule1 = new Schedule("CDATE2", 2);
         Day day1 = new Day();
 
         day1.timeSlots = new ArrayList<TimeSlot>();
@@ -83,7 +83,7 @@ public class EvaluatorTest {
                 new ScheduleElement("Hugo", "logik", "CDATE2", 100)));
         schedule1.days = Arrays.asList(day1);
 
-        Schedule schedule2 = new Schedule();
+        Schedule schedule2 = new Schedule("CDATE1", 2);
         Day day2_1 = new Day();
         day2_1.timeSlots = new ArrayList<TimeSlot>();
         day2_1.timeSlots.add(new TimeSlot(new Classroom("E31", 50),
@@ -105,7 +105,7 @@ public class EvaluatorTest {
     }
 
     public void testTeacherCollision() throws Exception {
-        Schedule schedule1 = new Schedule();
+        Schedule schedule1 = new Schedule("CDATE2", 2);
         Day day1 = new Day();
 
         day1.timeSlots = new ArrayList<TimeSlot>();
@@ -119,7 +119,7 @@ public class EvaluatorTest {
                 new ScheduleElement("Hugo", "logik", "CDATE2", 100)));
         schedule1.days = Arrays.asList(day1);
 
-        Schedule schedule2 = new Schedule();
+        Schedule schedule2 = new Schedule("CDATE1", 2);
         Day day2_1 = new Day();
         day2_1.timeSlots = new ArrayList<TimeSlot>();
         day2_1.timeSlots.add(new TimeSlot(new Classroom("E31", 50),
