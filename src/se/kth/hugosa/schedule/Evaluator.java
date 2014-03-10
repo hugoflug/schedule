@@ -40,17 +40,6 @@ public class Evaluator {
         return 100;
     }
 
-    //returns the total amount of space in a certain class
-    /*
-    private int getCapacity(TimeSlot sClass) {
-        int cap = 0;
-        for (CourseMoment mom : sClass.moments) {
-            cap += mom.classroom.capacity;
-        }
-        return cap;
-    }
-    */
-
     //checks for collisions between a list of SchoolClasses held at the same time
     private boolean collides(List<TimeSlot> timeSlots) {
         Set<String> busyTeachers = new HashSet<String>();
