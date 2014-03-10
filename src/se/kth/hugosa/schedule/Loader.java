@@ -13,13 +13,15 @@ import java.util.List;
 public class Loader {
     public Constraints loadConstraints(String jsonFile) throws IOException, ParseException {
         List<ScheduleElement> scheduleElements = new ArrayList<ScheduleElement>();
+        List<Classroom> roomList = new ArrayList<Classroom>();
 
         JSONParser parser = new JSONParser();
         FileReader reader = new FileReader(jsonFile);
 
-        JSONArray array = (JSONArray)parser.parse(reader);
+        JSONObject o = (JSONObject)parser.parse(reader);
+        JSONArray programs = (JSONArray)o.get("programs");
 
-        for (Object a : array) {
+        for (Object a : programs) {
             JSONObject program = (JSONObject)a;
             String programName = (String)program.get("program");
 
@@ -39,8 +41,16 @@ public class Loader {
                 }
             }
         }
+        
+        JSONArray classrooms = (JSONArray)o.get("classrooms");
+        for (Object r : classrooms) {
+        	JSONObject classroom = (JSONObject)r;
+        	String name = (String)classroom.get("name");
+        	int capacity = ((Long)classroom.get("capacity")).intValue();
+        	roomList.add(new Classroom(name, capacity));
+        }
 
-        Constraints constraints = new Constraints(scheduleElements);
+        Constraints constraints = new Constraints(scheduleElements, roomList);
         return constraints;
     }
 }
