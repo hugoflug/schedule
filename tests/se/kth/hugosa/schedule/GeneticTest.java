@@ -9,9 +9,16 @@ public class GeneticTest {
 	@Test
 	public void test() throws Exception{
 		Loader loader = new Loader();
-		Constraints constraints = loader.loadConstraints("tests/input_test.txt");
+		Constraints c = loader.loadConstraints("tests/input_test.txt");
 		
-		GeneticSchedule genetic = new GeneticSchedule(constraints, 20);
+		for (ScheduleElement e : c.getScheduleElements()) {
+            System.out.println(e.toString());
+        }
+        for (Classroom room : c.getClassrooms()){
+        	System.out.println("Name: " + room.name + " cap: " + room.capacity);
+        }
+        
+		GeneticSchedule genetic = new GeneticSchedule(c, 20);
 		ArrayList<Schedule> schedules = genetic.evolve(100);
 		
 		Schedule.printSchedule(schedules);

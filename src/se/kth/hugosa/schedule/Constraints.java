@@ -9,11 +9,12 @@ public class Constraints {
     private ArrayList<Classroom> classroomList;
     private List<String> programs;
     private int scheduleWeeks;
-    private int classrooms;
 
-    public Constraints(List<ScheduleElement> scheduleElements, ArrayList<Classroom> classroomList) {
+    public Constraints(List<ScheduleElement> scheduleElements, ArrayList<Classroom> classroomList, List<String> programList, int weeks) {
         this.elements = scheduleElements;
         this.classroomList = classroomList;
+        this.programs = programList;
+        this.scheduleWeeks = weeks;
     }
 
     public List<ScheduleElement> getScheduleElements() {
@@ -37,11 +38,11 @@ public class Constraints {
     }
     
     public int getNumSlots(){
-    	return classrooms * 4 * scheduleWeeks * 5; //5 days per week, 4 slots per classroom and day
+    	return getNumClassrooms() * 4 * scheduleWeeks * 5; //5 days per week, 4 slots per classroom and day
     }
     
     public int getNumClassrooms(){
-    	return classrooms;
+    	return classroomList.size();
     }
     public int getNumElements(){
     	return elements.size();

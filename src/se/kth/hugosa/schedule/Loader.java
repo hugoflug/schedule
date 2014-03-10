@@ -13,6 +13,8 @@ public class Loader {
     public Constraints loadConstraints(String jsonFile) throws IOException, ParseException {
         ArrayList<ScheduleElement> scheduleElements = new ArrayList<ScheduleElement>();
         ArrayList<Classroom> roomList = new ArrayList<Classroom>();
+        ArrayList<String> programList = new ArrayList<String>();
+        int weeks;
 
         JSONParser parser = new JSONParser();
         FileReader reader = new FileReader(jsonFile);
@@ -23,6 +25,7 @@ public class Loader {
         for (Object a : programs) {
             JSONObject program = (JSONObject)a;
             String programName = (String)program.get("program");
+            programList.add(programName);
 
             JSONArray courses = (JSONArray)program.get("courses");
 
@@ -48,8 +51,10 @@ public class Loader {
         	int capacity = ((Long)classroom.get("capacity")).intValue();
         	roomList.add(new Classroom(name, capacity));
         }
+        
+        weeks = ((Long)o.get("weeks")).intValue();
 
-        Constraints constraints = new Constraints(scheduleElements, roomList);
+        Constraints constraints = new Constraints(scheduleElements, roomList, programList, weeks);
         return constraints;
     }
 }

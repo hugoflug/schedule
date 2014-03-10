@@ -5,10 +5,11 @@ import org.jgap.IChromosome;
 import java.util.ArrayList;
 
 public class ScheduleFitnessFunction extends FitnessFunction {
-	private Evaluator e;
 	private Constraints constraints;
+	private Evaluator e;
 	
-	public ScheduleFitnessFunction( Constraints constraints){
+	public ScheduleFitnessFunction(Constraints constraints){
+		this.e = new Evaluator();
 		this.constraints = constraints;
 	}
 	

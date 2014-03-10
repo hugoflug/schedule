@@ -6,13 +6,21 @@ import java.util.List;
 import java.util.Set;
 
 public class Evaluator {
+	
+	public Evaluator(){
+		
+	}
+	
     public int evaluateSchedule(List<Schedule> schedules, Constraints constraints) {
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
 
            //pick out all Days on a certain date
            List<Day> days = new ArrayList<Day>();
            for (Schedule schedule : schedules) {
-               days.add(schedule.days.get(i));
+        	   Day day = schedule.days.get(i);
+        	   if(day != null){
+        		   days.add(day);
+        	   }
            }
 
            for (int j = 0; j < 4; j++) {
@@ -20,9 +28,12 @@ public class Evaluator {
                //pick out all TimeSlots on a certain date and a certain time
                List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
                for (Day day : days) {
-                   if (day.timeSlots.size() > j) {
-                       timeSlots.add(day.timeSlots.get(j));
-                   }
+            	   TimeSlot slot = day.timeSlots.get(j);
+            	   
+            	   if (slot != null){
+            		   timeSlots.add(slot);
+            	   }
+            	   
                }
 
                if (collides(timeSlots)) {

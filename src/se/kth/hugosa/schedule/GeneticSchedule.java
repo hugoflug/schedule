@@ -30,6 +30,7 @@ public class GeneticSchedule {
 		this.constraints = constraints;
 		
 		func = new ScheduleFitnessFunction(constraints);
+		conf.setFitnessFunction(func);
 		
 		int numSlots = constraints.getNumSlots();
 		int numElements = constraints.getNumElements();
@@ -102,7 +103,7 @@ public class GeneticSchedule {
 			}
 		}
 		
-		return null;
+		return result;
 	}
 	
 }
