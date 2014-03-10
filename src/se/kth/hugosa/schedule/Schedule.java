@@ -6,7 +6,7 @@ import java.util.List;
 public class Schedule {
 	private String program;
     //should perhaps be HashMap<Date, Day>
-    public List<Day> days;
+    public ArrayList<Day> days;
     
     public Schedule(String program, int weeks){
     	this.program = program;
