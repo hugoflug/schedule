@@ -8,12 +8,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Loader {
     public Constraints loadConstraints(String jsonFile) throws IOException, ParseException {
-        List<ScheduleElement> scheduleElements = new ArrayList<ScheduleElement>();
-        List<Classroom> roomList = new ArrayList<Classroom>();
+        ArrayList<ScheduleElement> scheduleElements = new ArrayList<ScheduleElement>();
+        ArrayList<Classroom> roomList = new ArrayList<Classroom>();
 
         JSONParser parser = new JSONParser();
         FileReader reader = new FileReader(jsonFile);

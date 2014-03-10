@@ -7,6 +7,9 @@ import org.jgap.impl.DefaultConfiguration;
 import org.jgap.impl.SwappingMutationOperator;
 import org.jgap.FitnessFunction;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.jgap.Gene;
 import org.jgap.impl.IntegerGene;
 import org.jgap.Genotype;
@@ -34,7 +37,7 @@ public class GeneticSchedule {
 		Gene[] sampleGenes = new Gene[numSlots];
 		
 		for (int i = 0; i<sampleGenes.length; i++){
-			sampleGenes[i] = new IntegerGene(conf, 0, numElements);
+			sampleGenes[i] = new IntegerGene(conf, -1, numElements-1);
 		}
 		
 		Chromosome sampleChromosome = new Chromosome(conf, sampleGenes);
@@ -43,6 +46,24 @@ public class GeneticSchedule {
 		conf.setPopulationSize(popSize);
 		
 		population = Genotype.randomInitialGenotype(conf);
+		ArrayList<Integer> numbers = new ArrayList<Integer>();
+		for (int i = 0; i<sampleGenes.length; i++){
+			if(i < numElements){
+				numbers.add(i);
+			}
+			else{
+				numbers.add(-1);
+			}
+		}
+		List<IChromosome> chromosomes = population.getPopulation().getChromosomes();
+		for (IChromosome chromosome : chromosomes) {
+			Collections.shuffle(numbers);
+			for (int i = 0; i < chromosome.size(); i++){
+				Gene gene = chromosome.getGene(i);
+				gene.setAllele(numbers.get(i));
+			}
+		}
+		
 	}
 	
 	public ArrayList<Schedule> evolve(int maxEvolutions){
@@ -64,17 +85,19 @@ public class GeneticSchedule {
 			for(int slots = 0; slots < 4; slots++){
 				for(int rooms = 0; rooms < constraints.getNumClassrooms(); rooms++){
 					int index = (Integer) c.getGene(days + slots + rooms).getAllele();
-					ScheduleElement element = constraints.getScheduleElements().get(index);
-					
-					Schedule schedule = result.get(constraints.getPrograms().indexOf(element.program));
-					
-					Day day = schedule.days.get(days);
-					if(day == null){
-						day = new Day();
+					if(index > -1){
+						ScheduleElement element = constraints.getScheduleElements().get(index);
+						
+						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.program));
+						
+						Day day = schedule.days.get(days);
+						if(day == null){
+							day = new Day();
+						}
+						
+						day.timeSlots.set(slots, new TimeSlot(constraints.getClassrooms().get(rooms), element));
+						schedule.days.set(days, day);
 					}
-					
-					day.timeSlots.set(slots, new TimeSlot(constraints.getClassrooms().get(rooms), element));
-					schedule.days.set(days, day);
 				}
 			}
 		}

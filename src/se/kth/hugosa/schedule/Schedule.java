@@ -1,7 +1,6 @@
 package se.kth.hugosa.schedule;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Schedule {
 	private String program;
