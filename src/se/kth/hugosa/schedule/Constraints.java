@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Constraints {
     private List<ScheduleElement> elements;
-    private ArrayList<Classroom> classroomList;
+    private List<Classroom> classroomList;
     private List<String> programs;
     private int scheduleWeeks;
     private int classrooms;
@@ -20,7 +20,7 @@ public class Constraints {
         return elements;
     }
     
-    public ArrayList<Classroom> getClassrooms(){
+    public List<Classroom> getClassrooms(){
     	return classroomList;
     }
     
