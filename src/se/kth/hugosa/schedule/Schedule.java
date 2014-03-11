@@ -20,10 +20,11 @@ public class Schedule {
     public Schedule copy() {
         Schedule copy = new Schedule();
         copy.program = program;
+        copy.days = new ArrayList<Day>();
         for (int i = 0; i < days.size(); i++) {
             Day day = new Day();
             for (int j = 0; j < day.timeSlots.size(); j++) {
-                day.timeSlots.set(i, days.get(i).timeSlots.get(j));
+                day.timeSlots.set(j, days.get(i).timeSlots.get(j));
             }
             copy.days.add(day);
         }
