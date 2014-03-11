@@ -9,7 +9,7 @@ public class Day {
     public Day() {
     	timeSlots = new ArrayList<TimeSlot>();
     	for(int i = 0; i < 4; i++){
-    		timeSlots.add(null);
+    		timeSlots.add(new TimeSlot());
     	}
     }
 }

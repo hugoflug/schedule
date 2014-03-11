@@ -41,8 +41,10 @@ public class Evaluator {
                }
 
                for (TimeSlot timeSlot : timeSlots) {
-                   if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {
-                       return 0;
+                   if (timeSlot.scheduleElement != null && timeSlot.classroom != null) {
+                       if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {
+                           return 0;
+                       }
                    }
                }
            }
@@ -56,16 +58,20 @@ public class Evaluator {
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
-            if (busyTeachers.contains(timeSlot.scheduleElement.getTeacher())) {
-                return true;
-            } else {
-                busyTeachers.add(timeSlot.scheduleElement.getTeacher());
+            if (timeSlot.scheduleElement != null) {
+                if (busyTeachers.contains(timeSlot.scheduleElement.getTeacher())) {
+                    return true;
+                } else {
+                    busyTeachers.add(timeSlot.scheduleElement.getTeacher());
+                }
             }
 
-            if (busyClassrooms.contains(timeSlot.classroom)) {
-                return true;
-            } else {
-                busyClassrooms.add(timeSlot.classroom);
+            if (timeSlot.classroom != null) {
+                if (busyClassrooms.contains(timeSlot.classroom)) {
+                    return true;
+                } else {
+                    busyClassrooms.add(timeSlot.classroom);
+                }
             }
 
         }

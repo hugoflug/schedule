@@ -48,10 +48,20 @@ public class Schedule {
     				System.out.print("Slot " + slots + ": ");
     				if (day != null){
     					TimeSlot slot = day.timeSlots.get(slots);
-    					if (slot != null){
-    						String classroom = slot.classroom.name;
+    					if (slot != null) {
+                            String classroomName = "";
+    						Classroom classroom = slot.classroom;
+                            if (classroom == null) {
+                                classroomName = "unassigned";
+                            } else {
+                                classroomName = classroom.name;
+                            }
             				ScheduleElement element = slot.scheduleElement;
-            				System.out.println(element.getCourse() + " with " + element.getTeacher() + " in " + classroom + ".");
+                            if (element == null) {
+                                slotEmpty = true;
+                            } else {
+            				    System.out.println(element.getCourse() + " with " + element.getTeacher() +" in " + classroomName + ".");
+                            }
     					}
     					else{
     						slotEmpty = true;

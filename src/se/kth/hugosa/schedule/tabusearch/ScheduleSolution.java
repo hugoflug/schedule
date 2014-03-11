@@ -22,7 +22,8 @@ public class ScheduleSolution extends SolutionAdapter {
         for (ScheduleElement element : constraints.getScheduleElements()) {
             Schedule schedule = programs.get(element.getProgram());
             if (schedule == null) {
-                programs.put(element.getProgram(), new Schedule(element.getProgram(), constraints.getScheduleWeeks()));
+                programs.put(element.getProgram(), new Schedule(element.getProgram(),
+                        constraints.getScheduleWeeks()));
                 schedule = programs.get(element.getProgram());
             }
 
