@@ -1,7 +1,9 @@
-package se.kth.hugosa.schedule;
+package se.kth.hugosa.schedule.tabusearch;
 
 import org.coinor.opents.Move;
 import org.coinor.opents.Solution;
+import se.kth.hugosa.schedule.Classroom;
+import se.kth.hugosa.schedule.TimeSlot;
 
 import java.util.ArrayList;
 

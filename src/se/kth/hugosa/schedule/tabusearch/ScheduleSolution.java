@@ -1,7 +1,10 @@
-package se.kth.hugosa.schedule;
+package se.kth.hugosa.schedule.tabusearch;
 
 import org.coinor.opents.Solution;
 import org.coinor.opents.SolutionAdapter;
+import se.kth.hugosa.schedule.Constraints;
+import se.kth.hugosa.schedule.Schedule;
+import se.kth.hugosa.schedule.ScheduleElement;
 
 import java.util.ArrayList;
 import java.util.HashMap;

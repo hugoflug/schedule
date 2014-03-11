@@ -3,6 +3,7 @@ package se.kth.hugosa.schedule;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import se.kth.hugosa.schedule.genetic.GeneticSchedule;
 
 public class GeneticTest {
 

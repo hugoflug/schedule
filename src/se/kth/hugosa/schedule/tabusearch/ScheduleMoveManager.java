@@ -1,11 +1,11 @@
-package se.kth.hugosa.schedule;
+package se.kth.hugosa.schedule.tabusearch;
 
 import org.coinor.opents.Move;
 import org.coinor.opents.MoveManager;
 import org.coinor.opents.Solution;
+import se.kth.hugosa.schedule.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ScheduleMoveManager implements MoveManager {
     private Constraints constraints;
