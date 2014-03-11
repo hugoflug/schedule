@@ -18,7 +18,9 @@ public class SwapClassroomMove implements Move {
 
     @Override
     public void operateOn(Solution solution) {
-        timeSlot.classroom = newClassroom;
+        if (timeSlot != null) {
+            timeSlot.classroom = newClassroom;
+        }
     }
 
     public int hashCode() {
