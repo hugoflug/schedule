@@ -35,7 +35,7 @@ public class Schedule {
     					if (slot != null){
     						String classroom = slot.classroom.name;
             				ScheduleElement element = slot.scheduleElement;
-            				System.out.println(element.course + " with " + element.teacher + " in " + classroom + ".");
+            				System.out.println(element.getCourse() + " with " + element.getTeacher() + " in " + classroom + ".");
     					}
     					else{
     						slotEmpty = true;

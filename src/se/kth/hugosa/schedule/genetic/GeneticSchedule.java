@@ -90,7 +90,7 @@ public class GeneticSchedule {
 					if(index > -1){
 						ScheduleElement element = constraints.getScheduleElements().get(index);
 						
-						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.program));
+						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.getProgram()));
 						
 						Day day = schedule.days.get(days);
 						if(day == null){

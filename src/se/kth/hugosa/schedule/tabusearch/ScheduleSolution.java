@@ -13,14 +13,17 @@ import java.util.Map;
 public class ScheduleSolution extends SolutionAdapter {
     private ArrayList<Schedule> schedules;
 
+    //for clone() to function properly
+    public ScheduleSolution() {}
+
     public ScheduleSolution(ArrayList<Schedule> schedules, Constraints constraints) {
         Map<String, Schedule> programs = new HashMap<String, Schedule>();
 
         for (ScheduleElement element : constraints.getScheduleElements()) {
-            Schedule schedule = programs.get(element.program);
+            Schedule schedule = programs.get(element.getProgram());
             if (schedule == null) {
-                programs.put(element.program, new Schedule(element.program, 15));
-                schedule = programs.get(element.program);
+                programs.put(element.getProgram(), new Schedule(element.getProgram(), 15));
+                schedule = programs.get(element.getProgram());
             }
     //      schedule.addInNextPlace(element)
         }
@@ -30,6 +33,8 @@ public class ScheduleSolution extends SolutionAdapter {
     }
 
     public Object clone() {
+        ScheduleSolution copy = (ScheduleSolution)super.clone();
+        copy.schedules = (ArrayList<Schedule>)schedules.clone();
         return this;
     }
 
