@@ -28,12 +28,15 @@ public class TabuSearchTest {
                 objFunc,
                 tabuList,
                 new BestEverAspirationCriteria(),
-                true
+                false
             );
-        tabuSearch.setIterationsToGo(100);
+        tabuSearch.setIterationsToGo(10000);
         tabuSearch.startSolving();
         ScheduleSolution best = (ScheduleSolution)tabuSearch.getBestSolution();
         Schedule.printSchedule(best.getSchedules());
+
+        System.out.println("best value: " +
+                evaluator.evaluateSchedule(best.getSchedules(), constraints));
     }
 
 }

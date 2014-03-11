@@ -20,7 +20,7 @@ public class ScheduleMoveManager implements MoveManager {
 
         ArrayList<Move> moves = new ArrayList<Move>();
         for (Schedule schedule : schedules) {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 100; i++) {
                 moves.add(new SwapClassroomMove(getRandomTimeSlot(schedule),
                         Util.getRandomElement(constraints.getClassrooms())));
                 moves.add(new SwapTimeMove(getRandomTimeSlot(schedule),

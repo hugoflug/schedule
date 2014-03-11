@@ -39,7 +39,7 @@ public class ScheduleSolution extends SolutionAdapter {
     }
 
     public Object clone() {
-        ScheduleSolution copy = new ScheduleSolution();
+        ScheduleSolution copy = (ScheduleSolution)super.clone();
         copy.schedules = new ArrayList<Schedule>();
         for (Schedule schedule : schedules) {
             copy.schedules.add(schedule.copy());

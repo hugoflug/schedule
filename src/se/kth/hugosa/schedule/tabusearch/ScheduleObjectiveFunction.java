@@ -18,6 +18,7 @@ public class ScheduleObjectiveFunction implements ObjectiveFunction {
     @Override
     public double[] evaluate(Solution solution, Move move) {
         ScheduleSolution scheduleSolution = (ScheduleSolution)solution;
-        return new double[eval.evaluateSchedule(scheduleSolution.getSchedules(), constraints)];
+
+        return new double[] { eval.evaluateSchedule(scheduleSolution.getSchedules(), constraints) };
     }
 }
