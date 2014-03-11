@@ -24,7 +24,9 @@ public class SwapClassroomMove implements Move {
     }
 
     public int hashCode() {
-        return timeSlot.hashCode() + newClassroom.hashCode()*32000;
+        int timeSlotHash = timeSlot == null ? 0 : timeSlot.hashCode();
+        int classroomHash = newClassroom == null ? 0 : newClassroom.hashCode();
+        return timeSlotHash + classroomHash*32000;
     }
 }
 

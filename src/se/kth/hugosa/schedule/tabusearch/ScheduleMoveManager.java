@@ -27,7 +27,7 @@ public class ScheduleMoveManager implements MoveManager {
                         getRandomTimeSlot(schedule)));
             }
         }
-        return (Move[])moves.toArray();
+        return moves.toArray(new Move[0]);
     }
 
     private TimeSlot getRandomTimeSlot(Schedule schedule) {

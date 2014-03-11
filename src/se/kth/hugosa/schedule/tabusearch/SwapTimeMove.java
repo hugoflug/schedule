@@ -27,6 +27,8 @@ public class SwapTimeMove implements Move {
     }
 
     public int hashCode() {
-        return first.hashCode() + second.hashCode()*32000;
+        int firstHash = first == null ? 0 : first.hashCode();
+        int secondHash = second == null ? 0 : second.hashCode();
+        return firstHash + secondHash*32000;
     }
 }
