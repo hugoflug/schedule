@@ -24,7 +24,7 @@ public class Schedule {
         for (int i = 0; i < days.size(); i++) {
             Day day = new Day();
             for (int j = 0; j < day.timeSlots.size(); j++) {
-                day.timeSlots.set(j, days.get(i).timeSlots.get(j));
+                day.timeSlots.set(j, days.get(i).timeSlots.get(j).copy());
             }
             copy.days.add(day);
         }

@@ -12,4 +12,11 @@ public class TimeSlot {
         this.classroom = classroom;
         this.scheduleElement = scheduleElement;
     }
+
+    public TimeSlot copy() {
+        TimeSlot copy = new TimeSlot();
+        copy.scheduleElement = scheduleElement;
+        copy.classroom = classroom;
+        return copy;
+    }
 }
