@@ -21,6 +21,6 @@ public class Classroom {
 
     @Override
     public String toString() {
-        return name;
+        return "(" + name + ", " + capacity + ")";
     }
 }
