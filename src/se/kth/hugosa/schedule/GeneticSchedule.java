@@ -48,7 +48,7 @@ public class GeneticSchedule {
 		
 		population = Genotype.randomInitialGenotype(conf);
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
-		for (int i = 0; i<sampleGenes.length; i++){
+		for (int i = 0; i<numSlots; i++){
 			if(i < numElements){
 				numbers.add(i);
 			}
@@ -56,6 +56,7 @@ public class GeneticSchedule {
 				numbers.add(-1);
 			}
 		}
+		
 		List<IChromosome> chromosomes = population.getPopulation().getChromosomes();
 		for (IChromosome chromosome : chromosomes) {
 			Collections.shuffle(numbers);
@@ -64,12 +65,18 @@ public class GeneticSchedule {
 				gene.setAllele(numbers.get(i));
 			}
 		}
+		List<IChromosome> chromosomes2 = population.getPopulation().getChromosomes();
+		for (IChromosome chromosome : chromosomes2) {
+			Schedule.printSchedule(generateSchedule(chromosome, constraints));
+		}
 		
 	}
 	
 	public ArrayList<Schedule> evolve(int maxEvolutions){
 		IChromosome bestSolution;
 		for(int i = 0; i < maxEvolutions; i++){
+			//bestSolution = population.getFittestChromosome();
+			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
 			population.evolve();
 		}
 		bestSolution = population.getFittestChromosome();
@@ -102,7 +109,6 @@ public class GeneticSchedule {
 				}
 			}
 		}
-		
 		return result;
 	}
 	
