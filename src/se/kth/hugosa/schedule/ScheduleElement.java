@@ -1,10 +1,10 @@
 package se.kth.hugosa.schedule;
 
 public class ScheduleElement {
-	public String teacher;
-	public String course;
-	public String program;
-	public int numStudents;
+    private String teacher;
+	private String course;
+	private String program;
+	private int numStudents;
 	
 	public ScheduleElement(String teacher, String course, String program, int numStudents) {
 		this.teacher = teacher;
@@ -12,6 +12,22 @@ public class ScheduleElement {
 		this.program = program;
 		this.numStudents = numStudents;
 	}
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public int getNumStudents() {
+        return numStudents;
+    }
 
     @Override
     public String toString() {

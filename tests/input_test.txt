@@ -80,5 +80,5 @@
 			"capacity" : 50
 		}
 	],
-	"weeks" : 2
+	"weeks" : 1
 }

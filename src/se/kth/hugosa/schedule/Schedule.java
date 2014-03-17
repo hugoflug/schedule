@@ -6,13 +6,29 @@ public class Schedule {
 	private String program;
     //should perhaps be HashMap<Date, Day>
     public ArrayList<Day> days;
-    
-    public Schedule(String program, int weeks){
+
+    public Schedule() {}
+
+    public Schedule(String program, int weeks) {
     	this.program = program;
     	this.days = new ArrayList<Day>();
-    	for(int i = 0; i < weeks*5; i++){
-    		days.add(null);
+    	for (int i = 0; i < weeks*5; i++) {
+    		days.add(new Day());
     	}
+    }
+
+    public Schedule copy() {
+        Schedule copy = new Schedule();
+        copy.program = program;
+        copy.days = new ArrayList<Day>();
+        for (int i = 0; i < days.size(); i++) {
+            Day day = new Day();
+            for (int j = 0; j < day.timeSlots.size(); j++) {
+                day.timeSlots.set(j, days.get(i).timeSlots.get(j).copy());
+            }
+            copy.days.add(day);
+        }
+        return copy;
     }
     
     public String getProgram(){
@@ -33,10 +49,20 @@ public class Schedule {
     				System.out.print("Slot " + slots + ": ");
     				if (day != null){
     					TimeSlot slot = day.timeSlots.get(slots);
-    					if (slot != null){
-    						String classroom = slot.classroom.name;
+    					if (slot != null) {
+                            String classroomName = "";
+    						Classroom classroom = slot.classroom;
+                            if (classroom == null) {
+                                classroomName = "unassigned";
+                            } else {
+                                classroomName = classroom.name;
+                            }
             				ScheduleElement element = slot.scheduleElement;
-            				System.out.println(element.course + " with " + element.teacher + " in " + classroom + ".");
+                            if (element == null) {
+                                slotEmpty = true;
+                            } else {
+            				    System.out.println(element.getCourse() + " with " + element.getTeacher() +" in " + classroomName + ".");
+                            }
     					}
     					else{
     						slotEmpty = true;

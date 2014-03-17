@@ -7,9 +7,6 @@ import org.junit.Test;
 import se.kth.hugosa.schedule.Classroom;
 import se.kth.hugosa.schedule.Constraints;
 
-/**
- * Created by hugo on 3/3/14.
- */
 public class LoaderTest {
     @Before
     public void setUp() throws Exception {

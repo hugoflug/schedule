@@ -1,7 +1,9 @@
-package se.kth.hugosa.schedule;
+package se.kth.hugosa.schedule.tabusearch;
 
 import org.coinor.opents.Move;
 import org.coinor.opents.Solution;
+import se.kth.hugosa.schedule.Classroom;
+import se.kth.hugosa.schedule.TimeSlot;
 
 import java.util.ArrayList;
 
@@ -16,11 +18,15 @@ public class SwapClassroomMove implements Move {
 
     @Override
     public void operateOn(Solution solution) {
-        timeSlot.classroom = newClassroom;
+        if (timeSlot != null) {
+            timeSlot.classroom = newClassroom;
+        }
     }
 
     public int hashCode() {
-        return timeSlot.hashCode() + newClassroom.hashCode()*32000;
+        int timeSlotHash = timeSlot == null ? 0 : timeSlot.hashCode();
+        int classroomHash = newClassroom == null ? 0 : newClassroom.hashCode();
+        return timeSlotHash + classroomHash*32000;
     }
 }
 

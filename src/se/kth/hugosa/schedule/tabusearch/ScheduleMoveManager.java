@@ -1,11 +1,11 @@
-package se.kth.hugosa.schedule;
+package se.kth.hugosa.schedule.tabusearch;
 
 import org.coinor.opents.Move;
 import org.coinor.opents.MoveManager;
 import org.coinor.opents.Solution;
+import se.kth.hugosa.schedule.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ScheduleMoveManager implements MoveManager {
     private Constraints constraints;
@@ -20,14 +20,14 @@ public class ScheduleMoveManager implements MoveManager {
 
         ArrayList<Move> moves = new ArrayList<Move>();
         for (Schedule schedule : schedules) {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 100; i++) {
                 moves.add(new SwapClassroomMove(getRandomTimeSlot(schedule),
                         Util.getRandomElement(constraints.getClassrooms())));
                 moves.add(new SwapTimeMove(getRandomTimeSlot(schedule),
                         getRandomTimeSlot(schedule)));
             }
         }
-        return (Move[])moves.toArray();
+        return moves.toArray(new Move[0]);
     }
 
     private TimeSlot getRandomTimeSlot(Schedule schedule) {

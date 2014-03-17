@@ -1,7 +1,11 @@
-package se.kth.hugosa.schedule;
+package se.kth.hugosa.schedule.genetic;
 
 import org.jgap.FitnessFunction;
 import org.jgap.IChromosome;
+import se.kth.hugosa.schedule.Constraints;
+import se.kth.hugosa.schedule.Evaluator;
+import se.kth.hugosa.schedule.Schedule;
+
 import java.util.ArrayList;
 
 public class ScheduleFitnessFunction extends FitnessFunction {

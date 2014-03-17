@@ -1,4 +1,4 @@
-package se.kth.hugosa.schedule;
+package se.kth.hugosa.schedule.genetic;
 
 import org.jgap.Chromosome;
 import org.jgap.IChromosome;
@@ -14,6 +14,7 @@ import org.jgap.Gene;
 import org.jgap.impl.IntegerGene;
 import org.jgap.Genotype;
 import org.jgap.InvalidConfigurationException;
+import se.kth.hugosa.schedule.*;
 
 public class GeneticSchedule {
 	Configuration conf;
@@ -96,7 +97,7 @@ public class GeneticSchedule {
 					if(index > -1){
 						ScheduleElement element = constraints.getScheduleElements().get(index);
 						
-						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.program));
+						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.getProgram()));
 						
 						Day day = schedule.days.get(days);
 						if(day == null){

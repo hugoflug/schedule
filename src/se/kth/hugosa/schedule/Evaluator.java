@@ -11,7 +11,9 @@ public class Evaluator {
 		
 	}
 	
-    public int evaluateSchedule(List<Schedule> schedules, Constraints constraints) {
+    public double evaluateSchedule(List<Schedule> schedules, Constraints constraints) {
+        double value = 0;
+
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
 
            //pick out all Days on a certain date
@@ -37,18 +39,20 @@ public class Evaluator {
                }
 
                if (collides(timeSlots)) {
-                   return 0;
+                   value += 1;
                }
 
                for (TimeSlot timeSlot : timeSlots) {
-                   if (timeSlot.scheduleElement.numStudents > timeSlot.classroom.capacity) {
-                       return 0;
+                   if (timeSlot.scheduleElement != null && timeSlot.classroom != null) {
+                       if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {
+                           value += 1;
+                       }
                    }
                }
            }
 
         }
-        return 100;
+        return value;
     }
 
     //checks for collisions between a list of SchoolClasses held at the same time
@@ -56,16 +60,20 @@ public class Evaluator {
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
-            if (busyTeachers.contains(timeSlot.scheduleElement.teacher)) {
-                return true;
-            } else {
-                busyTeachers.add(timeSlot.scheduleElement.teacher);
+            if (timeSlot.scheduleElement != null) {
+                if (busyTeachers.contains(timeSlot.scheduleElement.getTeacher())) {
+                    return true;
+                } else {
+                    busyTeachers.add(timeSlot.scheduleElement.getTeacher());
+                }
             }
 
-            if (busyClassrooms.contains(timeSlot.classroom)) {
-                return true;
-            } else {
-                busyClassrooms.add(timeSlot.classroom);
+            if (timeSlot.classroom != null) {
+                if (busyClassrooms.contains(timeSlot.classroom)) {
+                    return true;
+                } else {
+                    busyClassrooms.add(timeSlot.classroom);
+                }
             }
 
         }
