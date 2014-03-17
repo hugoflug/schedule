@@ -19,13 +19,12 @@ public class ScheduleMoveManager implements MoveManager {
         ArrayList<Schedule> schedules = ((ScheduleSolution)solution).getSchedules();
 
         ArrayList<Move> moves = new ArrayList<Move>();
-        for (Schedule schedule : schedules) {
-            for (int i = 0; i < 100; i++) {
-                moves.add(new SwapClassroomMove(getRandomTimeSlot(schedule),
-                        Util.getRandomElement(constraints.getClassrooms())));
-                moves.add(new SwapTimeMove(getRandomTimeSlot(schedule),
-                        getRandomTimeSlot(schedule)));
-            }
+        for (int i = 0; i < 100; i++) {
+            Schedule schedule = Util.getRandomElement(schedules);
+            moves.add(new SwapClassroomMove(getRandomTimeSlot(schedule),
+                    Util.getRandomElement(constraints.getClassrooms())));
+            moves.add(new SwapTimeMove(getRandomTimeSlot(schedule),
+                    getRandomTimeSlot(schedule)));
         }
         return moves.toArray(new Move[0]);
     }

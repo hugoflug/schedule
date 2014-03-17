@@ -17,12 +17,25 @@ public class EvaluatorTest {
         second.scheduleElement = new ScheduleElement("Anna Andersson", "progp", "CDATE2", 200);
         second.classroom = new Classroom("E32", 230);
 
-        TimeSlot third = schedule.days.get(1).timeSlots.get(2);
+        TimeSlot third = schedule.days.get(1).timeSlots.get(1);
         third.scheduleElement = new ScheduleElement("Anna Andersson", "progp", "CDATE2", 200);
         third.classroom = new Classroom("E32", 230);
 
+        TimeSlot fourth = schedule.days.get(1).timeSlots.get(3);
+        fourth.scheduleElement = new ScheduleElement("Anna Andersson", "progp", "CDATE2", 200);
+        fourth.classroom = new Classroom("E32", 230);
+
+        Schedule schedule2 = new Schedule("CDATE1", 2);
+        TimeSlot first2 = schedule2.days.get(0).timeSlots.get(0);
+        first2.scheduleElement = new ScheduleElement("Anna Jonsson", "inda", "CDATE1", 200);
+        first2.classroom = new Classroom("E1", 230);
+
+        TimeSlot second2 = schedule2.days.get(0).timeSlots.get(2);
+        second2.scheduleElement = new ScheduleElement("Anna Jonsson", "indax", "CDATE1", 200);
+        second2.classroom = new Classroom("E1", 230);
+
         Evaluator evaluator = new Evaluator();
-        double result = evaluator.evaluateSchedule(new ArrayList<Schedule>(Arrays.asList(schedule)), null);
+        double result = evaluator.evaluateSchedule(new ArrayList<Schedule>(Arrays.asList(schedule, schedule2)), null);
 
         System.out.println(result);
     }

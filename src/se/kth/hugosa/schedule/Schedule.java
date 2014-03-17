@@ -41,7 +41,6 @@ public class Schedule {
     		System.out.println("-----------------------");
     		for (int days = 0; days < schedule.days.size(); days++){
     			System.out.println("Day " + days);
-    			System.out.println(schedule.days);
     			Day day = schedule.days.get(days);
     			System.out.println("-----------------------");
     			for (int slots = 0; slots < 4; slots++){

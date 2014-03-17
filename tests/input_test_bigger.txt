@@ -200,5 +200,5 @@
 			"capacity" : 180
 		}
 	],
-	"weeks" : 8
+	"weeks" : 2
 }

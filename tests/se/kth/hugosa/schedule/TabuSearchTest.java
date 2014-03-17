@@ -15,14 +15,14 @@ public class TabuSearchTest {
         Evaluator evaluator = new Evaluator();
         Loader loader = new Loader();
 
-        Constraints constraints = loader.loadConstraints("tests/input_test.txt");
+        Constraints constraints = loader.loadConstraints("tests/input_test_bigger.txt");
 
         ObjectiveFunction objFunc = new ScheduleObjectiveFunction(evaluator, constraints);
         Solution initialSolution = new ScheduleSolution(constraints);
         MoveManager moveManager = new ScheduleMoveManager(constraints);
         TabuList tabuList = new SimpleTabuList(10);
 
-        System.out.println("initial value: " + evaluator.evaluateSchedule(((ScheduleSolution) initialSolution).getSchedules(), constraints)); 
+        System.out.println("initial value: " + evaluator.evaluateSchedule(((ScheduleSolution) initialSolution).getSchedules(), constraints));
         TabuSearch tabuSearch = new SingleThreadedTabuSearch(
                 initialSolution,
                 moveManager,
