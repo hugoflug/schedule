@@ -10,9 +10,33 @@ public class Evaluator {
 	public Evaluator(){
 		
 	}
+
+    public int freePeriods(List<Schedule> schedules) {
+        int freePeriods = 0;
+        for (Schedule schedule : schedules) {
+            for (Day day : schedule.days) {
+                boolean hadLessonToday = false;
+                int currentFreePeriod = 0;
+                for (TimeSlot timeSlot : day.timeSlots) {
+                    if (timeSlot.scheduleElement != null) {
+                        hadLessonToday = true;
+                        freePeriods += currentFreePeriod;
+                        currentFreePeriod = 0;
+                    } else {
+                        if (hadLessonToday) {
+                            currentFreePeriod++;
+                        }
+                    }
+                }
+            }
+        }
+        return freePeriods;
+    }
 	
     public double evaluateSchedule(List<Schedule> schedules, Constraints constraints) {
         double value = 0;
+
+
 
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
 
@@ -52,6 +76,9 @@ public class Evaluator {
            }
 
         }
+
+        value += freePeriods(schedules);
+
         return value;
     }
 
