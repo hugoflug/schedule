@@ -1,6 +1,7 @@
 package se.kth.hugosa.schedule.genetic;
 
 import org.jgap.Chromosome;
+import org.jgap.DeltaFitnessEvaluator;
 import org.jgap.IChromosome;
 import org.jgap.Configuration;
 import org.jgap.impl.DefaultConfiguration;
@@ -24,6 +25,9 @@ public class GeneticSchedule {
 	
 	public GeneticSchedule (Constraints constraints, int popSize) throws InvalidConfigurationException {
 		conf = new DefaultConfiguration();
+		conf.resetProperty(Configuration.PROPERTY_FITEVAL_INST);
+		conf.setFitnessEvaluator(new DeltaFitnessEvaluator());
+		
 		conf.getGeneticOperators().clear();
 		SwappingMutationOperator swapper = new SwappingMutationOperator(conf);
 		conf.addGeneticOperator(swapper);
@@ -66,10 +70,11 @@ public class GeneticSchedule {
 				gene.setAllele(numbers.get(i));
 			}
 		}
-		List<IChromosome> chromosomes2 = population.getPopulation().getChromosomes();
+		/*List<IChromosome> chromosomes2 = population.getPopulation().getChromosomes();
 		for (IChromosome chromosome : chromosomes2) {
 			Schedule.printSchedule(generateSchedule(chromosome, constraints));
 		}
+		*/
 		
 	}
 	
@@ -81,10 +86,17 @@ public class GeneticSchedule {
 			population.evolve();
 		}
 		bestSolution = population.getFittestChromosome();
+		//System.out.println("hej");
 		return generateSchedule(bestSolution, constraints);
 	}
 	
 	public static ArrayList<Schedule> generateSchedule(IChromosome c, Constraints constraints){
+		/*
+		for(Gene g : c.getGenes()){
+			System.out.println(""+ (Integer) g.getAllele());
+		}
+		System.out.println("-----------------");
+		*/
 		ArrayList<Schedule> result = new ArrayList<Schedule>();
 		for(int i = 0; i < constraints.getNumPrograms(); i++){
 			result.add(new Schedule(constraints.getPrograms().get(i), constraints.getScheduleWeeks()));
@@ -93,11 +105,16 @@ public class GeneticSchedule {
 		for(int days = 0; days < constraints.getScheduleWeeks()*5; days++){
 			for(int slots = 0; slots < 4; slots++){
 				for(int rooms = 0; rooms < constraints.getNumClassrooms(); rooms++){
-					int index = (Integer) c.getGene(days + slots + rooms).getAllele();
+					int geneIndex = (days*constraints.getNumClassrooms()*4 + slots*constraints.getNumClassrooms() + rooms);
+					int index = (Integer) c.getGene(geneIndex).getAllele();
+					//System.out.println("Working on gene #" + geneIndex + ", index = " + index);
 					if(index > -1){
+						//System.out.println("Inserting element #" + index + ":");
 						ScheduleElement element = constraints.getScheduleElements().get(index);
 						
 						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.getProgram()));
+						
+						//System.out.println(element.getProgram() + " should match " + schedule.getProgram() + ".");
 						
 						Day day = schedule.days.get(days);
 						if(day == null){
