@@ -11,19 +11,17 @@ public class Evaluator {
 		
 	}
 
-    //returns the amount of occurences that the same course features twice on the same day
-    public int onSameDay(List<Day> days) {
+    //returns the amount of times that any lesson is repeated in a day
+    public int onSameDay(Day day) {
         int duplicates = 0;
-        for (Day day : days) {
-            Set<String> courses = new HashSet<String>();
-            for (TimeSlot timeSlot : day.timeSlots) {
-                if (timeSlot.scheduleElement != null) {
-                    String course = timeSlot.scheduleElement.getCourse();
-                    if (courses.contains(course)) {
-                        duplicates++;
-                    } else {
-                        courses.add(timeSlot.scheduleElement.getCourse());
-                    }
+        Set<String> courses = new HashSet<String>();
+        for (TimeSlot timeSlot : day.timeSlots) {
+            if (timeSlot.scheduleElement != null) {
+                String course = timeSlot.scheduleElement.getCourse();
+                if (courses.contains(course)) {
+                    duplicates++;
+                } else {
+                    courses.add(timeSlot.scheduleElement.getCourse());
                 }
             }
         }
@@ -31,28 +29,26 @@ public class Evaluator {
         return duplicates;
     }
 
-    public int freePeriods(List<Schedule> schedules) {
+    //returns the amount of free periods in a day
+    public int freePeriods(Day day) {
         int freePeriods = 0;
-        for (Schedule schedule : schedules) {
-            for (Day day : schedule.days) {
-                boolean hadLessonToday = false;
-                int currentFreePeriod = 0;
-                for (TimeSlot timeSlot : day.timeSlots) {
-                    if (timeSlot.scheduleElement != null) {
-                        hadLessonToday = true;
-                        freePeriods += currentFreePeriod;
-                        currentFreePeriod = 0;
-                    } else {
-                        if (hadLessonToday) {
-                            currentFreePeriod++;
-                        }
-                    }
+        boolean hadLessonToday = false;
+        int currentFreePeriod = 0;
+        for (TimeSlot timeSlot : day.timeSlots) {
+            if (timeSlot.scheduleElement != null) {
+                hadLessonToday = true;
+                freePeriods += currentFreePeriod;
+                currentFreePeriod = 0;
+            } else {
+                if (hadLessonToday) {
+                    currentFreePeriod++;
                 }
             }
         }
         return freePeriods;
     }
 
+    //return all the Days on dayNo in the specified schedules
     public ArrayList<Day> getDays(List<Schedule> schedules, int dayNo) {
         ArrayList<Day> days = new ArrayList<Day>();
         for (Schedule schedule : schedules) {
@@ -64,6 +60,7 @@ public class Evaluator {
         return days;
     }
 
+    //return all the timeSlots on timeSlotNo in the specified list of Days
     public ArrayList<TimeSlot> getTimeSlots(List<Day> days, int timeSlotNo) {
         ArrayList<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
         for (Day day : days) {
@@ -100,15 +97,18 @@ public class Evaluator {
 
         }
 
-        value += freePeriods(schedules);
 
         for (Schedule schedule : schedules) {
-            value += onSameDay(schedule.days);
+            for (Day day : schedule.days) {
+                value += freePeriods(day);
+                value += onSameDay(day);
+            }
         }
 
         return value;
     }
 
+    //checks whether a TimeSlot is over its' alloted capacity
     private boolean overCapacity(TimeSlot timeSlot) {
         if (timeSlot.scheduleElement != null && timeSlot.classroom != null) {
             if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {
