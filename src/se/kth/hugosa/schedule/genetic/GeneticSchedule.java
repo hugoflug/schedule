@@ -81,12 +81,12 @@ public class GeneticSchedule {
 	public ArrayList<Schedule> evolve(int maxEvolutions){
 		IChromosome bestSolution;
 		for(int i = 0; i < maxEvolutions; i++){
-			//bestSolution = population.getFittestChromosome();
+			bestSolution = population.getFittestChromosome();
+			System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
 			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
 			population.evolve();
 		}
 		bestSolution = population.getFittestChromosome();
-		//System.out.println("hej");
 		return generateSchedule(bestSolution, constraints);
 	}
 	
