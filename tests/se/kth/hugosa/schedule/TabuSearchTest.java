@@ -22,6 +22,7 @@ public class TabuSearchTest {
         MoveManager moveManager = new ScheduleMoveManager(constraints);
         TabuList tabuList = new SimpleTabuList(10);
 
+        System.out.println("initial value: " + evaluator.evaluateSchedule(((ScheduleSolution) initialSolution).getSchedules(), constraints)); 
         TabuSearch tabuSearch = new SingleThreadedTabuSearch(
                 initialSolution,
                 moveManager,

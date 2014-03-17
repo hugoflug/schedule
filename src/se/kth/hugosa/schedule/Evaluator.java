@@ -10,49 +10,112 @@ public class Evaluator {
 	public Evaluator(){
 		
 	}
+
+    //returns the amount of times that any lesson is repeated in a day
+    public int onSameDay(Day day) {
+        int duplicates = 0;
+        Set<String> courses = new HashSet<String>();
+        for (TimeSlot timeSlot : day.timeSlots) {
+            if (timeSlot.scheduleElement != null) {
+                String course = timeSlot.scheduleElement.getCourse();
+                if (courses.contains(course)) {
+                    duplicates++;
+                } else {
+                    courses.add(timeSlot.scheduleElement.getCourse());
+                }
+            }
+        }
+
+        return duplicates;
+    }
+
+    //returns the amount of free periods in a day
+    public int freePeriods(Day day) {
+        int freePeriods = 0;
+        boolean hadLessonToday = false;
+        int currentFreePeriod = 0;
+        for (TimeSlot timeSlot : day.timeSlots) {
+            if (timeSlot.scheduleElement != null) {
+                hadLessonToday = true;
+                freePeriods += currentFreePeriod;
+                currentFreePeriod = 0;
+            } else {
+                if (hadLessonToday) {
+                    currentFreePeriod++;
+                }
+            }
+        }
+        return freePeriods;
+    }
+
+    //return all the Days on dayNo in the specified schedules
+    public ArrayList<Day> getDays(List<Schedule> schedules, int dayNo) {
+        ArrayList<Day> days = new ArrayList<Day>();
+        for (Schedule schedule : schedules) {
+            Day day = schedule.days.get(dayNo);
+            if (day != null) {
+                days.add(day);
+            }
+        }
+        return days;
+    }
+
+    //return all the timeSlots on timeSlotNo in the specified list of Days
+    public ArrayList<TimeSlot> getTimeSlots(List<Day> days, int timeSlotNo) {
+        ArrayList<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
+        for (Day day : days) {
+            TimeSlot slot = day.timeSlots.get(timeSlotNo);
+
+            if (slot != null){
+                timeSlots.add(slot);
+            }
+
+        }
+
+        return timeSlots;
+    }
 	
     public double evaluateSchedule(List<Schedule> schedules, Constraints constraints) {
         double value = 0;
 
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
-
-           //pick out all Days on a certain date
-           List<Day> days = new ArrayList<Day>();
-           for (Schedule schedule : schedules) {
-        	   Day day = schedule.days.get(i);
-        	   if(day != null){
-        		   days.add(day);
-        	   }
-           }
+           List<Day> days = getDays(schedules, i);
 
            for (int j = 0; j < 4; j++) {
-
-               //pick out all TimeSlots on a certain date and a certain time
-               List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
-               for (Day day : days) {
-            	   TimeSlot slot = day.timeSlots.get(j);
-            	   
-            	   if (slot != null){
-            		   timeSlots.add(slot);
-            	   }
-            	   
-               }
+               List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
                if (collides(timeSlots)) {
                    value += 1;
                }
 
                for (TimeSlot timeSlot : timeSlots) {
-                   if (timeSlot.scheduleElement != null && timeSlot.classroom != null) {
-                       if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {
-                           value += 1;
-                       }
-                   }
+                  if (overCapacity(timeSlot)) {
+                      value += 1;
+                  }
                }
            }
 
         }
+
+
+        for (Schedule schedule : schedules) {
+            for (Day day : schedule.days) {
+                value += freePeriods(day);
+                value += onSameDay(day);
+            }
+        }
+
         return value;
+    }
+
+    //checks whether a TimeSlot is over its' alloted capacity
+    private boolean overCapacity(TimeSlot timeSlot) {
+        if (timeSlot.scheduleElement != null && timeSlot.classroom != null) {
+            if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //checks for collisions between a list of SchoolClasses held at the same time

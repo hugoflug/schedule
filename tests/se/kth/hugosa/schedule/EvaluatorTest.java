@@ -7,11 +7,27 @@ import java.util.Arrays;
 
 public class EvaluatorTest {
     @Test
-    public void bogus() throws Exception {
+    public void testFreePeriods() throws Exception {
+        Schedule schedule = new Schedule("CDATE2", 2);
+        TimeSlot first = schedule.days.get(0).timeSlots.get(0);
+        first.scheduleElement = new ScheduleElement("Anna Andersson", "progp", "CDATE2", 200);
+        first.classroom = new Classroom("E32", 230);
 
+        TimeSlot second = schedule.days.get(0).timeSlots.get(3);
+        second.scheduleElement = new ScheduleElement("Anna Andersson", "progp", "CDATE2", 200);
+        second.classroom = new Classroom("E32", 230);
+
+        TimeSlot third = schedule.days.get(1).timeSlots.get(2);
+        third.scheduleElement = new ScheduleElement("Anna Andersson", "progp", "CDATE2", 200);
+        third.classroom = new Classroom("E32", 230);
+
+        Evaluator evaluator = new Evaluator();
+        double result = evaluator.evaluateSchedule(new ArrayList<Schedule>(Arrays.asList(schedule)), null);
+
+        System.out.println(result);
     }
 
-    /*
+/*
     @Test
     public void testEvaluateSchedule() throws Exception {
         testTeacherCollision();
@@ -27,10 +43,10 @@ public class EvaluatorTest {
         day1.timeSlots = new ArrayList<TimeSlot>();
         day1.timeSlots.add(new TimeSlot(new Classroom("E32", 50),
                 new ScheduleElement("Gunilla", "progp", "CDATE2", 60)));
-        schedule1.days = Arrays.asList(day1);
+        schedule1.days = new ArrayList<Day>(Arrays.asList(day1));
 
         Evaluator evaluator = new Evaluator();
-        int result = evaluator.evaluateSchedule(Arrays.asList(schedule1), null);
+        double result = evaluator.evaluateSchedule(Arrays.asList(schedule1), null);
 
         if (result != 0) {
             throw new Exception();
@@ -51,7 +67,7 @@ public class EvaluatorTest {
 
         day1.timeSlots.add(new TimeSlot(new Classroom("E2", 110),
                 new ScheduleElement("Hugo", "logik", "CDATE2", 100)));
-        schedule1.days = Arrays.asList(day1);
+        schedule1.days = new ArrayList<Day>(Arrays.asList(day1));
 
         Schedule schedule2 = new Schedule("CDATE1",2);
         Day day2_1 = new Day();
@@ -64,10 +80,9 @@ public class EvaluatorTest {
 
         day2_1.timeSlots.add(new TimeSlot(new Classroom("E2", 110),
                 new ScheduleElement("Anders", "numme", "CDATE1", 100)));
-        schedule2.days = Arrays.asList(day2_1);
+        schedule2.days = new ArrayList<Day>(Arrays.asList(day2_1));
 
-        Evaluator evaluator = new Evaluator();
-        int result = evaluator.evaluateSchedule(Arrays.asList(schedule1, schedule2), null);
+        double result = evaluator.evaluateSchedule(Arrays.asList(schedule1, schedule2), null);
 
         if (result != 0) {
             throw new Exception();
@@ -145,5 +160,5 @@ public class EvaluatorTest {
             throw new Exception();
         }
     }
-    */
+*/
 }
