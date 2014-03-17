@@ -12,7 +12,7 @@ public class Evaluator {
 	}
 
     //returns the amount of times that any lesson is repeated in a day
-    public int onSameDay(Day day) {
+    private int onSameDay(Day day) {
         int duplicates = 0;
         Set<String> courses = new HashSet<String>();
         for (TimeSlot timeSlot : day.timeSlots) {
@@ -25,12 +25,11 @@ public class Evaluator {
                 }
             }
         }
-
         return duplicates;
     }
 
     //returns the amount of free periods in a day
-    public int freePeriods(Day day) {
+    private int freePeriods(Day day) {
         int freePeriods = 0;
         boolean hadLessonToday = false;
         int currentFreePeriod = 0;
@@ -49,7 +48,7 @@ public class Evaluator {
     }
 
     //return all the Days on dayNo in the specified schedules
-    public ArrayList<Day> getDays(List<Schedule> schedules, int dayNo) {
+    private ArrayList<Day> getDays(List<Schedule> schedules, int dayNo) {
         ArrayList<Day> days = new ArrayList<Day>();
         for (Schedule schedule : schedules) {
             Day day = schedule.days.get(dayNo);
@@ -61,7 +60,7 @@ public class Evaluator {
     }
 
     //return all the timeSlots on timeSlotNo in the specified list of Days
-    public ArrayList<TimeSlot> getTimeSlots(List<Day> days, int timeSlotNo) {
+    private ArrayList<TimeSlot> getTimeSlots(List<Day> days, int timeSlotNo) {
         ArrayList<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
         for (Day day : days) {
             TimeSlot slot = day.timeSlots.get(timeSlotNo);
@@ -108,7 +107,7 @@ public class Evaluator {
         return value;
     }
 
-    //checks whether a TimeSlot is over its' alloted capacity
+    //checks whether a TimeSlot is over its' allotted capacity
     private boolean overCapacity(TimeSlot timeSlot) {
         if (timeSlot.scheduleElement != null && timeSlot.classroom != null) {
             if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {

@@ -21,12 +21,20 @@ public class ScheduleMoveManager implements MoveManager {
         ArrayList<Move> moves = new ArrayList<Move>();
         for (int i = 0; i < 100; i++) {
             Schedule schedule = Util.getRandomElement(schedules);
-            moves.add(new SwapClassroomMove(getRandomTimeSlot(schedule),
+            moves.add(new SwapClassroomMove(getRandomValidTimeSlot(schedule),
                     Util.getRandomElement(constraints.getClassrooms())));
-            moves.add(new SwapTimeMove(getRandomTimeSlot(schedule),
+            moves.add(new SwapTimeMove(getRandomValidTimeSlot(schedule),
                     getRandomTimeSlot(schedule)));
         }
         return moves.toArray(new Move[0]);
+    }
+
+    private TimeSlot getRandomValidTimeSlot(Schedule schedule) {
+        TimeSlot timeSlot = getRandomTimeSlot(schedule);
+        while (timeSlot.scheduleElement == null) {
+            timeSlot = getRandomTimeSlot(schedule);
+        }
+        return timeSlot;
     }
 
     private TimeSlot getRandomTimeSlot(Schedule schedule) {

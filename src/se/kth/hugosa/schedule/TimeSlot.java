@@ -19,4 +19,9 @@ public class TimeSlot {
         copy.classroom = classroom;
         return copy;
     }
+
+    @Override
+    public String toString() {
+        return"(" + classroom.toString() + ", " + scheduleElement.toString() + ")";
+    }
 }
