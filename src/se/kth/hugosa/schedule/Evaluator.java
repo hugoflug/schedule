@@ -11,6 +11,26 @@ public class Evaluator {
 		
 	}
 
+    //returns the amount of occurences that the same course features twice on the same day
+    public int onSameDay(List<Day> days) {
+        int duplicates = 0;
+        for (Day day : days) {
+            Set<String> courses = new HashSet<String>();
+            for (TimeSlot timeSlot : day.timeSlots) {
+                if (timeSlot.scheduleElement != null) {
+                    String course = timeSlot.scheduleElement.getCourse();
+                    if (courses.contains(course)) {
+                        duplicates++;
+                    } else {
+                        courses.add(timeSlot.scheduleElement.getCourse());
+                    }
+                }
+            }
+        }
+
+        return duplicates;
+    }
+
     public int freePeriods(List<Schedule> schedules) {
         int freePeriods = 0;
         for (Schedule schedule : schedules) {
@@ -81,6 +101,10 @@ public class Evaluator {
         }
 
         value += freePeriods(schedules);
+
+        for (Schedule schedule : schedules) {
+            value += onSameDay(schedule.days);
+        }
 
         return value;
     }
