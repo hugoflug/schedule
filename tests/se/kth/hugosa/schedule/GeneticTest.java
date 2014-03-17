@@ -10,7 +10,8 @@ public class GeneticTest {
 	@Test
 	public void test() throws Exception{
 		Loader loader = new Loader();
-		Constraints c = loader.loadConstraints("tests/input_test.txt");
+		Evaluator evaluator = new Evaluator();
+		Constraints c = loader.loadConstraints("tests/input_test_bigger.txt");
 		
 		for (ScheduleElement e : c.getScheduleElements()) {
             System.out.println(e.toString());
@@ -22,6 +23,7 @@ public class GeneticTest {
 		GeneticSchedule genetic = new GeneticSchedule(c, 20);
 		ArrayList<Schedule> schedules = genetic.evolve(100);
 		
+		System.out.println("Best other fitness value: " + evaluator.evaluateSchedule(schedules, c));
 		Schedule.printSchedule(schedules);
 		
 		

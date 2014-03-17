@@ -85,12 +85,12 @@ public class Evaluator {
                List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
                if (collides(timeSlots)) {
-                   value += 1;
+                   value += 10;
                }
 
                for (TimeSlot timeSlot : timeSlots) {
                   if (overCapacity(timeSlot)) {
-                      value += 1;
+                      value += 10;
                   }
                }
            }
