@@ -21,6 +21,10 @@ public class Constraints {
         return elements;
     }
     
+    public ScheduleElement getElement(int index){
+    	return elements.get(index);
+    }
+    
     public ArrayList<Classroom> getClassrooms(){
     	return classroomList;
     }
