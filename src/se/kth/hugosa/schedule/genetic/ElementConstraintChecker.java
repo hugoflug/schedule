@@ -32,7 +32,7 @@ public class ElementConstraintChecker implements IGeneConstraintChecker {
 		boolean collisionFound = false;
 		for(Gene g : genes){
 			IntegerGene gene = (IntegerGene) g;
-			int elementIndex = (int) gene.getAllele();
+			int elementIndex = gene.intValue();
 			if(c.getElement(elementIndex).getProgram().equals(program)){
 				collisionFound = true;
 			}
