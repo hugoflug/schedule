@@ -6,7 +6,37 @@ import java.util.List;
 import java.util.Set;
 
 public class Evaluator {
-	
+
+    public class Result {
+        private int freePeriods;
+        private int onSameDay;
+        private double total;
+
+        public Result(double total, int freePeriods, int onSameDay) {
+            this.freePeriods = freePeriods;
+            this.onSameDay = onSameDay;
+            this.total = total;
+        }
+
+        public int getFreePeriods() {
+            return freePeriods;
+        }
+
+        public int getOnSameDay() {
+            return onSameDay;
+        }
+
+        public double getTotal() {
+            return total;
+        }
+
+        @Override
+        public String toString() {
+            return "free periods: " + freePeriods + " lessons on same day: " +
+                    onSameDay + " total penalty: " + total;
+        }
+    }
+
 	public Evaluator(){
 		
 	}
@@ -72,6 +102,43 @@ public class Evaluator {
         }
 
         return timeSlots;
+    }
+
+    public Result evaluateWithInfo(List<Schedule> schedules, Constraints constraints) {
+        double value = 0;
+
+        for (int i = 0; i < schedules.get(0).days.size(); i++) {
+            List<Day> days = getDays(schedules, i);
+
+            for (int j = 0; j < 4; j++) {
+                List<TimeSlot> timeSlots = getTimeSlots(days, j);
+
+                if (collides(timeSlots)) {
+                    value += 10;
+                }
+
+                for (TimeSlot timeSlot : timeSlots) {
+                    if (overCapacity(timeSlot)) {
+                        value += 10;
+                    }
+                }
+            }
+
+        }
+
+        int freePeriods = 0;
+        int onSameDay = 0;
+        for (Schedule schedule : schedules) {
+            for (Day day : schedule.days) {
+                freePeriods += freePeriods(day);
+                onSameDay += onSameDay(day);
+            }
+        }
+
+        value += freePeriods;
+        value += onSameDay;
+
+        return new Result(value, freePeriods, onSameDay);
     }
 	
     public double evaluateSchedule(List<Schedule> schedules, Constraints constraints) {

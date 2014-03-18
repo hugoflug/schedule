@@ -16,9 +16,10 @@ public class ScheduleSolution extends SolutionAdapter {
 
     public ScheduleSolution(Constraints constraints) {
         Map<String, Schedule> programs = new HashMap<String, Schedule>();
+        Map<String, Integer> currentDay = new HashMap<String, Integer>();
+        Map<String, Integer> currentTimeSlot = new HashMap<String, Integer>();
 
-        int day = 0;
-        int timeslot = 0;
+
         for (ScheduleElement element : constraints.getScheduleElements()) {
             Schedule schedule = programs.get(element.getProgram());
             if (schedule == null) {
@@ -27,12 +28,24 @@ public class ScheduleSolution extends SolutionAdapter {
                 schedule = programs.get(element.getProgram());
             }
 
+            Integer day =  currentDay.get(element.getProgram());
+            if (day == null) {
+                currentDay.put(element.getProgram(), 0);
+                day = 0;
+            }
+
+            Integer timeSlot =  currentTimeSlot.get(element.getProgram());
+            if (timeSlot == null) {
+                currentTimeSlot.put(element.getProgram(), 0);
+                timeSlot = 0;
+            }
+
             Classroom classroom = Util.getRandomElement(constraints.getClassrooms());
-            schedule.days.get(day).timeSlots.set(timeslot, new TimeSlot(classroom, element));
-            timeslot++;
-            if (timeslot == 4) {
-                timeslot = 0;
-                day++;
+            schedule.days.get(day).timeSlots.set(timeSlot, new TimeSlot(classroom, element));
+            currentTimeSlot.put(element.getProgram(), currentTimeSlot.get(element.getProgram()) + 1);
+            if (currentTimeSlot.get(element.getProgram()) == 4) {
+                currentTimeSlot.put(element.getProgram(), 0);
+                currentDay.put(element.getProgram(), currentDay.get(element.getProgram()) + 1);
             }
         }
         this.schedules = new ArrayList<Schedule>(programs.values());
