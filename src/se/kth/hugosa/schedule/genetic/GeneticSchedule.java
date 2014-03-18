@@ -22,7 +22,6 @@ public class GeneticSchedule {
 	FitnessFunction func;
 	Genotype population;
 	Constraints constraints;
-	ElementConstraintChecker constraintChecker;
 	
 	public GeneticSchedule (Constraints constraints, int popSize) throws InvalidConfigurationException {
 		conf = new DefaultConfiguration();
@@ -42,12 +41,10 @@ public class GeneticSchedule {
 		int numElements = constraints.getNumElements();
 		
 		Gene[] sampleGenes = new Gene[numSlots];
-		constraintChecker = new ElementConstraintChecker(constraints);
 		
 		
 		for (int i = 0; i<sampleGenes.length; i++){
 			sampleGenes[i] = new IntegerGene(conf, -1, numElements-1);
-			sampleGenes[i].setConstraintChecker(constraintChecker);
 		}
 		
 		Chromosome sampleChromosome = new Chromosome(conf, sampleGenes);
