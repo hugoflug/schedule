@@ -1,10 +1,6 @@
 package se.kth.hugosa.schedule;
 
-import org.coinor.opents.*;
 import org.json.simple.parser.ParseException;
-import se.kth.hugosa.schedule.tabusearch.ScheduleMoveManager;
-import se.kth.hugosa.schedule.tabusearch.ScheduleObjectiveFunction;
-import se.kth.hugosa.schedule.tabusearch.ScheduleSolution;
 import se.kth.hugosa.schedule.tabusearch.TabuSearcher;
 
 import java.io.IOException;
@@ -13,7 +9,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        if (args[1].equals("--tabu") || args[1].equals("-t")) {
+        if (args[0].equals("--tabu") || args[0].equals("-t")) {
             int listSize = 10;
             int iterations = 10000;
             int moves = 100;
@@ -26,7 +22,7 @@ public class Main {
                     moves = Integer.parseInt(args[i+1]);
                 }
             }
-            tabuSearch(args[2], listSize, iterations, moves);
+            tabuSearch(args[1], listSize, iterations, moves);
         }
     }
 
