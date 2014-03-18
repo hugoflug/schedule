@@ -38,22 +38,26 @@ public class GeneticSchedule {
 		func = new ScheduleFitnessFunction(constraints);
 		conf.setFitnessFunction(func);
 		
+		constraintChecker = new ElementConstraintChecker(constraints);
+		
 		int numSlots = constraints.getNumSlots();
 		int numElements = constraints.getNumElements();
 		
 		Gene[] sampleGenes = new Gene[numSlots];
-		constraintChecker = new ElementConstraintChecker(constraints);
+		
 		
 		
 		for (int i = 0; i<sampleGenes.length; i++){
 			sampleGenes[i] = new IntegerGene(conf, -1, numElements-1);
-			sampleGenes[i].setConstraintChecker(constraintChecker);
+			
 		}
 		
 		Chromosome sampleChromosome = new Chromosome(conf, sampleGenes);
+		sampleChromosome.setConstraintChecker(constraintChecker);
 		
 		conf.setSampleChromosome(sampleChromosome);
 		conf.setPopulationSize(popSize);
+		
 		
 		population = Genotype.randomInitialGenotype(conf);
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
