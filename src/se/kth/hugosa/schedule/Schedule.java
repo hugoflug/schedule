@@ -34,49 +34,55 @@ public class Schedule {
     public String getProgram(){
     	return program;
     }
-    
-    public static void printSchedule(ArrayList<Schedule> schedules){
-    	for (Schedule schedule : schedules){
-    		System.out.println("Program: " + schedule.getProgram());
-    		System.out.println("-----------------------");
-    		for (int days = 0; days < schedule.days.size(); days++){
-    			System.out.println("Day " + days);
-    			Day day = schedule.days.get(days);
-    			System.out.println("-----------------------");
-    			for (int slots = 0; slots < 4; slots++){
-    				boolean slotEmpty = false;
-    				System.out.print("Slot " + slots + ": ");
-    				if (day != null){
-    					TimeSlot slot = day.timeSlots.get(slots);
-    					if (slot != null) {
+
+    public static String schedulesToString(ArrayList<Schedule> schedules) {
+        StringBuilder sb = new StringBuilder();
+        for (Schedule schedule : schedules){
+            sb.append("Program: " + schedule.getProgram() + "\n");
+            sb.append("-----------------------\n");
+            for (int days = 0; days < schedule.days.size(); days++){
+                sb.append("Day " + days + "\n");
+                Day day = schedule.days.get(days);
+                sb.append("-----------------------\n");
+                for (int slots = 0; slots < 4; slots++){
+                    boolean slotEmpty = false;
+                    sb.append("Slot " + slots + ": \n");
+                    if (day != null){
+                        TimeSlot slot = day.timeSlots.get(slots);
+                        if (slot != null) {
                             String classroomName = "";
-    						Classroom classroom = slot.classroom;
+                            Classroom classroom = slot.classroom;
                             if (classroom == null) {
                                 classroomName = "unassigned";
                             } else {
                                 classroomName = classroom.name;
                             }
-            				ScheduleElement element = slot.scheduleElement;
+                            ScheduleElement element = slot.scheduleElement;
                             if (element == null) {
                                 slotEmpty = true;
                             } else {
-            				    System.out.println(element.getCourse() + " with " + element.getTeacher() +" in " + classroomName + ".");
+                                sb.append(element.getCourse() + " with " + element.getTeacher() + " in " + classroomName + ".\n");
                             }
-    					}
-    					else{
-    						slotEmpty = true;
-    					}
-        			}
-    				else{
-    					slotEmpty = true;
-    				}
-    				
-    				if(slotEmpty){
-    					System.out.println("empty");
-    				}
-    			}
-    			System.out.println();
-    		}
-    	}
+                        }
+                        else{
+                            slotEmpty = true;
+                        }
+                    }
+                    else{
+                        slotEmpty = true;
+                    }
+
+                    if(slotEmpty){
+                        sb.append("empty\n");
+                    }
+                }
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
+    }
+
+    public static void printSchedule(ArrayList<Schedule> schedules){
+        System.out.println(schedulesToString(schedules));
     }
 }

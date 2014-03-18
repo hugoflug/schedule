@@ -10,9 +10,11 @@ import java.util.Random;
 
 public class ScheduleMoveManager implements MoveManager {
     private Constraints constraints;
+    private int movesN;
 
-    public ScheduleMoveManager(Constraints constraints) {
+    public ScheduleMoveManager(Constraints constraints, int movesN) {
         this.constraints = constraints;
+        this.movesN = movesN;
     }
 
     @Override
@@ -20,7 +22,7 @@ public class ScheduleMoveManager implements MoveManager {
         ArrayList<Schedule> schedules = ((ScheduleSolution)solution).getSchedules();
 
         ArrayList<Move> moves = new ArrayList<Move>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < movesN; i++) {
             Schedule schedule = Util.getRandomElement(schedules);
             {
                 int scheduleNo = getRandomIndex(schedules);

@@ -19,7 +19,7 @@ public class TabuSearchTest {
 
         ObjectiveFunction objFunc = new ScheduleObjectiveFunction(evaluator, constraints);
         Solution initialSolution = new ScheduleSolution(constraints);
-        MoveManager moveManager = new ScheduleMoveManager(constraints);
+        MoveManager moveManager = new ScheduleMoveManager(constraints, 100);
         TabuList tabuList = new SimpleTabuList(10);
 
         System.out.println("initial value: " + evaluator.evaluateWithInfo(((ScheduleSolution) initialSolution).getSchedules(), constraints));
