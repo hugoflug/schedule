@@ -23,7 +23,7 @@ public class TabuSearchTest {
         TabuList tabuList = new SimpleTabuList(10);
 
         System.out.println("initial value: " + evaluator.evaluateWithInfo(((ScheduleSolution) initialSolution).getSchedules(), constraints));
-        TabuSearch tabuSearch = new SingleThreadedTabuSearch(
+        final TabuSearch tabuSearch = new SingleThreadedTabuSearch(
                 initialSolution,
                 moveManager,
                 objFunc,
@@ -31,10 +31,21 @@ public class TabuSearchTest {
                 new BestEverAspirationCriteria(),
                 false
             );
+
+        tabuSearch.addTabuSearchListener(new TabuSearchAdapter() {
+            public void newBestSolutionFound(TabuSearchEvent e) {
+                if (tabuSearch.getBestSolution().getObjectiveValue()[0] == 0) {
+                    tabuSearch.setIterationsToGo(0);
+                }
+            }
+        });
+
         tabuSearch.setIterationsToGo(50000);
         tabuSearch.startSolving();
         ScheduleSolution best = (ScheduleSolution)tabuSearch.getBestSolution();
         Schedule.printSchedule(best.getSchedules());
+
+
 
         System.out.println("best value: " +
                 evaluator.evaluateWithInfo(best.getSchedules(), constraints));

@@ -94,7 +94,7 @@
 							"capacity" : 90,
 							"week" : 48,
 							"groups" : 1
-						}
+						},
 						{
 							"teacher" : "Olle D Bengtsson",
 							"capacity" : 100,
@@ -103,6 +103,112 @@
 						},
 						{
 							"teacher" : "Olle G Bengtsson",
+							"capacity" : 240,
+							"week" : 48,
+							"groups" : 1
+						}
+					]
+				},
+				{
+				    "name" : "flervarre",
+					"lessons": [
+						{
+							"teacher" : "WOlle Bensson",
+							"capacity" : 45,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "DOlle Bngtsson",
+							"capacity" : 60,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "TOle Bengtsson",
+							"capacity" : 140,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "GOlle Benadsgtsson",
+							"capacity" : 200,
+							"week" : 48,
+							"groups" : 1
+						}
+						{
+							"teacher" : "VOldsale Bengtsson",
+							"capacity" : 70,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "FOlle B Bengtsson",
+							"capacity" : 90,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "MOlle D Bengtsson",
+							"capacity" : 100,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "ROlle G Bengtsson",
+							"capacity" : 240,
+							"week" : 48,
+							"groups" : 1
+						}
+					]
+				},
+				{
+				    "name" : "linalg",
+					"lessons": [
+						{
+							"teacher" : "Olof Heden",
+							"capacity" : 45,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Olof Skeden",
+							"capacity" : 60,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "Olof Smeden",
+							"capacity" : 140,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Olof Samojeden",
+							"capacity" : 200,
+							"week" : 48,
+							"groups" : 1
+						}
+						{
+							"teacher" : "Olof Stilleben",
+							"capacity" : 70,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Olof Skenbenet",
+							"capacity" : 90,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "Olof Sneden",
+							"capacity" : 100,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Olof Sweden",
 							"capacity" : 240,
 							"week" : 48,
 							"groups" : 1
@@ -146,9 +252,91 @@
 							"capacity" : 130,
 							"week" : 48,
 							"groups" : 1
-						}
+						},
 						{
 							"teacher" : "Gunildasasdla Gunsadsson",
+							"capacity" : 240,
+							"week" : 48,
+							"groups" : 1
+						}
+					]
+				},
+				{
+					"name" : "dtek",
+					"lessons" : [
+						{
+							"teacher" : "AGunilla Gunzzon",
+							"capacity" : 90,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "AGunidaslla Gunsson",
+							"capacity" : 100,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "VGunilla Gunadssson",
+							"capacity" : 140,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "SGunildsala Gdasunsson",
+							"capacity" : 120,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "TGunilasdasdla Gunsson",
+							"capacity" : 130,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "GGunildasasdla Gunsadsson",
+							"capacity" : 240,
+							"week" : 48,
+							"groups" : 1
+						}
+					]
+				},
+				{
+					"name" : "logik",
+					"lessons" : [
+						{
+							"teacher" : "Dillian Gurov",
+							"capacity" : 90,
+							"week" : 47,
+							"groups" : 2
+						},
+						{
+							"teacher" : "Trillian Gurov",
+							"capacity" : 100,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "Gilligan Gurov",
+							"capacity" : 140,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "Maximilian Gurov",
+							"capacity" : 120,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "Dillian Schmillian",
+							"capacity" : 130,
+							"week" : 48,
+							"groups" : 1
+						},
+						{
+							"teacher" : "Jultomten Tomtesson",
 							"capacity" : 240,
 							"week" : 48,
 							"groups" : 1
@@ -161,8 +349,12 @@
 	"classrooms" : [
 		{
 			"name" : "D1",
-			"capacity" : 250
+			"capacity" : 200
 		},
+		{
+			"name" : "E1",
+			"capacity" : 250
+		}
 	],
-	"weeks" : 1
+	"weeks" : 2
 }
