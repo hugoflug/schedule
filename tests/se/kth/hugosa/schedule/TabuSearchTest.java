@@ -31,7 +31,7 @@ public class TabuSearchTest {
                 new BestEverAspirationCriteria(),
                 false
             );
-        tabuSearch.setIterationsToGo(10000);
+        tabuSearch.setIterationsToGo(50000);
         tabuSearch.startSolving();
         ScheduleSolution best = (ScheduleSolution)tabuSearch.getBestSolution();
         Schedule.printSchedule(best.getSchedules());

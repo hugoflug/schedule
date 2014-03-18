@@ -161,44 +161,8 @@
 	"classrooms" : [
 		{
 			"name" : "D1",
-			"capacity" : 200
-		},
-		{
-			"name" : "E1",
-			"capacity" : 200
-		},
-		{
-			"name" : "D2",
-			"capacity" : 50
-		},
-		{
-			"name" : "D3",
-			"capacity" : 50
-		},
-		{
-			"name" : "D4",
-			"capacity" : 50
-		}
-		{
-			"name" : "V1",
 			"capacity" : 250
-		}
-		{
-			"name" : "Q1",
-			"capacity" : 550
-		}
-		{
-			"name" : "M1",
-			"capacity" : 150
-		}
-		{
-			"name" : "D5",
-			"capacity" : 40
-		}
-		{
-			"name" : "X2",
-			"capacity" : 180
-		}
+		},
 	],
-	"weeks" : 2
+	"weeks" : 1
 }
