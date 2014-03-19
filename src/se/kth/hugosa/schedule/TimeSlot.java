@@ -1,27 +1,17 @@
 package se.kth.hugosa.schedule;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class TimeSlot {
-    public ScheduleElement scheduleElement;
-    public Classroom classroom;
+    public HashMap<Classroom, ScheduleElement> elementsMap;
 
-    public TimeSlot() {}
-
-    public TimeSlot(Classroom classroom, ScheduleElement scheduleElement) {
-        this.classroom = classroom;
-        this.scheduleElement = scheduleElement;
+    public TimeSlot() {
+    	elementsMap = new HashMap<Classroom, ScheduleElement>();
     }
 
     public TimeSlot copy() {
         TimeSlot copy = new TimeSlot();
-        copy.scheduleElement = scheduleElement;
-        copy.classroom = classroom;
+        copy.elementsMap.putAll(elementsMap);
         return copy;
-    }
-
-    @Override
-    public String toString() {
-        return"(" + classroom.toString() + ", " + scheduleElement.toString() + ")";
     }
 }

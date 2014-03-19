@@ -3,6 +3,7 @@ package se.kth.hugosa.schedule;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Evaluator {
@@ -46,14 +47,14 @@ public class Evaluator {
         int duplicates = 0;
         Set<String> courses = new HashSet<String>();
         for (TimeSlot timeSlot : day.timeSlots) {
-            if (timeSlot.scheduleElement != null) {
-                String course = timeSlot.scheduleElement.getCourse();
+        	for(Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()){
+                String course = entry.getValue().getCourse();
                 if (courses.contains(course)) {
                     duplicates++;
                 } else {
-                    courses.add(timeSlot.scheduleElement.getCourse());
+                    courses.add(entry.getValue().getCourse());
                 }
-            }
+        	}
         }
         return duplicates;
     }
@@ -64,15 +65,16 @@ public class Evaluator {
         boolean hadLessonToday = false;
         int currentFreePeriod = 0;
         for (TimeSlot timeSlot : day.timeSlots) {
-            if (timeSlot.scheduleElement != null) {
-                hadLessonToday = true;
+        	if(timeSlot.elementsMap.size()>0){
+        		hadLessonToday = true;
                 freePeriods += currentFreePeriod;
                 currentFreePeriod = 0;
-            } else {
+        	} else {
                 if (hadLessonToday) {
                     currentFreePeriod++;
                 }
             }
+        	
         }
         return freePeriods;
     }
@@ -114,12 +116,12 @@ public class Evaluator {
                 List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
                 if (collides(timeSlots)) {
-                    value += 10;
+                    value += 20;
                 }
 
                 for (TimeSlot timeSlot : timeSlots) {
                     if (overCapacity(timeSlot)) {
-                        value += 10;
+                        value += 20;
                     }
                 }
             }
@@ -176,11 +178,11 @@ public class Evaluator {
 
     //checks whether a TimeSlot is over its' allotted capacity
     private boolean overCapacity(TimeSlot timeSlot) {
-        if (timeSlot.scheduleElement != null && timeSlot.classroom != null) {
-            if (timeSlot.scheduleElement.getNumStudents() > timeSlot.classroom.capacity) {
+    	for(Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()){
+    		if (entry.getValue().getNumStudents() > entry.getKey().capacity) {
                 return true;
             }
-        }
+    	}
         return false;
     }
 
@@ -189,21 +191,23 @@ public class Evaluator {
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
-            if (timeSlot.scheduleElement != null) {
-                if (busyTeachers.contains(timeSlot.scheduleElement.getTeacher())) {
+        	if(timeSlot.elementsMap.size()>1){
+        		return true;
+        	}
+        	for(Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()){
+                if (busyTeachers.contains(entry.getValue().getTeacher())) {
                     return true;
                 } else {
-                    busyTeachers.add(timeSlot.scheduleElement.getTeacher());
+                    busyTeachers.add(entry.getValue().getTeacher());
                 }
-            }
 
-            if (timeSlot.classroom != null) {
-                if (busyClassrooms.contains(timeSlot.classroom)) {
+                if (busyClassrooms.contains(entry.getKey())) {
                     return true;
                 } else {
-                    busyClassrooms.add(timeSlot.classroom);
+                    busyClassrooms.add(entry.getKey());
                 }
-            }
+        	}
+            
 
         }
         return false;

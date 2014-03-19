@@ -1,6 +1,7 @@
 package se.kth.hugosa.schedule;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Schedule {
 	private String program;
@@ -48,20 +49,22 @@ public class Schedule {
     				System.out.print("Slot " + slots + ": ");
     				if (day != null){
     					TimeSlot slot = day.timeSlots.get(slots);
-    					if (slot != null) {
-                            String classroomName = "";
-    						Classroom classroom = slot.classroom;
-                            if (classroom == null) {
-                                classroomName = "unassigned";
-                            } else {
-                                classroomName = classroom.name;
-                            }
-            				ScheduleElement element = slot.scheduleElement;
-                            if (element == null) {
-                                slotEmpty = true;
-                            } else {
-            				    System.out.println(element.getCourse() + " with " + element.getTeacher() +" in " + classroomName + ".");
-                            }
+    					if (slot.elementsMap.size()>0) {
+    						for(Map.Entry<Classroom, ScheduleElement> e : slot.elementsMap.entrySet()){
+    							String classroomName = "";
+        						Classroom classroom = e.getKey();
+                                if (classroom == null) {
+                                    classroomName = "unassigned";
+                                } else {
+                                    classroomName = classroom.name;
+                                }
+                				ScheduleElement element = e.getValue();
+                                if (element == null) {
+                                    slotEmpty = true;
+                                } else {
+                				    System.out.println(element.getCourse() + " with " + element.getTeacher() +" in " + classroomName + ".");
+                                }
+    						}
     					}
     					else{
     						slotEmpty = true;

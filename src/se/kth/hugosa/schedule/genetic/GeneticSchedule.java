@@ -127,7 +127,9 @@ public class GeneticSchedule {
 						System.out.println("in " + constraints.getClassrooms().get(rooms) + " on day " + days + " slot " + slots + ".");
 						//*/
 						
-						day.timeSlots.set(slots, new TimeSlot(constraints.getClassrooms().get(rooms), element));
+						
+						TimeSlot slot = day.timeSlots.get(slots);
+						slot.elementsMap.put(constraints.getClassrooms().get(rooms), element);
 						schedule.days.set(days, day);
 					}
 				}
