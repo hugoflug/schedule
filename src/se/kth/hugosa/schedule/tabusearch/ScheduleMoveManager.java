@@ -12,6 +12,39 @@ public class ScheduleMoveManager implements MoveManager {
     private Constraints constraints;
     private int movesN;
 
+    private class TimeSlotIndexes {
+        private int dayIndex;
+        private int timeSlotIndex;
+        private int scheduleIndex;
+
+        public TimeSlotIndexes(int dayIndex, int timeSlotIndex, int scheduleIndex) {
+            this.dayIndex = dayIndex;
+            this.timeSlotIndex = timeSlotIndex;
+            this.scheduleIndex = scheduleIndex;
+        }
+
+        public int getScheduleIndex() {
+            return scheduleIndex;
+        }
+
+        public int getDayIndex() {
+            return dayIndex;
+        }
+
+        public int getTimeSlotIndex() {
+            return timeSlotIndex;
+        }
+
+        @Override
+        public String toString() {
+            return "TimeSlotIndexes{" +
+                    "dayIndex=" + dayIndex +
+                    ", timeSlotIndex=" + timeSlotIndex +
+                    ", scheduleIndex=" + scheduleIndex +
+                    '}';
+        }
+    }
+
     public ScheduleMoveManager(Constraints constraints, int movesN) {
         this.constraints = constraints;
         this.movesN = movesN;
@@ -23,21 +56,23 @@ public class ScheduleMoveManager implements MoveManager {
 
         ArrayList<Move> moves = new ArrayList<Move>();
         for (int i = 0; i < movesN; i++) {
-            Schedule schedule = Util.getRandomElement(schedules);
             {
-                int scheduleNo = getRandomIndex(schedules);
-                int dayNo = getRandomIndex(schedules.get(scheduleNo).days);
-                int timeSlotNo = getRandomInt(4);
+                TimeSlotIndexes indexes = getRandomValidTimeSlotIndexes(schedules);
+                int scheduleNo = indexes.getScheduleIndex();
+                int dayNo = indexes.getDayIndex();
+                int timeSlotNo = indexes.getTimeSlotIndex();
                 moves.add(new SwapClassroomMove(scheduleNo, dayNo, timeSlotNo,
                         Util.getRandomElement(constraints.getClassrooms())));
             }
             {
-                int scheduleNo1 = getRandomIndex(schedules);
-                int dayNo1 = getRandomIndex(schedules.get(scheduleNo1).days);
-                int timeSlotNo1 = getRandomInt(4);
-                int scheduleNo2 = getRandomIndex(schedules);
-                int dayNo2 = getRandomIndex(schedules.get(scheduleNo2).days);
-                int timeSlotNo2 = getRandomInt(4);
+                TimeSlotIndexes indexes1 = getRandomValidTimeSlotIndexes(schedules);
+                TimeSlotIndexes indexes2 = getRandomTimeSlotIndexes(schedules);
+                int scheduleNo1 = indexes1.getScheduleIndex();
+                int dayNo1 = indexes1.getDayIndex();
+                int timeSlotNo1 = indexes1.getTimeSlotIndex();
+                int scheduleNo2 = indexes2.getScheduleIndex();
+                int dayNo2 = indexes2.getDayIndex();
+                int timeSlotNo2 = indexes2.getTimeSlotIndex();
                 moves.add(new SwapTimeMove(scheduleNo1, dayNo1, timeSlotNo1,
                         scheduleNo2, dayNo2, timeSlotNo2));
             }
@@ -55,12 +90,22 @@ public class ScheduleMoveManager implements MoveManager {
         return random.nextInt(below);
     }
 
-    private TimeSlot getRandomValidTimeSlot(Schedule schedule) {
-        TimeSlot timeSlot = getRandomTimeSlot(schedule);
-        while (timeSlot.getOnlyScheduleElement() == null) {
-            timeSlot = getRandomTimeSlot(schedule);
+    private TimeSlotIndexes getRandomValidTimeSlotIndexes(ArrayList<Schedule> schedules) {
+        TimeSlotIndexes indexes = getRandomTimeSlotIndexes(schedules);
+        while (schedules.get(indexes.getScheduleIndex())
+                .days.get(indexes.getDayIndex())
+                .timeSlots.get(indexes.getTimeSlotIndex())
+                .getOnlyScheduleElement() == null) {
+            indexes = getRandomTimeSlotIndexes(schedules);
         }
-        return timeSlot;
+        return indexes;
+    }
+
+    private TimeSlotIndexes getRandomTimeSlotIndexes(ArrayList<Schedule> schedules) {
+        int scheduleNo = getRandomIndex(schedules);
+        int dayNo = getRandomIndex(schedules.get(scheduleNo).days);
+        int timeSlotNo = getRandomInt(4);
+        return new TimeSlotIndexes(dayNo, timeSlotNo, scheduleNo);
     }
 
     private TimeSlot getRandomTimeSlot(Schedule schedule) {

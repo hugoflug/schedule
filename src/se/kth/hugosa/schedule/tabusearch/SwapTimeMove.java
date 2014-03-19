@@ -23,6 +23,7 @@ public class SwapTimeMove implements Move {
         this.secondSchedule = secondSchedule;
         this.secondDay = secondDay;
         this.secondTimeSlot = secondTimeSlot;
+
     }
 
     @Override
