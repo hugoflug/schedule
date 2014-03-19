@@ -1,6 +1,5 @@
 package se.kth.hugosa.schedule.tabusearch;
 
-import org.coinor.opents.Solution;
 import org.coinor.opents.SolutionAdapter;
 import se.kth.hugosa.schedule.*;
 
@@ -16,9 +15,6 @@ public class ScheduleSolution extends SolutionAdapter {
 
     public ScheduleSolution(Constraints constraints) {
         Map<String, Schedule> programs = new HashMap<String, Schedule>();
-        Map<String, Integer> currentDay = new HashMap<String, Integer>();
-        Map<String, Integer> currentTimeSlot = new HashMap<String, Integer>();
-
 
         for (ScheduleElement element : constraints.getScheduleElements()) {
             Schedule schedule = programs.get(element.getProgram());
@@ -28,25 +24,18 @@ public class ScheduleSolution extends SolutionAdapter {
                 schedule = programs.get(element.getProgram());
             }
 
-            Integer day =  currentDay.get(element.getProgram());
-            if (day == null) {
-                currentDay.put(element.getProgram(), 0);
-                day = 0;
-            }
-
-            Integer timeSlot =  currentTimeSlot.get(element.getProgram());
-            if (timeSlot == null) {
-                currentTimeSlot.put(element.getProgram(), 0);
-                timeSlot = 0;
+            int dayNo = Util.getRandomIndex(schedule.days);
+            int timeSlotNo = Util.getRandomInt(4);
+            TimeSlot timeSlot = schedule.days.get(dayNo).timeSlots.get(timeSlotNo);
+            while (timeSlot.getOnlyScheduleElement() == null) {
+                dayNo = Util.getRandomIndex(schedule.days);
+                timeSlotNo = Util.getRandomInt(4);
+                timeSlot = schedule.days.get(dayNo).timeSlots.get(timeSlotNo);
             }
 
             Classroom classroom = Util.getRandomElement(constraints.getClassrooms());
-            schedule.days.get(day).timeSlots.set(timeSlot, new TimeSlot(classroom, element));
-            currentTimeSlot.put(element.getProgram(), currentTimeSlot.get(element.getProgram()) + 1);
-            if (currentTimeSlot.get(element.getProgram()) == 4) {
-                currentTimeSlot.put(element.getProgram(), 0);
-                currentDay.put(element.getProgram(), currentDay.get(element.getProgram()) + 1);
-            }
+
+            schedule.days.get(dayNo).timeSlots.set(timeSlotNo, new TimeSlot(classroom, element));
         }
         this.schedules = new ArrayList<Schedule>(programs.values());
     }

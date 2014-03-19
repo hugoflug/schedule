@@ -9,4 +9,14 @@ public class Util {
         int n = random.nextInt(list.size());
         return list.get(n);
     }
+
+    public static int getRandomIndex(ArrayList list) {
+        Random random = new Random();
+        return random.nextInt(list.size());
+    }
+
+    public static int getRandomInt(int below) {
+        Random random = new Random();
+        return random.nextInt(below);
+    }
 }
