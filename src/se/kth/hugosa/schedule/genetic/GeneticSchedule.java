@@ -80,15 +80,19 @@ public class GeneticSchedule {
 	}
 	
 	public ArrayList<Schedule> evolve(int maxEvolutions){
-		IChromosome bestSolution;
-		for(int i = 0; i < maxEvolutions; i++){
-			bestSolution = population.getFittestChromosome();
-			System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
-			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
+		IChromosome bestSolution = null;
+		boolean optimalFound = false;
+		int evolutions = 0;
+		while(!optimalFound && evolutions < maxEvolutions){
 			population.evolve();
+			bestSolution = population.getFittestChromosome();
+			if(func.getFitnessValue(bestSolution) <= 0){
+				optimalFound = true;
+			}
+			//System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
+			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
 		}
-		bestSolution = population.getFittestChromosome();
-		System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
+		//System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
 		return generateSchedule(bestSolution, constraints);
 	}
 	
