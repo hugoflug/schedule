@@ -1,6 +1,8 @@
 package se.kth.hugosa.schedule;
 
+import org.jgap.InvalidConfigurationException;
 import org.json.simple.parser.ParseException;
+import se.kth.hugosa.schedule.genetic.GeneticSchedule;
 import se.kth.hugosa.schedule.tabusearch.TabuSearcher;
 
 import java.io.IOException;
@@ -23,7 +25,38 @@ public class Main {
                 }
             }
             tabuSearch(args[1], listSize, iterations, moves);
+        } else if (args[0].equals("--genetic") || args[0].equals("-g")) {
+            genetic(args[1]);
         }
+    }
+
+    public static void genetic(String constraintFile) {
+        Loader loader = new Loader();
+        Evaluator evaluator = new Evaluator();
+        Constraints constraints = null;
+        try {
+            constraints = loader.loadConstraints(constraintFile);
+        } catch (IOException e) {
+            System.out.println("Couldn't load constraints file");
+            return;
+        } catch (ParseException e) {
+            System.out.println("Couldn't parse constraints file: " + e);
+            return;
+        }
+
+        GeneticSchedule genetic = null;
+        try {
+            genetic = new GeneticSchedule(constraints, 60);
+        } catch (InvalidConfigurationException e) {
+            System.out.println("Genetic algorithm failed.");
+            return;
+        }
+        ArrayList<Schedule> schedules = genetic.evolve(500);
+
+        System.out.println("Best fitness value: " + evaluator.evaluateWithInfo(schedules, constraints));
+        String outSchedule = Schedule.schedulesToString(schedules);
+
+        System.out.println(outSchedule);
     }
 
     public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves) {
