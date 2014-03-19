@@ -47,12 +47,15 @@ public class Evaluator {
         int duplicates = 0;
         Set<String> courses = new HashSet<String>();
         for (TimeSlot timeSlot : day.timeSlots) {
-        	for(Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()){
-                String course = entry.getValue().getCourse();
-                if (courses.contains(course)) {
-                    duplicates++;
-                } else {
-                    courses.add(entry.getValue().getCourse());
+        	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
+                ScheduleElement element = entry.getValue();
+                if (element != null) {
+                    String course = element.getCourse();
+                    if (courses.contains(course)) {
+                        duplicates++;
+                    } else {
+                        courses.add(element.getCourse());
+                    }
                 }
         	}
         }
@@ -178,9 +181,13 @@ public class Evaluator {
 
     //checks whether a TimeSlot is over its' allotted capacity
     private boolean overCapacity(TimeSlot timeSlot) {
-    	for(Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()){
-    		if (entry.getValue().getNumStudents() > entry.getKey().capacity) {
-                return true;
+    	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
+            Classroom classroom = entry.getKey();
+            ScheduleElement element = entry.getValue();
+            if (element != null) {
+                if (entry.getValue().getNumStudents() > entry.getKey().capacity) {
+                    return true;
+                }
             }
     	}
         return false;
@@ -191,21 +198,25 @@ public class Evaluator {
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
-        	if(timeSlot.elementsMap.size()>1){
+        	if (timeSlot.elementsMap.size() > 1) {
         		return true;
         	}
         	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
-            //    System.out.println(entry);
-                if (busyTeachers.contains(entry.getValue().getTeacher())) {
-                    return true;
-                } else {
-                    busyTeachers.add(entry.getValue().getTeacher());
+                ScheduleElement element = entry.getValue();
+                if (element != null) {
+                    if (busyTeachers.contains(element.getTeacher())) {
+                        return true;
+                    } else {
+                        busyTeachers.add(element.getTeacher());
+                    }
                 }
-
-                if (busyClassrooms.contains(entry.getKey())) {
-                    return true;
-                } else {
-                    busyClassrooms.add(entry.getKey());
+                Classroom classroom = entry.getKey();
+                if (classroom != null) {
+                    if (busyClassrooms.contains(classroom)) {
+                        return true;
+                    } else {
+                        busyClassrooms.add(classroom);
+                    }
                 }
         	}
             

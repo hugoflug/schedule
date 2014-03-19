@@ -27,10 +27,8 @@ public class TimeSlot {
 
     public void setOnlyClassroom(Classroom classroom) {
         ScheduleElement scheduleElement = getOnlyScheduleElement();
-        if (scheduleElement != null && classroom != null) {
-            elementsMap.clear();
-            elementsMap.put(classroom, scheduleElement);
-        }
+        elementsMap.clear();
+        elementsMap.put(classroom, scheduleElement);
     }
 
     public ScheduleElement getOnlyScheduleElement() {
@@ -44,9 +42,7 @@ public class TimeSlot {
 
     public void setOnlyScheduleElement(ScheduleElement scheduleElement) {
         Classroom classroom = getOnlyClassroom();
-        if (classroom != null && scheduleElement != null) {
-            elementsMap.put(classroom, scheduleElement);
-        }
+        elementsMap.put(classroom, scheduleElement);
     }
 
     public TimeSlot copy() {
