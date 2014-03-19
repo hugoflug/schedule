@@ -1,21 +1,14 @@
 package se.kth.hugosa.schedule.genetic;
 
-import org.jgap.Chromosome;
-import org.jgap.DeltaFitnessEvaluator;
-import org.jgap.IChromosome;
-import org.jgap.Configuration;
+import org.jgap.*;
 import org.jgap.impl.DefaultConfiguration;
+import org.jgap.impl.IntegerGene;
 import org.jgap.impl.SwappingMutationOperator;
-import org.jgap.FitnessFunction;
+import se.kth.hugosa.schedule.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.jgap.Gene;
-import org.jgap.impl.IntegerGene;
-import org.jgap.Genotype;
-import org.jgap.InvalidConfigurationException;
-import se.kth.hugosa.schedule.*;
 
 public class GeneticSchedule {
 	Configuration conf;
@@ -85,10 +78,11 @@ public class GeneticSchedule {
 		while(!optimalFound && evolutions < maxEvolutions){
 			population.evolve();
 			bestSolution = population.getFittestChromosome();
-			if(func.getFitnessValue(bestSolution) <= 0){
+            double fitnessValue = func.getFitnessValue(bestSolution);
+            if(fitnessValue <= 0){
 				optimalFound = true;
 			}
-			//System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
+            evolutions++;
 			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
 		}
 		//System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
