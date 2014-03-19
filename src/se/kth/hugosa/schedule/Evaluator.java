@@ -194,7 +194,8 @@ public class Evaluator {
         	if(timeSlot.elementsMap.size()>1){
         		return true;
         	}
-        	for(Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()){
+        	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
+            //    System.out.println(entry);
                 if (busyTeachers.contains(entry.getValue().getTeacher())) {
                     return true;
                 } else {

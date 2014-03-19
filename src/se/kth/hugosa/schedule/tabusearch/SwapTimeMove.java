@@ -30,12 +30,12 @@ public class SwapTimeMove implements Move {
         ScheduleSolution sol = (ScheduleSolution)solution;
         TimeSlot first = sol.getSchedules().get(firstSchedule).days.get(firstDay).timeSlots.get(firstTimeSlot);
         TimeSlot second = sol.getSchedules().get(secondSchedule).days.get(secondDay).timeSlots.get(secondTimeSlot);
-        ScheduleElement tempSe = first.scheduleElement;
-        Classroom tempCl = first.classroom;
-        first.scheduleElement = second.scheduleElement;
-        first.classroom = second.classroom;
-        second.scheduleElement = tempSe;
-        second.classroom = tempCl;
+        ScheduleElement tempSe = first.getOnlyScheduleElement();
+        Classroom tempCl = first.getOnlyClassroom();
+        first.setOnlyScheduleElement(second.getOnlyScheduleElement());
+        first.setOnlyClassroom(second.getOnlyClassroom());
+        second.setOnlyScheduleElement(tempSe);
+        second.setOnlyClassroom(tempCl);
     }
 
     @Override
