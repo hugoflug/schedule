@@ -80,6 +80,10 @@ public class Main {
     private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints) {
         String outSchedule = Schedule.schedulesToString(schedules);
         System.out.println(outSchedule);
-        System.out.println("\n\nbest value: " + evaluator.evaluateWithInfo(schedules, constraints));
+        Evaluator.Result result =  evaluator.evaluateWithInfo(schedules, constraints);
+        System.out.println();
+        System.out.println("Free periods penalty: " + result.getFreePeriods());
+        System.out.println("Multiple lessons in same course on on same day penalty: " + result.getOnSameDay());
+        System.out.println("Total penalty: " + result.getTotal());
     }
 }
