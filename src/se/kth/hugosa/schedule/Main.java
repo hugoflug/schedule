@@ -53,10 +53,7 @@ public class Main {
         }
         ArrayList<Schedule> schedules = genetic.evolve(500);
 
-        System.out.println("Best fitness value: " + evaluator.evaluateWithInfo(schedules, constraints));
-        String outSchedule = Schedule.schedulesToString(schedules);
-
-        System.out.println(outSchedule);
+        printEvaluation(schedules, evaluator, constraints);
     }
 
     public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves) {
@@ -77,8 +74,12 @@ public class Main {
         ArrayList<Schedule> schedules = TabuSearcher.tabuSearch(evaluator, constraints, listSize, iterations, moves);
         String outSchedule = Schedule.schedulesToString(schedules);
 
+        printEvaluation(schedules, evaluator, constraints);
+    }
+
+    private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints) {
+        String outSchedule = Schedule.schedulesToString(schedules);
         System.out.println(outSchedule);
-        System.out.println("\n\nbest value: " +
-                evaluator.evaluateWithInfo(schedules, constraints));
+        System.out.println("\n\nbest value: " + evaluator.evaluateWithInfo(schedules, constraints));
     }
 }
