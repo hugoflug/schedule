@@ -57,7 +57,7 @@ public class ScheduleMoveManager implements MoveManager {
 
     private TimeSlot getRandomValidTimeSlot(Schedule schedule) {
         TimeSlot timeSlot = getRandomTimeSlot(schedule);
-        while (timeSlot.scheduleElement == null) {
+        while (timeSlot.getOnlyScheduleElement() == null) {
             timeSlot = getRandomTimeSlot(schedule);
         }
         return timeSlot;

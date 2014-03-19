@@ -22,7 +22,6 @@ public class GeneticSchedule {
 	FitnessFunction func;
 	Genotype population;
 	Constraints constraints;
-	ElementConstraintChecker constraintChecker;
 	
 	public GeneticSchedule (Constraints constraints, int popSize) throws InvalidConfigurationException {
 		conf = new DefaultConfiguration();
@@ -42,12 +41,10 @@ public class GeneticSchedule {
 		int numElements = constraints.getNumElements();
 		
 		Gene[] sampleGenes = new Gene[numSlots];
-		constraintChecker = new ElementConstraintChecker(constraints);
 		
 		
 		for (int i = 0; i<sampleGenes.length; i++){
 			sampleGenes[i] = new IntegerGene(conf, -1, numElements-1);
-			sampleGenes[i].setConstraintChecker(constraintChecker);
 		}
 		
 		Chromosome sampleChromosome = new Chromosome(conf, sampleGenes);
@@ -83,25 +80,29 @@ public class GeneticSchedule {
 	}
 	
 	public ArrayList<Schedule> evolve(int maxEvolutions){
-		IChromosome bestSolution;
-		for(int i = 0; i < maxEvolutions; i++){
-			bestSolution = population.getFittestChromosome();
-			System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
-			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
+		IChromosome bestSolution = null;
+		boolean optimalFound = false;
+		int evolutions = 0;
+		while(!optimalFound && evolutions < maxEvolutions){
 			population.evolve();
+			bestSolution = population.getFittestChromosome();
+			if(func.getFitnessValue(bestSolution) <= 0){
+				optimalFound = true;
+			}
+			//System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
+			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
 		}
-		bestSolution = population.getFittestChromosome();
-		System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
+		//System.out.println("Best fitness value: " + func.getFitnessValue(bestSolution));
 		return generateSchedule(bestSolution, constraints);
 	}
 	
 	public static ArrayList<Schedule> generateSchedule(IChromosome c, Constraints constraints){
-		///* //test
+		/* //test
 		for(Gene g : c.getGenes()){
 			System.out.println(""+ (Integer) g.getAllele());
 		}
 		System.out.println("-----------------");
-		//*/
+		*/
 		ArrayList<Schedule> result = new ArrayList<Schedule>();
 		for(int i = 0; i < constraints.getNumPrograms(); i++){
 			result.add(new Schedule(constraints.getPrograms().get(i), constraints.getScheduleWeeks()));
@@ -112,25 +113,27 @@ public class GeneticSchedule {
 				for(int rooms = 0; rooms < constraints.getNumClassrooms(); rooms++){
 					int geneIndex = (days*constraints.getNumClassrooms()*4 + slots*constraints.getNumClassrooms() + rooms);
 					int index = (Integer) c.getGene(geneIndex).getAllele();
-					System.out.println("Working on gene #" + geneIndex + ", index = " + index); //test
+					//System.out.println("Working on gene #" + geneIndex + ", index = " + index); //test
 					if(index > -1){
-						System.out.println("Inserting element #" + index + ":"); //test
+						//System.out.println("Inserting element #" + index + ":"); //test
 						ScheduleElement element = constraints.getScheduleElements().get(index);
 						
 						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.getProgram()));
 						
-						System.out.println(element.getProgram() + " should match " + schedule.getProgram() + "."); //test
+						//System.out.println(element.getProgram() + " should match " + schedule.getProgram() + "."); //test
 						
 						Day day = schedule.days.get(days);
 						if(day == null){
 							day = new Day();
 						}
-						///*//test
+						/*//test
 						System.out.println("Element info: " + element.toString());
 						System.out.println("in " + constraints.getClassrooms().get(rooms) + " on day " + days + " slot " + slots + ".");
-						//*/
+						*/
 						
-						day.timeSlots.set(slots, new TimeSlot(constraints.getClassrooms().get(rooms), element));
+						
+						TimeSlot slot = day.timeSlots.get(slots);
+						slot.elementsMap.put(constraints.getClassrooms().get(rooms), element);
 						schedule.days.set(days, day);
 					}
 				}
