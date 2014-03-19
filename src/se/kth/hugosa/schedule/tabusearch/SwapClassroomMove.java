@@ -22,7 +22,7 @@ public class SwapClassroomMove implements Move {
     public void operateOn(Solution solution) {
         ScheduleSolution sol = (ScheduleSolution)solution;
         TimeSlot timeSlot = sol.getSchedules().get(schedule).days.get(day).timeSlots.get(this.timeSlotNo);
-        timeSlot.classroom = newClassroom;
+        timeSlot.setOnlyClassroom(newClassroom);
     }
 
     @Override

@@ -19,11 +19,12 @@ public class GeneticTest {
         for (Classroom room : c.getClassrooms()){
         	System.out.println("Name: " + room.name + " cap: " + room.capacity);
         }
+        System.out.println();
         
-		GeneticSchedule genetic = new GeneticSchedule(c, 20);
-		ArrayList<Schedule> schedules = genetic.evolve(100);
+		GeneticSchedule genetic = new GeneticSchedule(c, 60);
+		ArrayList<Schedule> schedules = genetic.evolve(500);
 		
-		System.out.println("Best other fitness value: " + evaluator.evaluateSchedule(schedules, c));
+		System.out.println("Best fitness value: " + evaluator.evaluateSchedule(schedules, c));
 		Schedule.printSchedule(schedules);
 		
 		

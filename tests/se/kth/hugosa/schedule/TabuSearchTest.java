@@ -1,8 +1,6 @@
 package se.kth.hugosa.schedule;
 
 import org.coinor.opents.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import se.kth.hugosa.schedule.tabusearch.ScheduleMoveManager;
 import se.kth.hugosa.schedule.tabusearch.ScheduleObjectiveFunction;
@@ -19,7 +17,7 @@ public class TabuSearchTest {
 
         ObjectiveFunction objFunc = new ScheduleObjectiveFunction(evaluator, constraints);
         Solution initialSolution = new ScheduleSolution(constraints);
-        MoveManager moveManager = new ScheduleMoveManager(constraints);
+        MoveManager moveManager = new ScheduleMoveManager(constraints, 100);
         TabuList tabuList = new SimpleTabuList(10);
 
         System.out.println("initial value: " + evaluator.evaluateWithInfo(((ScheduleSolution) initialSolution).getSchedules(), constraints));
@@ -40,7 +38,7 @@ public class TabuSearchTest {
             }
         });
 
-        tabuSearch.setIterationsToGo(50000);
+        tabuSearch.setIterationsToGo(5000);
         tabuSearch.startSolving();
         ScheduleSolution best = (ScheduleSolution)tabuSearch.getBestSolution();
         Schedule.printSchedule(best.getSchedules());
