@@ -36,21 +36,22 @@ public class Schedule {
     	return program;
     }
     
-    public static void printSchedule(ArrayList<Schedule> schedules){
-    	for (Schedule schedule : schedules){
-    		System.out.println("Program: " + schedule.getProgram());
-    		System.out.println("-----------------------");
-    		for (int days = 0; days < schedule.days.size(); days++){
-    			System.out.println("Day " + days);
-    			Day day = schedule.days.get(days);
-    			System.out.println("-----------------------");
-    			for (int slots = 0; slots < 4; slots++){
-    				boolean slotEmpty = false;
-    				System.out.print("Slot " + slots + ": ");
-    				if (day != null){
-    					TimeSlot slot = day.timeSlots.get(slots);
-    					if (slot.elementsMap.size()>0) {
-    						for(Map.Entry<Classroom, ScheduleElement> e : slot.elementsMap.entrySet()){
+    public static String schedulesToString(ArrayList<Schedule> schedules) {
+        StringBuilder sb = new StringBuilder();
+        for (Schedule schedule : schedules){
+            sb.append("Program: " + schedule.getProgram() + "\n");
+            sb.append("-----------------------\n");
+            for (int days = 0; days < schedule.days.size(); days++){
+                sb.append("Day " + days + "\n");
+                Day day = schedule.days.get(days);
+                sb.append("-----------------------\n");
+                for (int slots = 0; slots < 4; slots++){
+                    boolean slotEmpty = false;
+                    sb.append("Slot " + slots + ": ");
+                    if (day != null){
+                        TimeSlot slot = day.timeSlots.get(slots);
+                        if (slot.elementsMap.size()>0) {
+                        	for(Map.Entry<Classroom, ScheduleElement> e : slot.elementsMap.entrySet()){
     							String classroomName = "";
         						Classroom classroom = e.getKey();
                                 if (classroom == null) {
@@ -62,24 +63,30 @@ public class Schedule {
                                 if (element == null) {
                                     slotEmpty = true;
                                 } else {
-                				    System.out.println(element.getCourse() + " with " + element.getTeacher() +" in " + classroomName + ".");
+                				    sb.append(element.getCourse() + " with " + element.getTeacher() +" in " + classroomName + ".\n");
                                 }
     						}
-    					}
-    					else{
-    						slotEmpty = true;
-    					}
-        			}
-    				else{
-    					slotEmpty = true;
-    				}
-    				
-    				if(slotEmpty){
-    					System.out.println("empty");
-    				}
-    			}
-    			System.out.println();
-    		}
-    	}
+                        }
+                        else{
+                            slotEmpty = true;
+                        }
+                    }
+                    else{
+                        slotEmpty = true;
+                    }
+
+                    if(slotEmpty){
+                        sb.append("empty\n");
+                    }
+                }
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
     }
+
+    public static void printSchedule(ArrayList<Schedule> schedules){
+        System.out.println(schedulesToString(schedules));
+    }
+    
 }
