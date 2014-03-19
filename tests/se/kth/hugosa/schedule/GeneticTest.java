@@ -20,10 +20,10 @@ public class GeneticTest {
         	System.out.println("Name: " + room.name + " cap: " + room.capacity);
         }
         
-		GeneticSchedule genetic = new GeneticSchedule(c, 20);
-		ArrayList<Schedule> schedules = genetic.evolve(100);
+		GeneticSchedule genetic = new GeneticSchedule(c, 60);
+		ArrayList<Schedule> schedules = genetic.evolve(150);
 		
-		System.out.println("Best other fitness value: " + evaluator.evaluateSchedule(schedules, c));
+		//System.out.println("Best other fitness value: " + evaluator.evaluateSchedule(schedules, c));
 		Schedule.printSchedule(schedules);
 		
 		

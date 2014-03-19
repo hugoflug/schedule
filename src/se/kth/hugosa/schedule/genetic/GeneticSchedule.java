@@ -93,12 +93,12 @@ public class GeneticSchedule {
 	}
 	
 	public static ArrayList<Schedule> generateSchedule(IChromosome c, Constraints constraints){
-		///* //test
+		/* //test
 		for(Gene g : c.getGenes()){
 			System.out.println(""+ (Integer) g.getAllele());
 		}
 		System.out.println("-----------------");
-		//*/
+		*/
 		ArrayList<Schedule> result = new ArrayList<Schedule>();
 		for(int i = 0; i < constraints.getNumPrograms(); i++){
 			result.add(new Schedule(constraints.getPrograms().get(i), constraints.getScheduleWeeks()));
@@ -109,23 +109,23 @@ public class GeneticSchedule {
 				for(int rooms = 0; rooms < constraints.getNumClassrooms(); rooms++){
 					int geneIndex = (days*constraints.getNumClassrooms()*4 + slots*constraints.getNumClassrooms() + rooms);
 					int index = (Integer) c.getGene(geneIndex).getAllele();
-					System.out.println("Working on gene #" + geneIndex + ", index = " + index); //test
+					//System.out.println("Working on gene #" + geneIndex + ", index = " + index); //test
 					if(index > -1){
-						System.out.println("Inserting element #" + index + ":"); //test
+						//System.out.println("Inserting element #" + index + ":"); //test
 						ScheduleElement element = constraints.getScheduleElements().get(index);
 						
 						Schedule schedule = result.get(constraints.getPrograms().indexOf(element.getProgram()));
 						
-						System.out.println(element.getProgram() + " should match " + schedule.getProgram() + "."); //test
+						//System.out.println(element.getProgram() + " should match " + schedule.getProgram() + "."); //test
 						
 						Day day = schedule.days.get(days);
 						if(day == null){
 							day = new Day();
 						}
-						///*//test
+						/*//test
 						System.out.println("Element info: " + element.toString());
 						System.out.println("in " + constraints.getClassrooms().get(rooms) + " on day " + days + " slot " + slots + ".");
-						//*/
+						*/
 						
 						
 						TimeSlot slot = day.timeSlots.get(slots);
