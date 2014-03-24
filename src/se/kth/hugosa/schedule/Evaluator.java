@@ -118,9 +118,9 @@ public class Evaluator {
             for (int j = 0; j < 4; j++) {
                 List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
-                if (collides(timeSlots)) {
-                    value += 20;
-                }
+                
+                value += collides(timeSlots);
+                
 
                 for (TimeSlot timeSlot : timeSlots) {
                     if (overCapacity(timeSlot)) {
@@ -155,9 +155,7 @@ public class Evaluator {
            for (int j = 0; j < 4; j++) {
                List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
-               if (collides(timeSlots)) {
-                   value += 10;
-               }
+               value += collides(timeSlots);
 
                for (TimeSlot timeSlot : timeSlots) {
                   if (overCapacity(timeSlot)) {
@@ -194,35 +192,35 @@ public class Evaluator {
     }
 
     //checks for collisions between a list of SchoolClasses held at the same time
-    private boolean collides(List<TimeSlot> timeSlots) {
+    private int collides(List<TimeSlot> timeSlots) {
+    	int collisions = 0;
+    	int penalty = 500;
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
         	if (timeSlot.elementsMap.size() > 1) {
-        		return true;
+        		collisions++;
         	}
         	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
                 ScheduleElement element = entry.getValue();
                 if (element != null) {
                     if (busyTeachers.contains(element.getTeacher())) {
-                        return true;
-                    } else {
-                        busyTeachers.add(element.getTeacher());
+                        collisions++;
                     }
+                    busyTeachers.add(element.getTeacher());
                 }
                 Classroom classroom = entry.getKey();
                 if (classroom != null) {
                     if (busyClassrooms.contains(classroom)) {
-                        return true;
-                    } else {
-                        busyClassrooms.add(classroom);
+                        collisions++;
                     }
+                    busyClassrooms.add(classroom);
                 }
         	}
             
 
         }
-        return false;
+        return collisions*penalty;
     }
 
 }
