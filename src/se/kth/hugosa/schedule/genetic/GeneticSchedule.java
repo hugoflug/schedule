@@ -81,7 +81,8 @@ public class GeneticSchedule {
             double fitnessValue = func.getFitnessValue(bestSolution);
             if(fitnessValue <= 0){
 				optimalFound = true;
-			}
+                System.out.println("Perfect solution found in " + evolutions + " evolutions");
+            }
             evolutions++;
 			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
 		}

@@ -7,9 +7,6 @@ import se.kth.hugosa.schedule.Schedule;
 
 import java.util.ArrayList;
 
-/**
- * Created by hugo on 3/18/14.
- */
 public class TabuSearcher {
     public static ArrayList<Schedule> tabuSearch(Evaluator evaluator, Constraints constraints, int tabuListSize, int iterations, int moves) {
         ObjectiveFunction objFunc = new ScheduleObjectiveFunction(evaluator, constraints);
@@ -29,6 +26,7 @@ public class TabuSearcher {
         tabuSearch.addTabuSearchListener(new TabuSearchAdapter() {
             public void newBestSolutionFound(TabuSearchEvent e) {
                 if (tabuSearch.getBestSolution().getObjectiveValue()[0] == 0) {
+                    System.out.println("Perfect solution found in: " + tabuSearch.getIterationsCompleted());
                     tabuSearch.setIterationsToGo(0);
                 }
             }
