@@ -156,7 +156,7 @@ public class Evaluator {
                value += 500*collides(timeSlots);
 
                for (TimeSlot timeSlot : timeSlots) {
-                  value += 200*overCapacity(timeSlot);
+                  value += 500*overCapacity(timeSlot);
                }
            }
 
@@ -195,7 +195,7 @@ public class Evaluator {
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
         	if (timeSlot.elementsMap.size() > 1) {
-        		collisions++;
+        		collisions+=10;
         	}
         	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
                 ScheduleElement element = entry.getValue();
