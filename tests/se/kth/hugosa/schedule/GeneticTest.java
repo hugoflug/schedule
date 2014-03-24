@@ -1,9 +1,9 @@
 package se.kth.hugosa.schedule;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 import se.kth.hugosa.schedule.genetic.GeneticSchedule;
+
+import java.util.ArrayList;
 
 public class GeneticTest {
 
@@ -21,7 +21,7 @@ public class GeneticTest {
         }
         System.out.println();
         
-		GeneticSchedule genetic = new GeneticSchedule(c, 60);
+		GeneticSchedule genetic = new GeneticSchedule(c, 60, -1);
 		ArrayList<Schedule> schedules = genetic.evolve(500);
 		
 		System.out.println("Best fitness value: " + evaluator.evaluateSchedule(schedules, c));

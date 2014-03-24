@@ -11,12 +11,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class GeneticSchedule {
-	Configuration conf;
-	FitnessFunction func;
-	Genotype population;
-	Constraints constraints;
-	
-	public GeneticSchedule (Constraints constraints, int popSize) throws InvalidConfigurationException {
+	private Configuration conf;
+	private FitnessFunction func;
+	private Genotype population;
+	private Constraints constraints;
+	private int time;
+    private long startTime;
+
+	public GeneticSchedule (Constraints constraints, int popSize, int time) throws InvalidConfigurationException {
 		conf = new DefaultConfiguration();
 		conf.resetProperty(Configuration.PROPERTY_FITEVAL_INST);
 		conf.setFitnessEvaluator(new DeltaFitnessEvaluator());
@@ -26,7 +28,9 @@ public class GeneticSchedule {
 		conf.addGeneticOperator(swapper);
 		
 		this.constraints = constraints;
-		
+		this.time = time;
+        this.startTime = System.nanoTime();
+
 		func = new ScheduleFitnessFunction(constraints);
 		conf.setFitnessFunction(func);
 		
@@ -79,6 +83,12 @@ public class GeneticSchedule {
 			population.evolve();
 			bestSolution = population.getFittestChromosome();
             double fitnessValue = func.getFitnessValue(bestSolution);
+            if (time != -1) {
+                if ((System.nanoTime() - startTime)/1000000 > time) {
+                    System.out.println("Time is up (" + time + " ms)");
+                    optimalFound = true;
+                }
+            }
             if(fitnessValue <= 0){
 				optimalFound = true;
                 System.out.println("Perfect solution found in " + evolutions + " evolutions");
