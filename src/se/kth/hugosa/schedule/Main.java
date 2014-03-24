@@ -100,7 +100,7 @@ public class Main {
         System.out.println(outSchedule);
         Evaluator.Result result =  evaluator.evaluateWithInfo(schedules, constraints);
         System.out.println();
-        System.out.println("Schedule generated in: " + (time / 1000) + " seconds.");
+        System.out.println("Schedule generated in: " + (time / 1000.0) + " seconds.");
         System.out.println("Free periods penalty: " + result.getFreePeriods());
         System.out.println("Multiple lessons in same course on same day penalty: " + result.getOnSameDay());
         System.out.println("Collisions: " + result.getCollisions());
