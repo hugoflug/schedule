@@ -1,0 +1,1642 @@
+{
+    "weeks": 10,
+    "programs": [
+        {
+            "courses": [
+                {
+                    "lessons": [
+                        {
+                            "capacity": 79,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "L29YTZ"
+                        },
+                        {
+                            "capacity": 79,
+                            "teacher": "L29YTZ"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 79,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "L29YTZ"
+                        },
+                        {
+                            "capacity": 159,
+                            "teacher": "U1E5QI"
+                        }
+                    ],
+                    "name": "FMDCVO"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 68,
+                            "teacher": "ZQMDA9"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 68,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 68,
+                            "teacher": "ZQMDA9"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 68,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "ZQMDA9"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "ZQMDA9"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 68,
+                            "teacher": "ZQMDA9"
+                        },
+                        {
+                            "capacity": 68,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "4NCHHR"
+                        },
+                        {
+                            "capacity": 158,
+                            "teacher": "4NCHHR"
+                        }
+                    ],
+                    "name": "G731UG"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "R2B8CC"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "R2B8CC"
+                        },
+                        {
+                            "capacity": 88,
+                            "teacher": "R2B8CC"
+                        },
+                        {
+                            "capacity": 88,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "R2B8CC"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 88,
+                            "teacher": "LP3UY7"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "LP3UY7"
+                        }
+                    ],
+                    "name": "3PM7SU"
+                }
+            ],
+            "program": "S5XAD0"
+        },
+        {
+            "courses": [
+                {
+                    "lessons": [
+                        {
+                            "capacity": 189,
+                            "teacher": "WCDJKR"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "WCDJKR"
+                        },
+                        {
+                            "capacity": 51,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "WCDJKR"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 51,
+                            "teacher": "WCDJKR"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 51,
+                            "teacher": "WCDJKR"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "WCDJKR"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 51,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "DAOVD9"
+                        },
+                        {
+                            "capacity": 189,
+                            "teacher": "WCDJKR"
+                        }
+                    ],
+                    "name": "I9PYSI"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 165,
+                            "teacher": "SPROV6"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 59,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "SPROV6"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "SPROV6"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 59,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "SPROV6"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "2TVPQK"
+                        },
+                        {
+                            "capacity": 165,
+                            "teacher": "SPROV6"
+                        }
+                    ],
+                    "name": "XOX0XV"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 94,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "2ZKBBX"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "2ZKBBX"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "2ZKBBX"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "2ZKBBX"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        },
+                        {
+                            "capacity": 177,
+                            "teacher": "VRE1X2"
+                        }
+                    ],
+                    "name": "KRCH7B"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 57,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 57,
+                            "teacher": "8FMO2A"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "8FMO2A"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 57,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 57,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "8FMO2A"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 57,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "8FMO2A"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "VF1PZF"
+                        },
+                        {
+                            "capacity": 57,
+                            "teacher": "VF1PZF"
+                        }
+                    ],
+                    "name": "AVNVMT"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 66,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 66,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 66,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 66,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        },
+                        {
+                            "capacity": 198,
+                            "teacher": "08YNE9"
+                        }
+                    ],
+                    "name": "UZRGLO"
+                }
+            ],
+            "program": "FBXQWR"
+        },
+        {
+            "courses": [
+                {
+                    "lessons": [
+                        {
+                            "capacity": 178,
+                            "teacher": "EIJIP0"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 80,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        },
+                        {
+                            "capacity": 178,
+                            "teacher": "94BYBH"
+                        }
+                    ],
+                    "name": "UQ8486"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "6JPVNB"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 84,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 84,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "6JPVNB"
+                        },
+                        {
+                            "capacity": 84,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        },
+                        {
+                            "capacity": 154,
+                            "teacher": "98S9K8"
+                        }
+                    ],
+                    "name": "WFGNJH"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 67,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 67,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "7CVD6B"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "7CVD6B"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "7CVD6B"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "7CVD6B"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "7CVD6B"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "7CVD6B"
+                        },
+                        {
+                            "capacity": 173,
+                            "teacher": "KZJ7BB"
+                        },
+                        {
+                            "capacity": 67,
+                            "teacher": "KZJ7BB"
+                        }
+                    ],
+                    "name": "BTE5MS"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 174,
+                            "teacher": "NMVJ1E"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "NMVJ1E"
+                        },
+                        {
+                            "capacity": 58,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "NMVJ1E"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "NMVJ1E"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "NMVJ1E"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "NMVJ1E"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "NMVJ1E"
+                        },
+                        {
+                            "capacity": 174,
+                            "teacher": "X9LKME"
+                        },
+                        {
+                            "capacity": 58,
+                            "teacher": "X9LKME"
+                        }
+                    ],
+                    "name": "5R3X15"
+                }
+            ],
+            "program": "9T49NE"
+        },
+        {
+            "courses": [
+                {
+                    "lessons": [
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        },
+                        {
+                            "capacity": 171,
+                            "teacher": "MKPPUK"
+                        }
+                    ],
+                    "name": "YXK0OM"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 188,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "2X3DV8"
+                        },
+                        {
+                            "capacity": 188,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 188,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 188,
+                            "teacher": "2X3DV8"
+                        },
+                        {
+                            "capacity": 188,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 188,
+                            "teacher": "2X3DV8"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 188,
+                            "teacher": "QPL2U2"
+                        },
+                        {
+                            "capacity": 71,
+                            "teacher": "QPL2U2"
+                        }
+                    ],
+                    "name": "ETYSP2"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 166,
+                            "teacher": "054NB0"
+                        },
+                        {
+                            "capacity": 83,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "054NB0"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "054NB0"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "054NB0"
+                        },
+                        {
+                            "capacity": 83,
+                            "teacher": "054NB0"
+                        },
+                        {
+                            "capacity": 83,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 83,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "BRILV8"
+                        }
+                    ],
+                    "name": "FTV1P0"
+                }
+            ],
+            "program": "85UFHC"
+        },
+        {
+            "courses": [
+                {
+                    "lessons": [
+                        {
+                            "capacity": 89,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "TV6JT6"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "TV6JT6"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "TV6JT6"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 89,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 89,
+                            "teacher": "TV6JT6"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        },
+                        {
+                            "capacity": 175,
+                            "teacher": "VLPTP7"
+                        }
+                    ],
+                    "name": "9T12WN"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 183,
+                            "teacher": "ZQ9LOL"
+                        },
+                        {
+                            "capacity": 68,
+                            "teacher": "ZQ9LOL"
+                        }
+                    ],
+                    "name": "7V2JUP"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 94,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "9S8IMX"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "9S8IMX"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 94,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        },
+                        {
+                            "capacity": 155,
+                            "teacher": "JTKIMK"
+                        }
+                    ],
+                    "name": "SXI7ER"
+                }
+            ],
+            "program": "FDA6LC"
+        },
+        {
+            "courses": [
+                {
+                    "lessons": [
+                        {
+                            "capacity": 166,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 62,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 62,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 62,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 62,
+                            "teacher": "B7KBW7"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 166,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 62,
+                            "teacher": "GMYZG3"
+                        },
+                        {
+                            "capacity": 62,
+                            "teacher": "B7KBW7"
+                        }
+                    ],
+                    "name": "NW0KS4"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 53,
+                            "teacher": "XT7IN3"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 53,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 53,
+                            "teacher": "XT7IN3"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 53,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 53,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 53,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "XT7IN3"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "F94VOK"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "XT7IN3"
+                        }
+                    ],
+                    "name": "EQ0506"
+                },
+                {
+                    "lessons": [
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 87,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 87,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 87,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 87,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "P394KA"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 87,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 186,
+                            "teacher": "U50H82"
+                        },
+                        {
+                            "capacity": 87,
+                            "teacher": "U50H82"
+                        }
+                    ],
+                    "name": "WGU6SM"
+                }
+            ],
+            "program": "KSYSRS"
+        }
+    ],
+    "classrooms": [
+        {
+            "name" : "E1"
+            "capacity" : 200
+        },
+        {
+            "name" : "B1"
+            "capacity" : 200
+        },
+        {
+            "name" : "V1"
+            "capacity" : 200
+        },
+        {
+            "name" : "D1",
+            "capacity" : 150
+        },
+        {
+            "name" : "Q1",
+            "capacity" : 150
+        },
+        {
+            "name" : "K1",
+            "capacity" : 150
+        },
+        {
+            "name" : "F1",
+            "capacity" : 500
+        },
+        {
+            "name" : "E32",
+            "capacity" : 60
+        },
+        {
+            "name" : "E33",
+            "capacity" : 60
+        },
+        {
+            "name" : "E34",
+            "capacity" : 50
+        },
+        {
+            "name" : "E35",
+            "capacity" : 50
+        },
+        {
+            "name" : "D1",
+            "capacity" : 80
+        },
+        {
+            "name" : "D2",
+            "capacity" : 80
+        }
+    ]
+}

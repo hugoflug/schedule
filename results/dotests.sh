@@ -1,0 +1,10 @@
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic1.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic2.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic3.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic4.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic5.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic6.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic7.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic8.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic9.schedule
+java -jar schedule.jar --genetic medium.constraints --populationsize 120 --iter 5000 > medium_genetic10.schedule
