@@ -43,6 +43,9 @@ public class Main {
         Loader loader = new Loader();
         Evaluator evaluator = new Evaluator();
         Constraints constraints = null;
+        long timeStart;
+        long timeDelta;
+        
         try {
             constraints = loader.loadConstraints(constraintFile);
         } catch (IOException e) {
@@ -60,14 +63,19 @@ public class Main {
             System.out.println("Genetic algorithm failed.");
             return;
         }
+        
+        timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = genetic.evolve(iterations);
+        timeDelta = System.currentTimeMillis() - timeStart;
 
-        printEvaluation(schedules, evaluator, constraints);
+        printEvaluation(schedules, evaluator, constraints, timeDelta);
     }
 
     public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves) {
         Evaluator evaluator = new Evaluator();
         Loader loader = new Loader();
+        long timeStart;
+        long timeDelta;
 
         Constraints constraints = null;
         try {
@@ -79,18 +87,20 @@ public class Main {
             System.out.println("Couldn't parse constraints file: " + e);
             return;
         }
-
+        timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = TabuSearcher.tabuSearch(evaluator, constraints, listSize, iterations, moves);
+        timeDelta = System.currentTimeMillis() - timeStart;
         String outSchedule = Schedule.schedulesToString(schedules);
 
-        printEvaluation(schedules, evaluator, constraints);
+        printEvaluation(schedules, evaluator, constraints, timeDelta);
     }
 
-    private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints) {
+    private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints, long time) {
         String outSchedule = Schedule.schedulesToString(schedules);
         System.out.println(outSchedule);
         Evaluator.Result result =  evaluator.evaluateWithInfo(schedules, constraints);
         System.out.println();
+        System.out.println("Schedule generated in: " + (time / 1000) + " seconds.");
         System.out.println("Free periods penalty: " + result.getFreePeriods());
         System.out.println("Multiple lessons in same course on same day penalty: " + result.getOnSameDay());
         System.out.println("Collisions: " + result.getCollisions());
