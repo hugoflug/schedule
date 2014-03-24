@@ -26,11 +26,20 @@ public class Main {
             }
             tabuSearch(args[1], listSize, iterations, moves);
         } else if (args[0].equals("--genetic") || args[0].equals("-g")) {
-            genetic(args[1]);
+        	int populationSize = 60;
+            int iterations = 500;
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].equals("--populationsize")) {
+                    populationSize = Integer.parseInt(args[i+1]);
+                } else if (args[i].equals("--iter")) {
+                    iterations = Integer.parseInt(args[i+1]);
+                }
+            }
+            genetic(args[1], populationSize, iterations);
         }
     }
 
-    public static void genetic(String constraintFile) {
+    public static void genetic(String constraintFile, int populationSize, int iterations) {
         Loader loader = new Loader();
         Evaluator evaluator = new Evaluator();
         Constraints constraints = null;
@@ -46,12 +55,12 @@ public class Main {
 
         GeneticSchedule genetic = null;
         try {
-            genetic = new GeneticSchedule(constraints, 60);
+            genetic = new GeneticSchedule(constraints, populationSize);
         } catch (InvalidConfigurationException e) {
             System.out.println("Genetic algorithm failed.");
             return;
         }
-        ArrayList<Schedule> schedules = genetic.evolve(500);
+        ArrayList<Schedule> schedules = genetic.evolve(iterations);
 
         printEvaluation(schedules, evaluator, constraints);
     }
