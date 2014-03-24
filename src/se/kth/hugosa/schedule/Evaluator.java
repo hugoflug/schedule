@@ -1,10 +1,6 @@
 package se.kth.hugosa.schedule;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Evaluator {
 
@@ -12,11 +8,23 @@ public class Evaluator {
         private int freePeriods;
         private int onSameDay;
         private double total;
+        private int collisions;
+        private int overCapacities;
 
-        public Result(double total, int freePeriods, int onSameDay) {
+        public Result(double total, int freePeriods, int onSameDay, int collisions, int overCapacities) {
             this.freePeriods = freePeriods;
             this.onSameDay = onSameDay;
             this.total = total;
+            this.collisions = collisions;
+            this.overCapacities = overCapacities;
+        }
+
+        public int getCollisions() {
+            return collisions;
+        }
+
+        public int getOverCapacities() {
+            return overCapacities;
         }
 
         public int getFreePeriods() {
@@ -112,6 +120,8 @@ public class Evaluator {
     public Result evaluateWithInfo(List<Schedule> schedules, Constraints constraints) {
         double value = 0;
 
+        int collides = 0;
+        int overCapacity = 0;
         for (int i = 0; i < schedules.get(0).days.size(); i++) {
             List<Day> days = getDays(schedules, i);
 
@@ -119,12 +129,14 @@ public class Evaluator {
                 List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
                 if (collides(timeSlots)) {
-                    value += 20;
+                    collides++;
+                    value += 1000;
                 }
 
                 for (TimeSlot timeSlot : timeSlots) {
                     if (overCapacity(timeSlot)) {
-                        value += 20;
+                        overCapacity++;
+                        value += 1000;
                     }
                 }
             }
@@ -143,7 +155,7 @@ public class Evaluator {
         value += freePeriods;
         value += onSameDay;
 
-        return new Result(value, freePeriods, onSameDay);
+        return new Result(value, freePeriods, onSameDay, collides, overCapacity);
     }
 	
     public double evaluateSchedule(List<Schedule> schedules, Constraints constraints) {
@@ -156,12 +168,12 @@ public class Evaluator {
                List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
                if (collides(timeSlots)) {
-                   value += 10;
+                   value += 1000;
                }
 
                for (TimeSlot timeSlot : timeSlots) {
                   if (overCapacity(timeSlot)) {
-                      value += 10;
+                      value += 1000;
                   }
                }
            }

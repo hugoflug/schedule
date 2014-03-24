@@ -92,7 +92,9 @@ public class Main {
         Evaluator.Result result =  evaluator.evaluateWithInfo(schedules, constraints);
         System.out.println();
         System.out.println("Free periods penalty: " + result.getFreePeriods());
-        System.out.println("Multiple lessons in same course on on same day penalty: " + result.getOnSameDay());
+        System.out.println("Multiple lessons in same course on same day penalty: " + result.getOnSameDay());
+        System.out.println("Collisions: " + result.getCollisions());
+        System.out.println("Over capacities: " + result.getOverCapacities());
         System.out.println("Total penalty: " + result.getTotal());
     }
 }
