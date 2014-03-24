@@ -119,13 +119,11 @@ public class Evaluator {
                 List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
                 
-                value += collides(timeSlots);
+                value += 500*collides(timeSlots);
                 
 
                 for (TimeSlot timeSlot : timeSlots) {
-                    if (overCapacity(timeSlot)) {
-                        value += 20;
-                    }
+                	value += 200*overCapacity(timeSlot);
                 }
             }
 
@@ -155,12 +153,10 @@ public class Evaluator {
            for (int j = 0; j < 4; j++) {
                List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
-               value += collides(timeSlots);
+               value += 500*collides(timeSlots);
 
                for (TimeSlot timeSlot : timeSlots) {
-                  if (overCapacity(timeSlot)) {
-                      value += 10;
-                  }
+                  value += 200*overCapacity(timeSlot);
                }
            }
 
@@ -178,23 +174,23 @@ public class Evaluator {
     }
 
     //checks whether a TimeSlot is over its' allotted capacity
-    private boolean overCapacity(TimeSlot timeSlot) {
+    private int overCapacity(TimeSlot timeSlot) {
+    	int overCapacities = 0;
     	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
             Classroom classroom = entry.getKey();
             ScheduleElement element = entry.getValue();
             if (element != null) {
                 if (entry.getValue().getNumStudents() > entry.getKey().capacity) {
-                    return true;
+                    overCapacities++;
                 }
             }
     	}
-        return false;
+        return overCapacities;
     }
 
     //checks for collisions between a list of SchoolClasses held at the same time
     private int collides(List<TimeSlot> timeSlots) {
     	int collisions = 0;
-    	int penalty = 500;
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
@@ -220,7 +216,7 @@ public class Evaluator {
             
 
         }
-        return collisions*penalty;
+        return collisions;
     }
 
 }
