@@ -1,7 +1,7 @@
-program_nr = 5
-courses_low = 3
-courses_high = 5
-lessons_low = 10
+program_nr = 3
+courses_low = 2
+courses_high = 4
+lessons_low = 7
 lessons_high = 15
 small_cap_low = 50
 small_cap_high = 100
@@ -10,4 +10,4 @@ big_cap_high = 200
 big_prob = 0.72
 second_teacher_low = 0.6
 second_teacher_high = 1.0
-weeks = 3
+weeks = 4
