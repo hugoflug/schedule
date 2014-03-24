@@ -128,16 +128,15 @@ public class Evaluator {
             for (int j = 0; j < 4; j++) {
                 List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
-                if (collides(timeSlots)) {
-                    collides++;
-                    value += 1000;
-                }
+                int newCollides = collides(timeSlots);
+                collides += newCollides;
+                value += 500*newCollides;
+                
 
                 for (TimeSlot timeSlot : timeSlots) {
-                    if (overCapacity(timeSlot)) {
-                        overCapacity++;
-                        value += 1000;
-                    }
+                    int newOverCaps = overCapacity(timeSlot);
+                    overCapacity += newOverCaps;
+                	value += 200*newOverCaps;
                 }
             }
 
@@ -167,14 +166,10 @@ public class Evaluator {
            for (int j = 0; j < 4; j++) {
                List<TimeSlot> timeSlots = getTimeSlots(days, j);
 
-               if (collides(timeSlots)) {
-                   value += 1000;
-               }
+               value += 500*collides(timeSlots);
 
                for (TimeSlot timeSlot : timeSlots) {
-                  if (overCapacity(timeSlot)) {
-                      value += 1000;
-                  }
+                   value += 200*overCapacity(timeSlot);
                }
            }
 
@@ -192,49 +187,49 @@ public class Evaluator {
     }
 
     //checks whether a TimeSlot is over its' allotted capacity
-    private boolean overCapacity(TimeSlot timeSlot) {
+    private int overCapacity(TimeSlot timeSlot) {
+    	int overCapacities = 0;
     	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
             Classroom classroom = entry.getKey();
             ScheduleElement element = entry.getValue();
             if (element != null) {
                 if (entry.getValue().getNumStudents() > entry.getKey().capacity) {
-                    return true;
+                    overCapacities++;
                 }
             }
     	}
-        return false;
+        return overCapacities;
     }
 
     //checks for collisions between a list of SchoolClasses held at the same time
-    private boolean collides(List<TimeSlot> timeSlots) {
+    private int collides(List<TimeSlot> timeSlots) {
+    	int collisions = 0;
         Set<String> busyTeachers = new HashSet<String>();
         Set<Classroom> busyClassrooms = new HashSet<Classroom>();
         for (TimeSlot timeSlot : timeSlots) {
         	if (timeSlot.elementsMap.size() > 1) {
-        		return true;
+        		collisions++;
         	}
         	for (Map.Entry<Classroom, ScheduleElement> entry : timeSlot.elementsMap.entrySet()) {
                 ScheduleElement element = entry.getValue();
                 if (element != null) {
                     if (busyTeachers.contains(element.getTeacher())) {
-                        return true;
-                    } else {
-                        busyTeachers.add(element.getTeacher());
+                        collisions++;
                     }
+                    busyTeachers.add(element.getTeacher());
                 }
                 Classroom classroom = entry.getKey();
                 if (classroom != null) {
                     if (busyClassrooms.contains(classroom)) {
-                        return true;
-                    } else {
-                        busyClassrooms.add(classroom);
+                        collisions++;
                     }
+                    busyClassrooms.add(classroom);
                 }
         	}
             
 
         }
-        return false;
+        return collisions;
     }
 
 }
