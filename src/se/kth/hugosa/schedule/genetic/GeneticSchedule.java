@@ -75,7 +75,7 @@ public class GeneticSchedule {
 		
 	}
 	
-	public ArrayList<Schedule> evolve(int maxEvolutions){
+	public ArrayList<Schedule> evolve(int maxEvolutions, boolean print){
 		IChromosome bestSolution = null;
 		boolean optimalFound = false;
 		int evolutions = 0;
@@ -83,6 +83,9 @@ public class GeneticSchedule {
 			population.evolve();
 			bestSolution = population.getFittestChromosome();
             double fitnessValue = func.getFitnessValue(bestSolution);
+            if(print){
+            	System.out.println("" + evolutions + ", " + fitnessValue + ";");
+            }
             if (time != -1) {
                 if ((System.nanoTime() - startTime)/1000000 > time) {
                     System.out.println("Time is up (" + time + " ms)");

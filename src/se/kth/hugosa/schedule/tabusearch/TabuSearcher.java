@@ -8,7 +8,7 @@ import se.kth.hugosa.schedule.Schedule;
 import java.util.ArrayList;
 
 public class TabuSearcher {
-    public static ArrayList<Schedule> tabuSearch(Evaluator evaluator, Constraints constraints, int tabuListSize, int iterations, int moves, final int time) {
+    public static ArrayList<Schedule> tabuSearch(Evaluator evaluator, Constraints constraints, int tabuListSize, int iterations, int moves, final int time, final boolean print) {
         ObjectiveFunction objFunc = new ScheduleObjectiveFunction(evaluator, constraints);
         Solution initialSolution = new ScheduleSolution(constraints);
         MoveManager moveManager = new ScheduleMoveManager(constraints, moves);
@@ -35,6 +35,9 @@ public class TabuSearcher {
             }
             @Override
             public void newCurrentSolutionFound(TabuSearchEvent e) {
+            	if(print){
+            		System.out.println("" + tabuSearch.getIterationsCompleted() + ", " + tabuSearch.getBestSolution().getObjectiveValue()[0] + ";");
+            	}
                 if (time != -1) {
                     if ((System.nanoTime() - startTime)/1000000 > time) {
                         System.out.println("Time is up (" + time + " ms)");

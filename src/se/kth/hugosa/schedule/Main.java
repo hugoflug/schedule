@@ -16,6 +16,7 @@ public class Main {
             int iterations = 10000;
             int moves = 100;
             int time = -1;
+            boolean print = false;
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("--listsize")) {
                     listSize = Integer.parseInt(args[i+1]);
@@ -25,13 +26,16 @@ public class Main {
                     moves = Integer.parseInt(args[i+1]);
                 } else if (args[i].equals(("--time"))) {
                     time = Integer.parseInt(args[i+1]);
+                } else if (args[i].equals(("--print"))) {
+                    print = true;
                 }
             }
-            tabuSearch(args[1], listSize, iterations, moves, time);
+            tabuSearch(args[1], listSize, iterations, moves, time, print);
         } else if (args[0].equals("--genetic") || args[0].equals("-g")) {
         	int populationSize = 60;
             int iterations = 500;
             int time = -1;
+            boolean print = false; 
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("--populationsize")) {
                     populationSize = Integer.parseInt(args[i+1]);
@@ -39,13 +43,15 @@ public class Main {
                     iterations = Integer.parseInt(args[i+1]);
                 } else if (args[i].equals(("--time"))) {
                     time = Integer.parseInt(args[i+1]);
+                } else if (args[i].equals(("--print"))) {
+                    print = true;
                 }
             }
-            genetic(args[1], populationSize, iterations, time);
+            genetic(args[1], populationSize, iterations, time, print);
         }
     }
 
-    public static void genetic(String constraintFile, int populationSize, int iterations, int time) {
+    public static void genetic(String constraintFile, int populationSize, int iterations, int time, boolean print) {
         Loader loader = new Loader();
         Evaluator evaluator = new Evaluator();
         Constraints constraints = null;
@@ -71,13 +77,13 @@ public class Main {
         }
         
         timeStart = System.currentTimeMillis();
-        ArrayList<Schedule> schedules = genetic.evolve(iterations);
+        ArrayList<Schedule> schedules = genetic.evolve(iterations, print);
         timeDelta = System.currentTimeMillis() - timeStart;
 
         printEvaluation(schedules, evaluator, constraints, timeDelta);
     }
 
-    public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves, int time) {
+    public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves, int time, boolean print) {
         Evaluator evaluator = new Evaluator();
         Loader loader = new Loader();
         long timeStart;
@@ -94,7 +100,7 @@ public class Main {
             return;
         }
         timeStart = System.currentTimeMillis();
-        ArrayList<Schedule> schedules = TabuSearcher.tabuSearch(evaluator, constraints, listSize, iterations, moves, time);
+        ArrayList<Schedule> schedules = TabuSearcher.tabuSearch(evaluator, constraints, listSize, iterations, moves, time, print);
         timeDelta = System.currentTimeMillis() - timeStart;
         String outSchedule = Schedule.schedulesToString(schedules);
 
