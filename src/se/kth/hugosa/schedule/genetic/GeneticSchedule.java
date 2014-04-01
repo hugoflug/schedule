@@ -23,10 +23,6 @@ public class GeneticSchedule {
 		conf.resetProperty(Configuration.PROPERTY_FITEVAL_INST);
 		conf.setFitnessEvaluator(new DeltaFitnessEvaluator());
 		
-		conf.getGeneticOperators().clear();
-		SwappingMutationOperator swapper = new SwappingMutationOperator(conf);
-		conf.addGeneticOperator(swapper);
-		
 		this.constraints = constraints;
 		this.time = time;
         this.startTime = System.nanoTime();
@@ -37,10 +33,10 @@ public class GeneticSchedule {
 		int numSlots = constraints.getNumSlots();
 		int numElements = constraints.getNumElements();
 		
-		Gene[] sampleGenes = new Gene[numSlots];
+		Gene[] sampleGenes = new Gene[numElements];
 
 		for (int i = 0; i<sampleGenes.length; i++){
-			sampleGenes[i] = new IntegerGene(conf, -1, numElements-1);
+			sampleGenes[i] = new IntegerGene(conf, 0, numSlots-1);
 		}
 		
 		Chromosome sampleChromosome = new Chromosome(conf, sampleGenes);
@@ -49,24 +45,7 @@ public class GeneticSchedule {
 		conf.setPopulationSize(popSize);
 		
 		population = Genotype.randomInitialGenotype(conf);
-		ArrayList<Integer> numbers = new ArrayList<Integer>();
-		for (int i = 0; i<numSlots; i++){
-			if(i < numElements){
-				numbers.add(i);
-			}
-			else{
-				numbers.add(-1);
-			}
-		}
 		
-		List<IChromosome> chromosomes = population.getPopulation().getChromosomes();
-		for (IChromosome chromosome : chromosomes) {
-			Collections.shuffle(numbers);
-			for (int i = 0; i < chromosome.size(); i++){
-				Gene gene = chromosome.getGene(i);
-				gene.setAllele(numbers.get(i));
-			}
-		}
 		/*List<IChromosome> chromosomes2 = population.getPopulation().getChromosomes();
 		for (IChromosome chromosome : chromosomes2) {
 			Schedule.printSchedule(generateSchedule(chromosome, constraints));
@@ -125,6 +104,32 @@ public class GeneticSchedule {
 			result.add(new Schedule(constraints.getPrograms().get(i), constraints.getScheduleWeeks()));
 		}
 		
+		for (int i = 0; i < c.getGenes().length; i++) {
+			IntegerGene gene = (IntegerGene) c.getGene(i);
+			int index = gene.intValue();
+			int rooms = index % constraints.getNumClassrooms();
+			int slots = ((index - rooms) / 4) % 4;
+			int days = (index - (slots * 4) - rooms) / (constraints.getNumClassrooms() * 4);
+			
+			ScheduleElement element = constraints.getScheduleElements().get(i);
+			
+			Schedule schedule = result.get(constraints.getPrograms().indexOf(element.getProgram()));
+			
+			Day day = schedule.days.get(days);
+			if(day == null){
+				day = new Day();
+			}
+			
+			System.out.println("Element info: " + element.toString());
+			System.out.println("in " + constraints.getClassrooms().get(rooms) + " on day " + days + " slot " + slots + ".");
+			
+			
+			TimeSlot slot = day.timeSlots.get(slots);
+			slot.elementsMap.put(constraints.getClassrooms().get(rooms), element);
+			schedule.days.set(days, day);
+			
+		}
+		/*
 		for(int days = 0; days < constraints.getScheduleWeeks()*5; days++){
 			for(int slots = 0; slots < 4; slots++){
 				for(int rooms = 0; rooms < constraints.getNumClassrooms(); rooms++){
@@ -143,10 +148,10 @@ public class GeneticSchedule {
 						if(day == null){
 							day = new Day();
 						}
-						/*//test
+						///test
 						System.out.println("Element info: " + element.toString());
 						System.out.println("in " + constraints.getClassrooms().get(rooms) + " on day " + days + " slot " + slots + ".");
-						*/
+						//
 						
 						
 						TimeSlot slot = day.timeSlots.get(slots);
@@ -156,6 +161,7 @@ public class GeneticSchedule {
 				}
 			}
 		}
+		*/
 		return result;
 	}
 	

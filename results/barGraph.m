@@ -13,4 +13,4 @@ l = legend('Tabu Search', 'Genetic Algorithm');
 set(l, 'Location', 'NorthWest');
 set(gca,'XTickLabel',{'Small', 'Medium'});
 set(gca,'fontsize',14);
-ylabel('Time (s)', 'fontsize', 14);
+ylabel('Time   (s)', 'fontsize', 14);
