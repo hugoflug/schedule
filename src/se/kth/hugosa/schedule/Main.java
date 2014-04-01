@@ -81,11 +81,7 @@ public class Main {
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = genetic.evolve(iterations, print);
         timeDelta = System.currentTimeMillis() - timeStart;
-        if (!print) {
-        	printEvaluation(schedules, evaluator, constraints, timeDelta);
-        } else {
-        	System.out.print("];");
-        }
+        printEvaluation(schedules, evaluator, constraints, timeDelta);
         
     }
 
