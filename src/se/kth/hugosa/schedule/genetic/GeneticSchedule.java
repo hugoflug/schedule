@@ -91,7 +91,7 @@ public class GeneticSchedule {
                 	if (print) {
                 		System.out.println("];");
                 	}
-                    System.out.println("Time is up (" + time + " ms)");
+                    System.out.println("Time is up (" + time + " ms, " + evolutions + " evolutions)");
                     optimalFound = true;
                 }
             }
