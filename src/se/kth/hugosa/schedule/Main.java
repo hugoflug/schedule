@@ -114,11 +114,7 @@ public class Main {
         timeDelta = System.currentTimeMillis() - timeStart;
         String outSchedule = Schedule.schedulesToString(schedules);
 
-        if(!print){
-        	printEvaluation(schedules, evaluator, constraints, timeDelta);
-        } else {
-        	System.out.print("];");
-        }
+        printEvaluation(schedules, evaluator, constraints, timeDelta);
     }
 
     private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints, long time) {

@@ -88,15 +88,19 @@ public class GeneticSchedule {
             }
             if (time != -1) {
                 if ((System.nanoTime() - startTime)/1000000 > time) {
+                	if (print) {
+                		System.out.println("];");
+                	}
                     System.out.println("Time is up (" + time + " ms)");
                     optimalFound = true;
                 }
             }
             if(fitnessValue <= 0){
 				optimalFound = true;
-                if (!print) {
-                	System.out.println("Perfect solution found in " + evolutions + " evolutions");
-                }
+				if (print) {
+					System.out.println("];");
+				}
+				System.out.println("Perfect solution found in " + evolutions + " evolutions");
             }
             evolutions++;
 			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));

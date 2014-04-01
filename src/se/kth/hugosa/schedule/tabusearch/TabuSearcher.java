@@ -29,9 +29,10 @@ public class TabuSearcher {
             @Override
             public void newBestSolutionFound(TabuSearchEvent e) {
                 if (tabuSearch.getBestSolution().getObjectiveValue()[0] == 0) {
-                    if (!print) {
-                    	System.out.println("Perfect solution found in: " + tabuSearch.getIterationsCompleted());
-                    }
+                	if (print) {
+                		System.out.println("];");
+                	}
+                	System.out.println("Perfect solution found in: " + tabuSearch.getIterationsCompleted());
                     tabuSearch.setIterationsToGo(0);
                 }
             }
@@ -42,6 +43,9 @@ public class TabuSearcher {
             	}
                 if (time != -1) {
                     if ((System.nanoTime() - startTime)/1000000 > time) {
+                    	if (print) {
+                    		System.out.println("];");
+                    	}
                         System.out.println("Time is up (" + time + " ms)");
                         tabuSearch.setIterationsToGo(0);
                     }
