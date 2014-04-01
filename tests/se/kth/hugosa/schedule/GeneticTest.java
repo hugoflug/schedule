@@ -22,7 +22,7 @@ public class GeneticTest {
         System.out.println();
         
 		GeneticSchedule genetic = new GeneticSchedule(c, 60, -1);
-		ArrayList<Schedule> schedules = genetic.evolve(500);
+		ArrayList<Schedule> schedules = genetic.evolve(500, Mode.VERBOSE);
 		
 		System.out.println("Best fitness value: " + evaluator.evaluateSchedule(schedules, c));
 		Schedule.printSchedule(schedules);

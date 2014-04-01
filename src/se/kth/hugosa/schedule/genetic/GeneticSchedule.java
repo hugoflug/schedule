@@ -75,7 +75,7 @@ public class GeneticSchedule {
 		
 	}
 	
-	public ArrayList<Schedule> evolve(int maxEvolutions, boolean print){
+	public ArrayList<Schedule> evolve(int maxEvolutions, Mode mode){
 		IChromosome bestSolution = null;
 		boolean optimalFound = false;
 		int evolutions = 0;
@@ -83,24 +83,28 @@ public class GeneticSchedule {
 			population.evolve();
 			bestSolution = population.getFittestChromosome();
             double fitnessValue = func.getFitnessValue(bestSolution);
-            if(print){
+            if(mode == Mode.PRINT_ITERS){
             	System.out.print("" + evolutions + ", " + fitnessValue + "; ");
             }
             if (time != -1) {
                 if ((System.nanoTime() - startTime)/1000000 > time) {
-                	if (print) {
+                	if (mode == Mode.PRINT_ITERS) {
                 		System.out.println("];");
                 	}
-                    System.out.println("Time is up (" + time + " ms, " + evolutions + " evolutions)");
+                    if (mode == Mode.VERBOSE) {
+                        System.out.println("Time is up (" + time + " ms, " + evolutions + " evolutions)");
+                    }
                     optimalFound = true;
                 }
             }
             if(fitnessValue <= 0){
 				optimalFound = true;
-				if (print) {
+				if (mode == Mode.PRINT_ITERS) {
 					System.out.println("];");
 				}
-				System.out.println("Perfect solution found in " + evolutions + " evolutions");
+                if (mode == Mode.VERBOSE) {
+				    System.out.println("Perfect solution found in " + evolutions + " evolutions");
+                }
             }
             evolutions++;
 			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
