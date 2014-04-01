@@ -33,7 +33,7 @@ public class Main {
             tabuSearch(args[1], listSize, iterations, moves, time, print);
         } else if (args[0].equals("--genetic") || args[0].equals("-g")) {
         	int populationSize = 60;
-            int iterations = 500;
+            int iterations = 10000;
             int time = -1;
             boolean print = false; 
             for (int i = 0; i < args.length; i++) {
@@ -75,12 +75,18 @@ public class Main {
             System.out.println("Genetic algorithm failed.");
             return;
         }
-        
+        if (print) {
+        	System.out.print("Genetic = [");
+        }
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = genetic.evolve(iterations, print);
         timeDelta = System.currentTimeMillis() - timeStart;
-
-        printEvaluation(schedules, evaluator, constraints, timeDelta);
+        if (!print) {
+        	printEvaluation(schedules, evaluator, constraints, timeDelta);
+        } else {
+        	System.out.print("];");
+        }
+        
     }
 
     public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves, int time, boolean print) {
@@ -99,12 +105,20 @@ public class Main {
             System.out.println("Couldn't parse constraints file: " + e);
             return;
         }
+        
+        if(print){
+        	System.out.print("Tabu = [");
+        }
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = TabuSearcher.tabuSearch(evaluator, constraints, listSize, iterations, moves, time, print);
         timeDelta = System.currentTimeMillis() - timeStart;
         String outSchedule = Schedule.schedulesToString(schedules);
 
-        printEvaluation(schedules, evaluator, constraints, timeDelta);
+        if(!print){
+        	printEvaluation(schedules, evaluator, constraints, timeDelta);
+        } else {
+        	System.out.print("];");
+        }
     }
 
     private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints, long time) {

@@ -29,14 +29,16 @@ public class TabuSearcher {
             @Override
             public void newBestSolutionFound(TabuSearchEvent e) {
                 if (tabuSearch.getBestSolution().getObjectiveValue()[0] == 0) {
-                    System.out.println("Perfect solution found in: " + tabuSearch.getIterationsCompleted());
+                    if (!print) {
+                    	System.out.println("Perfect solution found in: " + tabuSearch.getIterationsCompleted());
+                    }
                     tabuSearch.setIterationsToGo(0);
                 }
             }
             @Override
             public void newCurrentSolutionFound(TabuSearchEvent e) {
             	if(print){
-            		System.out.println("" + tabuSearch.getIterationsCompleted() + ", " + tabuSearch.getBestSolution().getObjectiveValue()[0] + ";");
+            		System.out.print("" + tabuSearch.getIterationsCompleted() + ", " + tabuSearch.getBestSolution().getObjectiveValue()[0] + "; ");
             	}
                 if (time != -1) {
                     if ((System.nanoTime() - startTime)/1000000 > time) {

@@ -84,7 +84,7 @@ public class GeneticSchedule {
 			bestSolution = population.getFittestChromosome();
             double fitnessValue = func.getFitnessValue(bestSolution);
             if(print){
-            	System.out.println("" + evolutions + ", " + fitnessValue + ";");
+            	System.out.print("" + evolutions + ", " + fitnessValue + "; ");
             }
             if (time != -1) {
                 if ((System.nanoTime() - startTime)/1000000 > time) {
@@ -94,7 +94,9 @@ public class GeneticSchedule {
             }
             if(fitnessValue <= 0){
 				optimalFound = true;
-                System.out.println("Perfect solution found in " + evolutions + " evolutions");
+                if (!print) {
+                	System.out.println("Perfect solution found in " + evolutions + " evolutions");
+                }
             }
             evolutions++;
 			//Schedule.printSchedule(generateSchedule(bestSolution, constraints));
