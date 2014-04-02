@@ -22,7 +22,10 @@ public class GeneticTest {
         System.out.println();
         
 		GeneticSchedule genetic = new GeneticSchedule(c, 50, -1);
-		ArrayList<Schedule> schedules = genetic.evolve(500, Mode.PRINT_ITERS);
+		
+		long timeStart = System.currentTimeMillis();
+		ArrayList<Schedule> schedules = genetic.evolve(1000, Mode.VERBOSE);
+	    long timeDelta = System.currentTimeMillis() - timeStart;
 		
 		System.out.println("Best fitness value: " + evaluator.evaluateSchedule(schedules, c));
 		Schedule.printSchedule(schedules);
