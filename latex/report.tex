@@ -1,4 +1,5 @@
 \documentclass[titlepage,a4paper]{article}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[utf8]{inputenc}
@@ -178,7 +179,6 @@ It should be noted that the implementation of the algorithms certainly has an im
 For typical university scheduling problems, with the implementations of the algorithms used in this report, Tabu Search scales better to larger scheduling problems, while Genetic Algorithms is slower and will, for larger problems, have problems satisfying the last few constraints. The amount of neighbors visited in each iteration during Tabu Search should be low for an optimal algorithm, and the population size in the genetic algorithm should also be kept relatively small.
 
 \pagebreak
-\section{References}
 
 \bibliographystyle{plain}
 \bibliography{sources}
