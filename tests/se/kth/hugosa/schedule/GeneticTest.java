@@ -11,7 +11,7 @@ public class GeneticTest {
 	public void test() throws Exception{
 		Loader loader = new Loader();
 		Evaluator evaluator = new Evaluator();
-		Constraints c = loader.loadConstraints("tests/input_test_bigger.txt");
+		Constraints c = loader.loadConstraints("results/small.constraints");
 		
 		for (ScheduleElement e : c.getScheduleElements()) {
             System.out.println(e.toString());
@@ -21,8 +21,8 @@ public class GeneticTest {
         }
         System.out.println();
         
-		GeneticSchedule genetic = new GeneticSchedule(c, 60, -1);
-		ArrayList<Schedule> schedules = genetic.evolve(500, Mode.VERBOSE);
+		GeneticSchedule genetic = new GeneticSchedule(c, 50, -1);
+		ArrayList<Schedule> schedules = genetic.evolve(500, Mode.PRINT_ITERS);
 		
 		System.out.println("Best fitness value: " + evaluator.evaluateSchedule(schedules, c));
 		Schedule.printSchedule(schedules);
