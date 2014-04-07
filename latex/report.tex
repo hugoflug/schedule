@@ -180,6 +180,9 @@ The Tabu Search and Genetic Algorithms algorithms have several different paramet
 For Tabu Search, the parameters are the tabu list size and the amount of neighbors evaluated in each iteration. 
 In the genetic algorithm, the only parameter is the size of the population.
 
+\subsection{Solution evaluation}
+The same evaluation function is used to evaluate solutions in both algorithms. The evaluation function outputs a penalty value that increases with each constraint violated, so a lower evaluation value is desirable and a perfect schedule has an evaluation value of 0. In the evaluation function, every time you have a collision - either a teacher teaching two lessons at the same time, or two lessons in the same classroom ath the same time, the evaluation score increases by 500. When a classroom is overfilled, the evaluation score is also increased by 500. This corresponds to the hard constraints.
+
 \pagebreak
 \section{Results}
 \subsection{Scaling}
