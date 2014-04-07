@@ -13,6 +13,7 @@ import java.util.List;
 public class GeneticSchedule {
 	private Configuration conf;
 	private FitnessFunction func;
+	private SwappingMutationOperator swapper;
 	private Genotype population;
 	private Constraints constraints;
 	private int time;
@@ -24,8 +25,9 @@ public class GeneticSchedule {
 		conf.setFitnessEvaluator(new DeltaFitnessEvaluator());
 		
 		conf.getGeneticOperators().clear();
-		SwappingMutationOperator swapper = new SwappingMutationOperator(conf, rate);
+		swapper = new SwappingMutationOperator(conf);
 		conf.addGeneticOperator(swapper);
+		
 		
 		this.constraints = constraints;
 		this.time = time;
