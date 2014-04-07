@@ -96,7 +96,7 @@ After the schedule is generated, the program assesses how well the various soft 
 Two different input files of increasing sizes is used to generate the schedules. The input files are artificial, but constructed with inspiration from how the input to the KTH scheduling system works.
 A script which randomly generates constraints is used to generate the constraints. The script randomly generates a schedule according to the following input:
 \begin{itemize}
-  \item \emph{programs} decides the amount of prgorams.
+  \item \emph{programs} decides the amount of programs.
   \item \emph{courses-low} and \emph{courses-high} decide the upper and lower bounds of the amount of courses in each program. The actual value is randomized between the two.
   \item \emph{lessons-low} and \emph{lessons-high} decide the upper and lower bounds on the amount of lessons.
   \item \emph{big-prob}, the probability that a class will be \emph{big}
@@ -106,8 +106,7 @@ A script which randomly generates constraints is used to generate the constraint
   \item \emph{weeks} decide the time period, in amount of weeks, that the schedule should cover.
 \end{itemize} 
 How well the different algorithms scale with increasingly complex input will then be studied. \\\\
-The small input file was generated with the following input:
-
+The small input file was generated with the following input: \\
 \medskip
 \begin{tabular}{| l | c |}
   \hline
@@ -138,9 +137,39 @@ The small input file was generated with the following input:
   weeks & 4 \\
   \hline
 \end{tabular}
+\medskip \\
+The large input file was generated with the following input: \\
 \medskip
-The large input file was generated with the following input:
-
+\begin{tabular}{| l | c |}
+  \hline
+  programs & 6 \\
+  \hline
+  courses-low & 3 \\
+  \hline
+  courses-high & 5 \\
+  \hline
+  lessons-low & 15 \\
+  \hline  
+  lessons-high & 20 \\
+  \hline  
+  big-prob & 0.72 \\
+  \hline  
+  small-cap-low & 50 \\
+  \hline  
+  small-cap-high & 100 \\
+  \hline  
+  big-cap-low & 150 \\
+  \hline  
+  big-cap-high & 200 \\
+  \hline  
+  second-teacher-low & 0.6 \\
+  \hline  
+  second-teacher-high & 1.0 \\
+  \hline
+  weeks & 10 \\
+  \hline
+\end{tabular}
+\medskip \\
 Since both algorithms has elements of randomness they are run 10 times with each input file, after which the average result is calculated, to avoid the impact of chance on the algorithms. \\\\
 The Tabu Search algorithm is implemented as described in the background section. The neighbors are generated in two ways, by changing the classroom of a random lesson to a random new classroom, and by swapping the time of two lessons. The possible swaps and changes are calculated at random. The solutions in the tabu list is then excluded from the neighbors. When researching how well the algorithms scale, the tabu list has a size of 10 solutions, and each solution remains in the tabu list until 10 more solutions have been evaluated. \\\\
 The chromosomes of the genetic algorithm are set up using genes with integer values. Each gene corresponds to a classroom and a point in time. The value of the gene represents the activity scheduled there. The initial chromosomes are completely randomized. The only genetic operator used in the algorithm is a mutation operator that randomly swaps the values of the genes within the chromosome. The population size used for the scaling tests is 60. \\\\
