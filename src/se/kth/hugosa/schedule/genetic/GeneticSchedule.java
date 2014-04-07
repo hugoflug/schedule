@@ -18,13 +18,13 @@ public class GeneticSchedule {
 	private int time;
     private long startTime;
 
-	public GeneticSchedule (Constraints constraints, int popSize, int time) throws InvalidConfigurationException {
+	public GeneticSchedule (Constraints constraints, int popSize, int rate, int time) throws InvalidConfigurationException {
 		conf = new DefaultConfiguration();
 		conf.resetProperty(Configuration.PROPERTY_FITEVAL_INST);
 		conf.setFitnessEvaluator(new DeltaFitnessEvaluator());
 		
 		conf.getGeneticOperators().clear();
-		SwappingMutationOperator swapper = new SwappingMutationOperator(conf);
+		SwappingMutationOperator swapper = new SwappingMutationOperator(conf, rate);
 		conf.addGeneticOperator(swapper);
 		
 		this.constraints = constraints;

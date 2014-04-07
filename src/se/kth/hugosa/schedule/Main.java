@@ -39,6 +39,7 @@ public class Main {
         	int populationSize = 60;
             int iterations = 10000;
             int time = -1;
+            int rate = 10;
             Mode mode = Mode.VERBOSE;
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("--populationsize")) {
@@ -47,6 +48,8 @@ public class Main {
                     iterations = Integer.parseInt(args[i+1]);
                 } else if (args[i].equals(("--time"))) {
                     time = Integer.parseInt(args[i+1]);
+                } else if (args[i].equals(("--mutationrate"))) {
+                    rate = Integer.parseInt(args[i+1]);
                 } else if (args[i].equals(("--mode"))) {
                     if (args[i+1].equals("PRINT_ITERS")) {
                         mode = Mode.PRINT_ITERS;
@@ -55,11 +58,11 @@ public class Main {
                     }
                 }
             }
-            genetic(args[1], populationSize, iterations, time, mode);
+            genetic(args[1], populationSize, iterations, rate, time, mode);
         }
     }
 
-    public static void genetic(String constraintFile, int populationSize, int iterations, int time, Mode mode) {
+    public static void genetic(String constraintFile, int populationSize, int iterations, int rate, int time, Mode mode) {
         Loader loader = new Loader();
         Evaluator evaluator = new Evaluator();
         Constraints constraints = null;
@@ -78,7 +81,7 @@ public class Main {
 
         GeneticSchedule genetic = null;
         try {
-            genetic = new GeneticSchedule(constraints, populationSize, time);
+            genetic = new GeneticSchedule(constraints, populationSize, rate, time);
         } catch (InvalidConfigurationException e) {
             System.out.println("Genetic algorithm failed.");
             return;
