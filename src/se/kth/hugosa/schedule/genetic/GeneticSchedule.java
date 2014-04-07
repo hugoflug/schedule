@@ -1,8 +1,12 @@
 package se.kth.hugosa.schedule.genetic;
 
 import org.jgap.*;
+import org.jgap.impl.CrossoverOperator;
 import org.jgap.impl.DefaultConfiguration;
+import org.jgap.impl.DefaultCrossoverRateCalculator;
 import org.jgap.impl.IntegerGene;
+import org.jgap.impl.MutationOperator;
+
 import se.kth.hugosa.schedule.*;
 
 import java.util.ArrayList;
@@ -19,6 +23,12 @@ public class GeneticSchedule {
 		conf = new DefaultConfiguration();
 		conf.resetProperty(Configuration.PROPERTY_FITEVAL_INST);
 		conf.setFitnessEvaluator(new DeltaFitnessEvaluator());
+		
+		conf.getGeneticOperators().clear();
+		CrossoverOperator crossover = new CrossoverOperator(conf, new DefaultCrossoverRateCalculator(conf));
+		MutationOperator mutator = new MutationOperator(conf);
+		conf.addGeneticOperator(crossover);
+	    conf.addGeneticOperator(mutator);
 		
 		this.constraints = constraints;
 		this.time = time;

@@ -21,10 +21,10 @@ public class GeneticTest {
         }
         System.out.println();
         
-		GeneticSchedule genetic = new GeneticSchedule(c, 50, -1);
+		GeneticSchedule genetic = new GeneticSchedule(c, 10, -1);
 		
 		long timeStart = System.currentTimeMillis();
-		ArrayList<Schedule> schedules = genetic.evolve(1000, Mode.VERBOSE);
+		ArrayList<Schedule> schedules = genetic.evolve(10000, Mode.PRINT_ITERS);
 	    long timeDelta = System.currentTimeMillis() - timeStart;
 		
 		System.out.println("Best fitness value: " + evaluator.evaluateSchedule(schedules, c));
