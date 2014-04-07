@@ -94,6 +94,16 @@ The soft constraints, which are used to evaluate the schedule but are not necess
 \medskip
 After the schedule is generated, the program assesses how well the various soft constraints were fulfilled. If a perfect schedule, i. e. one where all soft and hard constraints are fulfilled, can be generated in a reasonable time, the amount of time and iterations of each algorithm is compared. \\\\
 Two different input files of increasing sizes is used to generate the schedules. The input files are artificial, but constructed with inspiration from how the input to the KTH scheduling system works.
+A script which randomly generates constraints is used to generate the constraints. The script randomly generates a schedule according to the following input:
+\begin{itemize}
+  \item \emph{programs} decides the amount of prgorams.
+  \item \emph{courses\\_low} and \emph{courses\\_high} decide the upper and lower bounds of the amount of courses in each program. The actual value is randomized between the two.
+  \item \emph{lessons\_low} and \emph{lessons\_high} decide the upper and lower bounds on the amount of lessons.
+  \item \emph{big\_prob}, the probability that a class will be \emph{big}
+  \item \emph{small\_cap_low} and \emph{small\_cap\_high} decide the upper and lower bounds on the required capacity of a \emph{small} class.
+  \item \emph{big\_cap\_low} and \emph{big\_cap\_high} decide the upper and lower bounds on the required capacity of a \emph{big} class.
+  \item Each course has two different teachers. \emph{second\_teacher\_low} and \emph{second\_teacher\_high} is the upper and lower bounds on the probability that each lesson in a given course will be given by the \emph{second teacher}.
+\end{itemize} 
 How well the different algorithms scale with increasingly complex input will then be studied.
 The small input file features 3 programmes with between 2 and 4 courses. Each course has between 7 and 15 lessons.
 The large input file features 6 programmes, each with between 3 and 5 courses. Each course has between 15 and 20 lessons.
