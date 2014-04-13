@@ -108,7 +108,7 @@ public class Main {
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = genetic.evolve(iterations, mode);
         timeDelta = System.currentTimeMillis() - timeStart;
-        printEvaluation(schedules, evaluator, constraints, timeDelta, mode);
+        printEvaluation(schedules, evaluator, constraints, timeDelta, mode, name);
         
     }
 
@@ -137,10 +137,10 @@ public class Main {
         timeDelta = System.currentTimeMillis() - timeStart;
         String outSchedule = Schedule.schedulesToString(schedules);
 
-        printEvaluation(schedules, evaluator, constraints, timeDelta, mode);
+        printEvaluation(schedules, evaluator, constraints, timeDelta, mode, name);
     }
 
-    private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints, long time, Mode mode) {
+    private static void printEvaluation(ArrayList<Schedule> schedules, Evaluator evaluator, Constraints constraints, long time, Mode mode, String name) {
         if (mode == Mode.VERBOSE) {
             String outSchedule = Schedule.schedulesToString(schedules);
             System.out.println(outSchedule);
@@ -153,7 +153,7 @@ public class Main {
             System.out.println("Over capacities: " + result.getOverCapacities());
             System.out.println("Total penalty: " + result.getTotal());
         } else if (mode == Mode.PRINT_TIME) {
-            System.out.println(time / 1000.0);
+            System.out.println("time_"  + name + " = " + (time / 1000.0));
         }
     }
 }
