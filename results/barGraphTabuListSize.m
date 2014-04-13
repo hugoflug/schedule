@@ -12,5 +12,5 @@ fontsize = 14;
 bar(X, 0.4);
 set(gca,'XTickLabel',{'10', '100', '1000'});
 set(gca,'fontsize', fontsize);
-ylabel('Time (s)', 'fontsize', fontsize);
+ylabel('Time   (s)', 'fontsize', fontsize);
 xlabel('Tabu list size', 'fontsize', fontsize);
