@@ -48,7 +48,7 @@ public class GeneticSchedule {
 		// Setting up crossoverrate
 		double crossRate;
 		if (cDynamic) {
-			crossRate = (1.0 * cRate)/(numElements);
+			crossRate = (1.0) / (cRate * ((double) numElements));
 		} else {
 			crossRate = cRate;
 		}
@@ -89,7 +89,7 @@ public class GeneticSchedule {
 			bestSolution = population.getFittestChromosome();
             double fitnessValue = func.getFitnessValue(bestSolution);
             if(mode == Mode.PRINT_ITERS){
-            	System.out.print("" + evolutions + ", " + fitnessValue + "; ");
+            	System.out.print("" + fitnessValue + " ");
             }
             if (time != -1) {
                 if ((System.nanoTime() - startTime)/1000000 > time) {

@@ -42,7 +42,7 @@ public class TabuSearcher {
             @Override
             public void newCurrentSolutionFound(TabuSearchEvent e) {
             	if(mode == Mode.PRINT_ITERS){
-            		System.out.print("" + tabuSearch.getIterationsCompleted() + ", " + tabuSearch.getBestSolution().getObjectiveValue()[0] + "; ");
+            		System.out.print("" + tabuSearch.getBestSolution().getObjectiveValue()[0] + " ");
             	}
                 if (time != -1) {
                     if ((System.nanoTime() - startTime)/1000000 > time) {
