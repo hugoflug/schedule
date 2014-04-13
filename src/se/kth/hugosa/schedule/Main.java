@@ -39,7 +39,7 @@ public class Main {
             }
             tabuSearch(args[1], listSize, iterations, moves, time, mode, name);
         } else if (args[0].equals("--genetic") || args[0].equals("-g")) {
-        	int populationSize = 60;
+        	int populationSize = 10;
             int iterations = 10000;
             int time = -1;
             String name = "";
@@ -47,8 +47,8 @@ public class Main {
             double cRate = 1.0;
             boolean mDynamic = true;
             boolean cDynamic = true;
-            
             Mode mode = Mode.VERBOSE;
+            
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("--populationsize")) {
                     populationSize = Integer.parseInt(args[i+1]);
@@ -153,7 +153,7 @@ public class Main {
             System.out.println("Over capacities: " + result.getOverCapacities());
             System.out.println("Total penalty: " + result.getTotal());
         } else if (mode == Mode.PRINT_TIME) {
-            System.out.println("time_"  + name + " = " + (time / 1000.0));
+            System.out.println("time_"  + name + " = " + (time / 1000.0) + ";");
         }
     }
 }
