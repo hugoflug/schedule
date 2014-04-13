@@ -29,8 +29,8 @@ Simon Forssell, sifo@kth.se \\
 \maketitle
 
 \begin{abstract}
-Timetabling generation is a common real-world problem, that has been shown to be hard to solve. In a timetabling algorithm, various scheduling constraints are the input and the output is a schedule satisfying these constraints.
-In this report, two algorithms for timetabling generation is compared: Tabu Search and a Genetic Algorithm. How well the algorithms perform for generating schedules from constraint input is assessed, as well as how well they scale up when the input is considerably larger.
+Timetable generation is a common real-world problem, that has been shown to be hard to solve. In a timetabling algorithm, various constraints related to scheduling are the input and the output is a schedule satisfying these constraints.
+In this report, two algorithms for timetabling generation is compared: Tabu Search and a Genetic Algorithm. How well the algorithms perform for generating schedules from constraint input of different sizes is assessed, as well as how the performance of the algorithms is affected by varying parameters of the algorithm.
 \end{abstract}
 
 \tableofcontents{}
@@ -89,7 +89,7 @@ The hard constraints, i. e. the ones which has to be fulfilled by the algorithm,
   \item A teacher may only teach one class at a time
 \end{itemize} 
 \medskip
-The soft constraints, which are used to evaluate the schedule but are not necessary to fulfill, are:
+The soft constraints, which are used to evaluate the schedule but are not absolutely necessary to fulfill, are:
 \begin{itemize}
   \item The amount of free periods, i.e. unscheduled time between classes in a day for students, should be minimized
   \item There should preferably not be more than one lesson in the same course in a day
@@ -100,14 +100,14 @@ After the schedule is generated, the program assesses how well the various soft 
 Two different input files of increasing sizes is used to generate the schedules. The input files are artificial, but constructed with inspiration from how the input to the KTH scheduling system works.
 A script which randomly generates constraints is used to generate the constraints. The script randomly generates a schedule according to the following input:
 \begin{itemize}
-  \item \emph{programs} decides the amount of programs.
-  \item \emph{courses-low} and \emph{courses-high} decide the upper and lower bounds of the amount of courses in each program. The actual value is randomized between the two.
-  \item \emph{lessons-low} and \emph{lessons-high} decide the upper and lower bounds on the amount of lessons.
-  \item \emph{big-prob}, the probability that a class will be \emph{big}
-  \item \emph{small-cap-low} and \emph{small-cap-high} decide the upper and lower bounds on the required capacity of a \emph{small} class.
-  \item \emph{big-cap-low} and \emph{big-cap-high} decide the upper and lower bounds on the required capacity of a \emph{big} class.
-  \item Each course has two different teachers. \emph{second-teacher-low} and \emph{second-teacher-high} is the upper and lower bounds on the probability that each lesson in a given course will be given by the \emph{second teacher}.
-  \item \emph{weeks} decide the time period, in amount of weeks, that the schedule should cover.
+  \item \texttt{programs} decides the amount of programs.
+  \item \texttt{courses-low} and \texttt{courses-high} decide the upper and lower bounds of the amount of courses in each program. The actual value is randomized between the two.
+  \item \texttt{lessons-low} and \texttt{lessons-high} decide the upper and lower bounds on the amount of lessons.
+  \item \texttt{big-prob}, the probability that a class will be \emph{big}
+  \item \texttt{small-cap-low} and \texttt{small-cap-high} decide the upper and lower bounds on the required capacity of a \emph{small} class.
+  \item \texttt{big-cap-low} and \texttt{big-cap-high} decide the upper and lower bounds on the required capacity of a \emph{big} class.
+  \item Each course has two different teachers. \texttt{second-teacher-low} and \texttt{second-teacher-high} is the upper and lower bounds on the probability that each lesson in a given course will be given by the \texttt{second teacher}.
+  \item \texttt{weeks} decide the time period, in amount of weeks, that the schedule should cover.
 \end{itemize} 
 The small input file was generated with the following input: \\\\
 \medskip
@@ -235,6 +235,7 @@ For the large-sized input file, the tabu search could create a perfect schedule 
   \label{time_bar_graph}
 \end{figure}
 
+\pagebreak
 \subsection{Evaluation score development}
 The evaluation score varies during one running of the algorithm as follows: \\\\
 \begin{figure}[H]
@@ -249,6 +250,7 @@ The evaluation score varies during one running of the algorithm as follows: \\\\
   \label{plot_large}
 \end{figure}
 
+\pagebreak
 \subsection{Algorithm parameters}
 These graphs portray how the running time was influenced by varying the various parameters to the algorithms. Particularly, it shows how long time it took, on an average over 10 runs, to solve the small constraints file when the parameters are varied. \\\\
 \begin{figure}[H]
