@@ -16,7 +16,7 @@ public class Main {
             int iterations = 10000;
             int moves = 100;
             int time = -1;
-            String name = "";
+            String name = "Tabu";
             Mode mode = Mode.VERBOSE;
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("--listsize")) {
@@ -42,7 +42,7 @@ public class Main {
         	int populationSize = 10;
             int iterations = 10000;
             int time = -1;
-            String name = "";
+            String name = "Genetic";
             double mRate = 1.0;
             double cRate = 1.0;
             boolean mDynamic = true;
@@ -103,7 +103,7 @@ public class Main {
             return;
         }
         if (mode == Mode.PRINT_ITERS) {
-        	System.out.print("Genetic_" + name + " = [");
+        	System.out.print("" + name + " = [");
         }
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = genetic.evolve(iterations, mode);
@@ -130,7 +130,7 @@ public class Main {
         }
         
         if(mode == Mode.PRINT_ITERS){
-        	System.out.print("Tabu_" + name + " = [");
+        	System.out.print("" + name + " = [");
         }
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = TabuSearcher.tabuSearch(evaluator, constraints, listSize, iterations, moves, time, mode);

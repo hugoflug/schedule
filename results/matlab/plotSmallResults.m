@@ -1,10 +1,10 @@
 clear;
-tabuTestResults;
-geneticTestResults;
+tabuSmallResults;
+geneticSmallResults;
 
 fontsize1 = 12;
 fontsize2 = 15;
-plot(Tabu(:,1),Tabu(:,2),'b',Genetic(:,1),Genetic(:,2),'g');
+plot([1:1:size(tabu_avg,2)],tabu_avg,'b',[1:1:size(genetic_avg,2)],genetic_avg,'g');
 %subplot(2,1,1); plot(Tabu(:,1),Tabu(:,2));
 %title('Tabu search','fontsize',fontsize2)
 xlabel('Iterations','fontsize',fontsize2);
