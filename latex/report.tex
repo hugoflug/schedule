@@ -100,14 +100,14 @@ After the schedule is generated, the program assesses how well the various soft 
 Two different input files of increasing sizes is used to generate the schedules. The input files are artificial, but constructed with inspiration from how the input to the KTH scheduling system works.
 A script which randomly generates constraints is used to generate the constraints. The script randomly generates a schedule according to the following input:
 \begin{itemize}
-  \item \emph{programs} decides the amount of programs.
-  \item \emph{courses-low} and \emph{courses-high} decide the upper and lower bounds of the amount of courses in each program. The actual value is randomized between the two.
-  \item \emph{lessons-low} and \emph{lessons-high} decide the upper and lower bounds on the amount of lessons.
-  \item \emph{big-prob}, the probability that a class will be \emph{big}
-  \item \emph{small-cap-low} and \emph{small-cap-high} decide the upper and lower bounds on the required capacity of a \emph{small} class.
-  \item \emph{big-cap-low} and \emph{big-cap-high} decide the upper and lower bounds on the required capacity of a \emph{big} class.
-  \item Each course has two different teachers. \emph{second-teacher-low} and \emph{second-teacher-high} is the upper and lower bounds on the probability that each lesson in a given course will be given by the \emph{second teacher}.
-  \item \emph{weeks} decide the time period, in amount of weeks, that the schedule should cover.
+  \item \texttt{programs} decides the amount of programs.
+  \item \texttt{courses-low} and \texttt{courses-high} decide the upper and lower bounds of the amount of courses in each program. The actual value is randomized between the two.
+  \item \texttt{lessons-low} and \texttt{lessons-high} decide the upper and lower bounds on the amount of lessons.
+  \item \texttt{big-prob}, the probability that a class will be \emph{big}
+  \item \texttt{small-cap-low} and \texttt{small-cap-high} decide the upper and lower bounds on the required capacity of a \emph{small} class.
+  \item \texttt{big-cap-low} and \texttt{big-cap-high} decide the upper and lower bounds on the required capacity of a \emph{big} class.
+  \item Each course has two different teachers. \texttt{second-teacher-low} and \texttt{second-teacher-high} is the upper and lower bounds on the probability that each lesson in a given course will be given by the \texttt{second teacher}.
+  \item \texttt{weeks} decide the time period, in amount of weeks, that the schedule should cover.
 \end{itemize} 
 The small input file was generated with the following input: \\\\
 \medskip
