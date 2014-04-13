@@ -19,27 +19,52 @@ public class GeneticSchedule {
 	private int time;
     private long startTime;
 
-	public GeneticSchedule (Constraints constraints, int popSize, int rate, int time) throws InvalidConfigurationException {
+	public GeneticSchedule (Constraints constraints, int popSize, double mRate, boolean mDynamic, double cRate, boolean cDynamic, int time) throws InvalidConfigurationException {
+		this.constraints = constraints;
+		int numSlots = constraints.getNumSlots();
+		int numElements = constraints.getNumElements();
+		
 		conf = new DefaultConfiguration();
 		conf.resetProperty(Configuration.PROPERTY_FITEVAL_INST);
 		conf.setFitnessEvaluator(new DeltaFitnessEvaluator());
 		
 		conf.getGeneticOperators().clear();
-		CrossoverOperator crossover = new CrossoverOperator(conf, new DefaultCrossoverRateCalculator(conf));
-		MutationOperator mutator = new MutationOperator(conf);
-		conf.addGeneticOperator(crossover);
+		//CrossoverOperator crossover = new CrossoverOperator(conf, new DefaultCrossoverRateCalculator(conf));
+		
+		
+		// Setting up mutationrate
+		int mutationRate;
+		if (mDynamic) {
+			mutationRate = (int) (mRate * ((double) numElements));
+		} else {
+			mutationRate = (int) mRate;
+		}
+		if (mutationRate < 1){
+			mutationRate = 1;
+		}
+		MutationOperator mutator = new MutationOperator(conf, mutationRate);
 	    conf.addGeneticOperator(mutator);
 		
+		// Setting up crossoverrate
+		double crossRate;
+		if (cDynamic) {
+			crossRate = (1.0 * cRate)/(numElements);
+		} else {
+			crossRate = cRate;
+		}
+		if(crossRate > 1.0){
+			crossRate = 1.0;
+		}
+		if(crossRate > 0.0){
+			CrossoverOperator crossover = new CrossoverOperator(conf, crossRate);
+			conf.addGeneticOperator(crossover);
+		}
 		
-		this.constraints = constraints;
 		this.time = time;
         this.startTime = System.nanoTime();
 
 		func = new ScheduleFitnessFunction(constraints);
 		conf.setFitnessFunction(func);
-		
-		int numSlots = constraints.getNumSlots();
-		int numElements = constraints.getNumElements();
 		
 		Gene[] sampleGenes = new Gene[numElements];
 

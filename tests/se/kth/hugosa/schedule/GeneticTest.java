@@ -21,7 +21,7 @@ public class GeneticTest {
         }
         System.out.println();
         
-		GeneticSchedule genetic = new GeneticSchedule(c, 10, -1);
+		GeneticSchedule genetic = new GeneticSchedule(c, 10, 5, -1);
 		
 		long timeStart = System.currentTimeMillis();
 		ArrayList<Schedule> schedules = genetic.evolve(10000, Mode.PRINT_ITERS);
@@ -29,9 +29,6 @@ public class GeneticTest {
 		
 		System.out.println("Best fitness value: " + evaluator.evaluateSchedule(schedules, c));
 		Schedule.printSchedule(schedules);
-		
-		
-		
 	}
 
 }

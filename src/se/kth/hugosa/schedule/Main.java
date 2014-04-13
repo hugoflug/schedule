@@ -16,6 +16,7 @@ public class Main {
             int iterations = 10000;
             int moves = 100;
             int time = -1;
+            String name = "";
             Mode mode = Mode.VERBOSE;
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("--listsize")) {
@@ -32,14 +33,21 @@ public class Main {
                     } else if (args[i+1].equals("PRINT_TIME")) {
                         mode = Mode.PRINT_TIME;
                     }
+                } else if (args[i].equals(("--name"))) {
+                    name = args[i+1];
                 }
             }
-            tabuSearch(args[1], listSize, iterations, moves, time, mode);
+            tabuSearch(args[1], listSize, iterations, moves, time, mode, name);
         } else if (args[0].equals("--genetic") || args[0].equals("-g")) {
         	int populationSize = 60;
             int iterations = 10000;
             int time = -1;
-            int rate = 10;
+            String name = "";
+            double mRate = 1.0;
+            double cRate = 1.0;
+            boolean mDynamic = true;
+            boolean cDynamic = true;
+            
             Mode mode = Mode.VERBOSE;
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("--populationsize")) {
@@ -49,20 +57,28 @@ public class Main {
                 } else if (args[i].equals(("--time"))) {
                     time = Integer.parseInt(args[i+1]);
                 } else if (args[i].equals(("--mutationrate"))) {
-                    rate = Integer.parseInt(args[i+1]);
+                    mRate = Double.parseDouble(args[i+1]);
+                } else if (args[i].equals(("--setMRnotdynamic"))) {
+                    mDynamic = false;
+                } else if (args[i].equals(("--crossoverrate"))) {
+                    cRate = Double.parseDouble(args[i+1]);
+                } else if (args[i].equals(("--setCRnotdynamic"))) {
+                    cDynamic = false;
                 } else if (args[i].equals(("--mode"))) {
                     if (args[i+1].equals("PRINT_ITERS")) {
                         mode = Mode.PRINT_ITERS;
                     } else if (args[i+1].equals("PRINT_TIME")) {
                         mode = Mode.PRINT_TIME;
                     }
+                } else if (args[i].equals(("--name"))) {
+                    name = args[i+1];
                 }
             }
-            genetic(args[1], populationSize, iterations, rate, time, mode);
+            genetic(args[1], populationSize, iterations, mRate, mDynamic, cRate, cDynamic, time, mode, name);
         }
     }
 
-    public static void genetic(String constraintFile, int populationSize, int iterations, int rate, int time, Mode mode) {
+    public static void genetic(String constraintFile, int populationSize, int iterations, double mRate, boolean mDynamic, double cRate, boolean cDynamic, int time, Mode mode, String name) {
         Loader loader = new Loader();
         Evaluator evaluator = new Evaluator();
         Constraints constraints = null;
@@ -78,16 +94,16 @@ public class Main {
             System.out.println("Couldn't parse constraints file: " + e);
             return;
         }
-
+        
         GeneticSchedule genetic = null;
         try {
-            genetic = new GeneticSchedule(constraints, populationSize, rate, time);
+            genetic = new GeneticSchedule(constraints, populationSize, mRate, mDynamic, cRate, cDynamic, time);
         } catch (InvalidConfigurationException e) {
             System.out.println("Genetic algorithm failed.");
             return;
         }
         if (mode == Mode.PRINT_ITERS) {
-        	System.out.print("Genetic = [");
+        	System.out.print("Genetic_" + name + " = [");
         }
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = genetic.evolve(iterations, mode);
@@ -96,7 +112,7 @@ public class Main {
         
     }
 
-    public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves, int time, Mode mode) {
+    public static void tabuSearch(String constraintFile, int listSize, int iterations, int moves, int time, Mode mode, String name) {
         Evaluator evaluator = new Evaluator();
         Loader loader = new Loader();
         long timeStart;
@@ -114,7 +130,7 @@ public class Main {
         }
         
         if(mode == Mode.PRINT_ITERS){
-        	System.out.print("Tabu = [");
+        	System.out.print("Tabu_" + name + " = [");
         }
         timeStart = System.currentTimeMillis();
         ArrayList<Schedule> schedules = TabuSearcher.tabuSearch(evaluator, constraints, listSize, iterations, moves, time, mode);
